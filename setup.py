@@ -46,6 +46,7 @@ setup(
     author_email="jayvdb@gmail.com",
     url="https://github.com/jayvdb/pypidb",
     packages=find_packages(exclude=["tests", "tests.*"]),
+    package_data={"": ["*.txt"]},
     python_requires=">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*",
     install_requires=[
         "https-everywhere",
