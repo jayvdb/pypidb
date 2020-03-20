@@ -19,7 +19,7 @@ limitations under the License.
 
 from setuptools import find_packages, setup
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 
 classifiers = """\
 Environment :: Console
