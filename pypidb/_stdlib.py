@@ -1,0 +1,36 @@
+ALLOWED_STDLIB_BACKPORTS = set(
+    [
+        "argparse",
+        "asyncio",
+        "contextvars",
+        "configparser",
+        "csv",
+        "ctypes",
+        "dataclasses",
+        "datetime",  # Zope, installs to non-conflicting DateTime on case sensitive fs
+        "distutils",
+        "email",
+        "enum",
+        "faulthandler",
+        "functools",
+        "hmac",
+        "http",
+        "functools",
+        "futures",
+        "hashlib",
+        "html",
+        "importlib",
+        "ipaddress",
+        "logging",
+        "multiprocessing",
+        "pathlib",
+        "readline",
+        "selectors",  # recheck
+        "ssl",
+        "statistics",
+        "typing",
+        "unittest",
+        "uuid",
+        "wsgiref",
+    ]
+)
