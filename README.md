@@ -76,8 +76,12 @@ is only to be used for moribund projects where no SCM can be found.
 ## Usage
 
 ```
-pip install git+https://github.com/jayvdb/https-everywhere-py
-pip install pypidb
+$ pip install git+https://github.com/jayvdb/https-everywhere-py
+$ pip install pypidb
+$ pypidb requests-threads
+https://github.com/requests/requests-threads
+$ pypidb does-not-exist
+Invalid package name does-not-exist
 ```
 
 ```py

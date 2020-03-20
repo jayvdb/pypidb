@@ -72,7 +72,7 @@ setup(
     classifiers=classifiers.splitlines(),
     entry_points='''
         [console_scripts]
-        pypidb=pypidb:cli
+        pypidb=pypidb.cli:cli
     ''',
     tests_require=["pytest-blockage", "unittest-expander"],
 )
