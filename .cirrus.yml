@@ -1,0 +1,20 @@
+# codecov-python has no Cirrus CI support
+# https://github.com/codecov/codecov-python/issues/233
+env:
+  LC_ALL: C.UTF-8
+  LANG: C.UTF-8
+  CODECOV_TOKEN: ENCRYPTED[cec247b33f9c9398f3b6000967c733f29dd94a90bc6e8b45a27e2db241a59daa473218ddb3b4eeb81c7692005101eee8]
+
+Linux_task:
+  container:
+    matrix:
+      - image: python:3.6
+      - image: python:3.7
+      - image: python:3.8
+  install_script:
+    - pip install -U tox coverage
+  script:
+    - python --version
+    - PY=$(python -c 'import sys; print("%d%d" % (sys.version_info[0], sys.version_info[1]))')
+    - python -m tox -e py$PY -- -vv -k 'TestTop360 and not jupyter' --cov-fail-under=70
+    - bash <(curl -s https://codecov.io/bash)
