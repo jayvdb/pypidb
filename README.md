@@ -1,9 +1,6 @@
 # pypidb
 PyPI client side database with SCM/VCS URLs
 
-**NOTE** https://github.com/jayvdb/https-everywhere-py **master** needs
-to be installed.  This will be fixed asap.
-
 This project provides a client side database of [PyPI project metadata](https://pypi.org/),
 primarily for the purpose of finding a SCM URL for any PyPI project.
 More of the internals of the database will be exposed.  Time has been the
@@ -76,7 +73,6 @@ is only to be used for moribund projects where no SCM can be found.
 ## Usage
 
 ```
-$ pip install git+https://github.com/jayvdb/https-everywhere-py
 $ pip install pypidb
 $ pypidb requests-threads
 https://github.com/requests/requests-threads
@@ -95,6 +91,16 @@ Invalid package name does-not-exist
 >>> db.find_project_scm_url("cffi")
 'https://foss.heptapod.net/pypy/cffi'
 >>> db.find_project_scm_url("mysql-connector-python")
+Traceback (most recent call last):
+    ...
+pypidb._exceptions.IncompletePackageMetadata: mysql-connector-python has no email in PyPI metadata
+https://pypi.org/project/mysql-connector-python/8.0.19/: 500 Server Error: HTTPS Everywhere for url: https://pypi.org/project/mysql-connector-python/8.0.19/
+https://pypi.org/project/mysql-connector-python/: 500 Server Error: HTTPS Everywhere for url: https://pypi.org/project/mysql-connector-python/
+https://downloads.mysql.com/docs/licenses/connector-python-8.0-com-en.pdf: 500 Server Error: HTTPS Everywhere for url: https://downloads.mysql.com/docs/licenses/connector-python-8.0-com-en.pdf
+https://downloads.mysql.com/docs/licenses/connector-python-8.0-gpl-en.pdf: 500 Server Error: HTTPS Everywhere for url: https://downloads.mysql.com/docs/licenses/connector-python-8.0-gpl-en.pdf
+https://downloads.mysql.com/docs/licenses/connector-python-gpl-en.pdf: 500 Server Error: HTTPS Everywhere for url: https://downloads.mysql.com/docs/licenses/connector-python-gpl-en.pdf
+https://downloads.mysql.com/docs/connector-python-en.pdf: 500 Server Error: HTTPS Everywhere for url: https://downloads.mysql.com/docs/connector-python-en.pdf
+https://downloads.mysql.com/docs/licenses/connector-python-com-en.pdf: 500 Server Error: HTTPS Everywhere for url: https://downloads.mysql.com/docs/licenses/connector-python-com-en.pdf
 ```
 
 Resolution of many packages requires a Read the Docs token
