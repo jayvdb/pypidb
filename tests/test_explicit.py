@@ -4,9 +4,9 @@ from unittest_expander import expand, foreach
 
 from pypidb._compat import PY2
 from pypidb._db import _fetch_mapping
-from pypidb._github import check_repo, get_repo_setuppy, normalize
+from pypidb._github import GitHubAPIMessage, check_repo, get_repo_setuppy
 from pypidb._pypi import InvalidPackage
-from pypidb._similarity import _compute_similarity
+from pypidb._similarity import _compute_similarity, normalize
 from tests.data import (
     exact,
     exact_fetched,
@@ -35,6 +35,8 @@ class _ExplicitBase(object):
     def _test_package(self, name):
         try:
             url = self.converter.get_vcs(name)
+        except GitHubAPIMessage as e:
+            raise unittest.SkipTest(str(e))
         except InvalidPackage:
             self.assertIn(name, invalid)
             raise unittest.SkipTest("{} is an invalid package".format(name))
@@ -67,14 +69,22 @@ class TestExactFromJson(_TestBase):
             pass
         elif url.startswith("https://github.com/"):
             slug = url[len("https://github.com/") :]
-            rv = check_repo(slug)
+            try:
+                rv = check_repo(slug)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             self.assertTrue(rv)
             for rule in setuppy_mismatches:
                 rule = normalize(rule.strip("$"))
                 if normalised_name.startswith(rule):
                     return
 
-            rv = get_repo_setuppy(slug, normalised_name)
+            try:
+                rv = get_repo_setuppy(slug, normalised_name)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             if rv is False:
                 return
             self.assertTrue(rv)
@@ -102,7 +112,11 @@ class TestExactFromJson(_TestBase):
     def test_package(self, name):
         expected = self.expected[name]
 
-        url = self.converter.get_vcs(name)
+        try:
+            url = self.converter.get_vcs(name)
+        except GitHubAPIMessage as e:
+            raise unittest.SkipTest(str(e))
+
         self.assertIsNotNone(url)
         self.assertInsensitiveEqual(url, expected)
 
@@ -139,7 +153,11 @@ class TestExactFetched(_TestBase):
     def test_package(self, name):
         expected = self.expected[name]
 
-        url = self.converter.get_vcs(name)
+        try:
+            url = self.converter.get_vcs(name)
+        except GitHubAPIMessage as e:
+            raise unittest.SkipTest(str(e))
+
         self.assertIsNotNone(url)
         self.assertInsensitiveEqual(url, expected)
 
@@ -151,14 +169,22 @@ class TestExactFetched(_TestBase):
             pass
         elif url.startswith("https://github.com/"):
             slug = url[len("https://github.com/") :]
-            rv = check_repo(slug)
+            try:
+                rv = check_repo(slug)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             self.assertTrue(rv)
             for rule in setuppy_mismatches:
                 rule = normalize(rule.strip("$"))
                 if normalised_name.startswith(rule):
                     return
 
-            rv = get_repo_setuppy(slug, normalised_name)
+            try:
+                rv = get_repo_setuppy(slug, normalised_name)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             if rv is False:
                 return
             self.assertTrue(rv)
@@ -201,6 +227,8 @@ class TestMismatchFromJson(_TestBase):
 
         try:
             url = self.converter.get_vcs(name)
+        except GitHubAPIMessage as e:
+            raise unittest.SkipTest(str(e))
         except Exception:
             if name in self.expected_failures:
                 return
@@ -222,14 +250,22 @@ class TestMismatchFromJson(_TestBase):
             pass
         elif url.startswith("https://github.com/"):
             slug = url[len("https://github.com/") :]
-            rv = check_repo(slug)
+            try:
+                rv = check_repo(slug)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             self.assertTrue(rv)
             for rule in setuppy_mismatches:
                 rule = normalize(rule.strip("$"))
                 if normalised_name.startswith(rule):
                     return
 
-            rv = get_repo_setuppy(slug, normalised_name)
+            try:
+                rv = get_repo_setuppy(slug, normalised_name)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             if rv is False:
                 return
             self.assertTrue(rv)
@@ -284,14 +320,22 @@ class TestMismatchFetched(_ExplicitBase, _TestBase):
             pass
         elif url.startswith("https://github.com/"):
             slug = url[len("https://github.com/") :]
-            rv = check_repo(slug)
+            try:
+                rv = check_repo(slug)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             self.assertTrue(rv)
             for rule in setuppy_mismatches:
                 rule = normalize(rule.strip("$"))
                 if normalised_name.startswith(rule):
                     return
 
-            rv = get_repo_setuppy(slug, normalised_name)
+            try:
+                rv = get_repo_setuppy(slug, normalised_name)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             if rv is False:
                 return
             self.assertTrue(rv)
