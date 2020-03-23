@@ -16,5 +16,5 @@ Linux_task:
   script:
     - python --version
     - PY=$(python -c 'import sys; print("%d%d" % (sys.version_info[0], sys.version_info[1]))')
-    - python -m tox -e py$PY -- -vv -k 'TestTop360 and not jupyter' --cov-fail-under=70
+    - python -m tox -e py$PY -- -vv -k 'TestTop360' --cov-fail-under=70
     - bash <(curl -s https://codecov.io/bash)

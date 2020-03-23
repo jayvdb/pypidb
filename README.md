@@ -131,6 +131,12 @@ A complete test run takes several hours.  There is aggressive caching
 of web content using `CacheControl` and DNS results using `dns-cache`,
 so subsiquent runs should complete a little over on hour.
 
+Running only tests on the top 360 most popular PyPI packages can be done
+without any tokens, and completes within approximately five minutes.
+```sh
+tox -- -k TestTop360
+```
+
 As the tests are inspecting and validating the results for live project
 metadata, and those projects are constantly on the move, and the resolution
 often includes accessing websites which may be inoperative temporarily for

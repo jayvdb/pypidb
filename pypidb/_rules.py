@@ -777,7 +777,10 @@ def _find_named_repo(name, emails=None):
     rules = []
     rule = _namespace_matches.get(name, None)
     if rule:
-        rules.append(rule)
+        if isinstance(rule, str):
+            rules.append(rule)
+        else:
+            rules = list(rule)
 
     ns_rules = _namespace_matches.get(namespace, [])
     if isinstance(ns_rules, str):
