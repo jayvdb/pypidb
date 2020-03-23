@@ -6,7 +6,7 @@ from pypidb._cache import get_file_cache, get_timeout
 from pypidb._compat import PY2
 from pypidb._db import Database, multipackage_repos
 from pypidb._github import check_repo as check_github_repo
-from pypidb._github import get_repo_setuppy
+from pypidb._github import GitHubAPIMessage, get_repo_setuppy
 from pypidb._pypi import IncompletePackageMetadata, InvalidPackage
 from pypidb._similarity import _compute_similarity, normalize
 from tests.data import mismatch, missing_repos, setuppy_mismatches, wrong_result
@@ -192,7 +192,11 @@ class _TestBase(unittest.TestCase):
                 if normalised_name.startswith(rule):
                     return
 
-            rv = get_repo_setuppy(slug, normalised_name)
+            try:
+                rv = get_repo_setuppy(slug, normalised_name)
+            except GitHubAPIMessage as e:
+                raise unittest.SkipTest(str(e))
+
             if rv is not False:
                 self.assertTrue(rv)
 

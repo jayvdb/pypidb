@@ -13,6 +13,10 @@ gh_session = get_file_cache_session("gh")
 logger = setup_logging()
 
 
+class GitHubAPIMessage(Exception):
+     pass
+
+
 def api_call(endpoint, method, field_name=None):
     endpoint = endpoint.lstrip("/")
     headers = {}
@@ -35,6 +39,9 @@ def api_call(endpoint, method, field_name=None):
         except json.JSONDecodeError:  # pragma: no cover
             logger.error("failed to decode {}:\n{}".format(endpoint, r.text))
             raise
+
+        if rj.keys() == ['message', 'documentation_url']:
+            raise GitHubAPIMessage(rj["message"])
 
         if field_name:
             if field_name in rj:
