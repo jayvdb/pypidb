@@ -16,5 +16,5 @@ Linux_task:
   script:
     - python --version
     - PY=$(python -c 'import sys; print("%d%d" % (sys.version_info[0], sys.version_info[1]))')
-    - python -m tox -e py$PY -- -vv -k '(TestTop360 or TestExact or bitbucket or gitlab or pagure or openstack or db or caching) and not tg' --cov-fail-under=70
+    - python -m tox -e py$PY -- -vv -k '(TestTop360 or bitbucket or gitlab or pagure or openstack or db or caching) or (TestExplicit and not tg) or (exceptions and not amazon)' --cov-fail-under=70
     - bash <(curl -s https://codecov.io/bash)
