@@ -229,13 +229,10 @@ class _TestBase(unittest.TestCase):
 
             rv = self._check_github_setuppy(slug, normalised_name)
 
-            if rv is not False:
-                self.assertTrue(rv)
-
-                if normalised_name not in normalize(rv):
-                    assert False, "{} : {} not in \n{}".format(
-                        name, normalised_name, rv
-                    )
+            if rv is not None:
+                assert normalised_name in normalize(rv), "{}: {} not in:\n{}".format(
+                    name, normalised_name, rv
+                )
 
         else:
             r = web_session.get(url, timeout=get_timeout(url))
