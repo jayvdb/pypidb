@@ -16,5 +16,5 @@ Linux_task:
   script:
     - python --version
     - PY=$(python -c 'import sys; print("%d%d" % (sys.version_info[0], sys.version_info[1]))')
-    - python -m tox -e py$PY -- -vv -k '(TestTop360 or bitbucket or gitlab or pagure or db or caching) or (github and not mailgun) or (TestExplicit and not tg and not turbo) or (rule_data and not amazon) or (exceptions and not amazon) or openstack or fedora' --cov-fail-under=70
+    - python -m tox -e py$PY -- -vv -k '(TestTop360 or bitbucket or gitlab or pagure or db or caching) or (github and not mailgun and not rtd) or (TestExplicit and not tg and not turbo) or (rule_data and not amazon) or (exceptions and not amazon) or openstack or fedora' --cov-fail-under=80
     - bash <(curl -s https://codecov.io/bash)

@@ -295,7 +295,7 @@ class TestSTScI(_TestBase):
 
 class TestXStatic(_TestBase):
     def test_XStatic_openstack_jquery_tablesorter(self):
-        url = self.converter.get_vcs("XStatic-JQuery-TableSorter")
+        url = self._get_scm("XStatic-JQuery-TableSorter")
         self.assertInsensitiveEqual(
             url, "https://github.com/openstack/XStatic-JQuery.TableSorter"
         )
