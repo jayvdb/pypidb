@@ -2,10 +2,12 @@ import unittest
 
 from stdlib_list import stdlib_list
 
+from requests.exceptions import HTTPError
+
 from pypidb._cache import get_file_cache, get_timeout
 from pypidb._compat import PY2
 from pypidb._db import Database, multipackage_repos
-from pypidb._github import check_repo as check_github_repo
+from pypidb._github import check_repo as check_github_repo, get_repo_setuppy
 from pypidb._github import GitHubAPIMessage, get_repo_setuppy
 from pypidb._pypi import IncompletePackageMetadata, InvalidPackage
 from pypidb._similarity import _compute_similarity, normalize
@@ -84,6 +86,35 @@ class _TestBase(unittest.TestCase):
         else:
             self.assertIsNone(s)
 
+    def _get_scm(self, name):
+        try:
+            url = self.converter.get_vcs(name)
+        except GitHubAPIMessage as e:
+            raise unittest.SkipTest(str(e))
+        return url
+
+    def _check_github_repo(self, slug):
+        try:
+            rv = check_github_repo(slug)
+        except GitHubAPIMessage as e:
+            raise unittest.SkipTest(str(e))
+        except HTTPError as e:
+            if "403" in str(e):
+                raise unittest.SkipTest(str(e))
+            raise
+        return rv
+
+    def _check_github_setuppy(self, slug, normalised_name):
+        try:
+            rv = get_repo_setuppy(slug, normalised_name)
+        except GitHubAPIMessage as e:
+            raise unittest.SkipTest(str(e))
+        except HTTPError as e:
+            if "403" in str(e):
+                raise unittest.SkipTest(str(e))
+            raise
+        return rv
+
     def _test_names(self, names, ignore_not_found=False):
         assert len(names) == 1
         expected_failures = [normalize(i) for i in self.expected_failures]
@@ -92,9 +123,9 @@ class _TestBase(unittest.TestCase):
         normalised_name = normalize(name)
 
         try:
-            url = self.converter.get_vcs(name)
-        except GitHubAPIMessage as e:
-            raise unittest.SkipTest(str(e))
+            url = self._get_scm(name)
+        except unittest.SkipTest:
+            raise
         except InvalidPackage:
             if (
                 normalised_name in expected_failures
@@ -177,10 +208,10 @@ class _TestBase(unittest.TestCase):
 
             slug = url[len("https://github.com/") :]
             try:
-                rv = check_github_repo(slug)
-            except GitHubAPIMessage as e:
-                raise unittest.SkipTest(str(e))
-            except Exception:
+                rv = self._check_github_repo(slug)
+            except unittest.SkipTest:
+                raise
+            except Exception as e:
                 rv = None
             if not rv:
                 if PY2 or name in self.expected_failures:
@@ -196,10 +227,7 @@ class _TestBase(unittest.TestCase):
                 if normalised_name.startswith(rule):
                     return
 
-            try:
-                rv = get_repo_setuppy(slug, normalised_name)
-            except GitHubAPIMessage as e:
-                raise unittest.SkipTest(str(e))
+            rv = self._check_github_setuppy(slug, normalised_name)
 
             if rv is not False:
                 self.assertTrue(rv)
