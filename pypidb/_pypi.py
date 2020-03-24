@@ -124,18 +124,21 @@ class Converter(object):
 
         return url
 
-    def _group_urls(self, urls, name):
+    def _group_urls(self, rule, urls, name):
         matches = set()
         related = set()
+        google_code = set()
         non_matches = set()
         for url in urls:
-            if name in url:
+            if "code.google" in url:
+                google_code.add(url)
+            elif _compute_similarity(rule.match, url):
                 matches.add(url)
             elif "python" in url.lower():
                 related.add(url)
             else:
                 non_matches.add(url)
-        return list(matches) + list(related) + list(non_matches)
+        return list(matches) + list(related) + list(google_code) + list(non_matches)
 
     def _exclude_non_urls(self, urls):
         return set(
@@ -343,7 +346,7 @@ class Converter(object):
                     logger.debug("--none of this set: {}".format(item.value))
 
                 logger.debug("queuing {}".format(sorted(fetch_urls)))
-                for url in self._group_urls(fetch_urls, name):
+                for url in self._group_urls(rule, fetch_urls, name):
                     queue.append(Url(url))
 
                 logger.info(
