@@ -217,6 +217,7 @@ rules.from_set(
         Rule("basemap", ignore_bad_metadata=True),
         Rule("bindep", ["project-config"], expect_none=True),
         Rule("bitvector", ignore_urls=["sun.com"], expect_none=True),
+        Rule("bobo", repo_filename="buildout.cfg"),
         Rule(
             "bugsnag", ignore_urls=["www.bugsnag.com", "bugsnag.com"], expect_none=True
         ),
@@ -400,6 +401,8 @@ rules.from_set(
         Rule("hypothesis-pytest", ["hypothesis"], expect_none=True),
         Rule("imagecodecs", link_extract=get_html_hrefs),
         Rule("imreg", link_extract=get_html_hrefs),
+        Rule("infi-clickhouse-orm", repo_filename="buildout.cfg"),
+        Rule("infi-execute", repo_filename="setup.in"),
         Rule(
             "intel-openmp",
             ignore_urls=["software.intel.com"],
@@ -410,6 +413,7 @@ rules.from_set(
             "ipympl", ["matplotlib"], ignore_urls=["matplotlib.org"], expect_none=True
         ),
         Rule("ipynb", patch="https://github.com/ipython/ipynb/pull/47"),
+        Rule("juicer", repo_filename="setup.py.in"),
         Rule(
             "jupyter-c-kernel",
             patch="https://github.com/brendan-rius/jupyter-c-kernel/pull/49",
@@ -496,6 +500,7 @@ rules.from_set(
         Rule(
             "proboscis", patch="https://github.com/rackerlabs/python-proboscis/pull/28"
         ),
+        Rule("py9p", repo_filename="setup.py.in"),
         Rule("pyaml", match="pretty-yaml"),
         Rule("pybrain", ignore_bad_metadata=True),
         Rule("pycddb", ignore_bad_metadata=True),
@@ -504,6 +509,8 @@ rules.from_set(
             "pycountry-convert",
             patch="https://github.com/jefftune/pycountry-convert/pull/1",
         ),
+        Rule("pyficache", repo_filename="__pkginfo__.py"),
+        Rule("pygam", repo_filename="flit.ini"),
         Rule(
             "pygobject",
             link_extract=get_html_hrefs,
@@ -590,6 +597,7 @@ rules.from_set(
             expect_none=True,
         ),
         Rule("skl2onnx", ["scikit-learn"]),
+        Rule("spark-sklearn", repo_filename="build.sbt"),
         Rule("sphinxcontrib-napoleon", ["numpy"]),
         Rule("sphinxcontrib-youtube", ignore_bad_metadata=True),
         Rule(
@@ -616,6 +624,7 @@ rules.from_set(
         Rule("swapper", ["vera"]),
         Rule("sysv-ipc", ["posix-ipc"]),
         Rule("telepathy", ["insights"]),
+        Rule("tensorboard", repo_filename="package.json"),
         Rule(
             "tgfastdata",
             ["turbogears2", "toscawidgets", "virtualenv"],

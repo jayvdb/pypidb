@@ -14,14 +14,12 @@ logger = setup_logging()
 
 
 class GitHubAPIMessage(Exception):
-     pass
+    pass
 
 
 def api_call(endpoint, method, field_name=None):
     endpoint = endpoint.lstrip("/")
     headers = {}
-    cache_dir = user_cache_dir("gh")
-    logger.info("Using cache directory: {}.".format(cache_dir))
 
     api_token = os.getenv("GITHUB_API_TOKEN")
     if api_token:  # pragma: no cover
@@ -40,7 +38,7 @@ def api_call(endpoint, method, field_name=None):
             logger.error("failed to decode {}:\n{}".format(endpoint, r.text))
             raise
 
-        if list(rj.keys()) == ['message', 'documentation_url']:
+        if list(rj.keys()) == ["message", "documentation_url"]:
             raise GitHubAPIMessage(rj["message"])
 
         if field_name:
@@ -74,12 +72,7 @@ def check_repo(url_or_slug):
     return r
 
 
-def get_repo_setuppy(url_or_slug, normalised_name):
-    if url_or_slug.startswith("https://github.com/"):  # pragma: no cover
-        slug = url_or_slug[len("https://github.com/") :]
-    else:
-        slug = url_or_slug
-
+def get_repo_top_language(slug):  # pragma: no cover
     try:
         languages = api_call(endpoint="/repos/{}/languages".format(slug), method="GET")
     except GitHubAPIMessage:
@@ -88,56 +81,77 @@ def get_repo_setuppy(url_or_slug, normalised_name):
         logger.warning("get_repo_setuppy gh {} failed {}".format(slug, e))
         return
     try:
-        top_language = next(iter(languages))
+        return next(iter(languages))
     except StopIteration:
         return False
     logger.info("top lang = {}".format(top_language))
-    if top_language != "Python":
-        return False
-    setuppy = None
-    to_check = ["setup.py", "pyproject.toml", "setup.cfg"]
-    if normalised_name in ["bobo", "infi-clickhouse-orm"]:
-        to_check = ["buildout.cfg"]
-    if normalised_name in ["pygam"]:
-        to_check = ["flit.ini"]
-    if normalised_name in ["spark-sklearn"]:
-        to_check = ["build.sbt"]
-    if normalised_name == "pyficache":
-        to_check = ["__pkginfo__.py"]
-    if normalised_name == "tensorboard":
-        to_check = ["package.json"]
-    if normalised_name in ["py9p", "juicer"]:
-        to_check = ["setup.py.in"]
-    if normalised_name in ["infi-execute"]:
-        to_check = ["setup.in"]
 
-    for filename in to_check:
-        try:
-            c = api_call(
-                endpoint="/repos/{}/contents/{}".format(slug, filename),
-                method="GET",
-                field_name="content",
-            )
-        except GitHubAPIMessage as e:
-            if str(e) == "Not Found":
-                continue
-            else:
-                raise
-        except Exception as e:  # pragma: no cover
-            logger.warning("gh {} failed {}".format(slug, e))
+
+def repo_is_python(slug):  # pragma: no cover
+    top_language = get_repo_top_language(slug)
+    logger.info("{}: top lang = {}".format(slug, top_language))
+    return top_language == "Python"
+
+
+def api_get_file(slug, filename):  # pragma: no cover
+    try:
+        c = api_call(
+            endpoint="/repos/{}/contents/{}".format(slug, filename),
+            method="GET",
+            field_name="content",
+        )
+    except GitHubAPIMessage as e:
+        if str(e) == "Not Found":
+            return
+        else:
             raise
+    except Exception as e:  # pragma: no cover
+        logger.warning("gh {} failed {}".format(slug, e))
+        raise
+    if not c:
+        return
+    return base64.b64decode(c).decode("utf-8")
+
+
+def raw_get_file(slug, filename):
+    url = "https://raw.githubusercontent.com/{}/master/{}".format(slug, filename)
+    r = gh_session.get(url)
+    if r.status_code == 404:
+        return
+    r.raise_for_status()
+    return r.content.decode("utf-8")
+
+
+def get_repo_setuppy(url_or_slug, matches, filenames=None):
+    if url_or_slug.startswith("https://github.com/"):  # pragma: no cover
+        slug = url_or_slug[len("https://github.com/") :]
+    else:
+        slug = url_or_slug
+
+    if not isinstance(matches, list):
+        matches = [matches]
+
+    setuppy = None
+    if not filenames:
+        filenames = ["setup.py", "pyproject.toml", "setup.cfg"]
+
+    for filename in filenames:
+        try:
+            c = raw_get_file(slug, filename)
+        except Exception as e:
+            logger.warning("gh raw {} {}: failed {}".format(slug, filename, e))
+            continue
         if not c:
             continue
-        c = base64.b64decode(c).decode("utf-8")
         c = normalize(c)
         if not setuppy:
             setuppy = c
-        if normalised_name in c:
+        if all(match in c for match in matches):
             return c
         try:
-            logger.info("{} not found in {}".format(normalised_name, c))
+            logger.info("{} not found in {}".format(matches, c))
         except Exception:  # pragma: no cover
-            logger.info("{} not found in {}".format(normalised_name, filename))
+            logger.info("{} not found in {}".format(matches, filename))
 
-    logger.warning("{} not found in {}".format(normalised_name, to_check))
+    logger.warning("{}: {} not found in {}".format(slug, matches, filenames))
     return setuppy

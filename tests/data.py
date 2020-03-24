@@ -1338,16 +1338,19 @@ setuppy_mismatches = [
     "vsts",
     "vsts-",
     "webapp",
-    "XStatic-Angular-lrdragndrop",
-    "XStatic-JQuery-Migrate",  # these use https://github.com/openstack/xstatic-angular-lrdragndrop/blob/master/xstatic/pkg/angular_lrdragndrop/__init__.py
-    "XStatic-smart-table",
-    "XStatic-Spin",
     "yowsup2",  # repo contains yowsup
     "zabbix-api",
     "zetup",
     "zodb3",
 ]
 
+setuppy_mismatches_xstatic = [
+    "xstatic-angular-lrdragndrop",
+    "xstatic-jquery-migrate",  # these use https://github.com/openstack/xstatic-angular-lrdragndrop/blob/master/xstatic/pkg/angular_lrdragndrop/__init__.py
+    "xstatic-jquery-tablesorter",
+    "xstatic-smart-table",
+    "xstatic-spin",
+]
 
 expected = {}
 expected.update(exact)
