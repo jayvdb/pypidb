@@ -132,13 +132,14 @@ class Converter(object):
         for url in urls:
             if "code.google" in url:
                 google_code.add(url)
-            elif _compute_similarity(rule.match, url):
+            elif _compute_similarity(rule.match, url) < self.max_distance:
                 matches.add(url)
             elif "python" in url.lower():
                 related.add(url)
             else:
                 non_matches.add(url)
-        return list(matches) + list(related) + list(google_code) + list(non_matches)
+
+        return [list(matches), list(related), list(google_code), list(non_matches)]
 
     def _exclude_non_urls(self, urls):
         return set(
@@ -320,13 +321,14 @@ class Converter(object):
                 urls = self._normalise_urls(urls)
 
                 if not urls:
+                    logger.info("Empty UrlSet")
                     continue
 
                 seen_list += list(urls)
 
                 result_urls = []
 
-                for url in self._group_urls(rule, urls, name):
+                for url in urls:
                     rv = self._accept_url(rule, name, url)
                     if rv:
                         results.append(rv)
@@ -367,8 +369,19 @@ class Converter(object):
                         rule.link_extract, len(text), len(urls)
                     )
                 )
-                logger.debug("queuing {}".format(sorted(urls)))
-                queue.append(UrlSet(urls, item.source))
+
+                urls = self._exclude_non_urls(urls)
+                urls = self._normalise_urls(urls)
+
+                if not urls:
+                    logger.info("Nothing to queue")
+                    continue
+
+                for url_group in self._group_urls(rule, urls, name):
+                    if not url_group:
+                        continue
+                    logger.debug("queuing {}".format(sorted(url_group)))
+                    queue.append(UrlSet(url_group, item.source))
 
             elif isinstance(item, Email):
                 email = item.value
