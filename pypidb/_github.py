@@ -65,9 +65,12 @@ def check_repo(url_or_slug):
     else:
         slug = url_or_slug
 
-    r = api_call(endpoint="/repos/{}".format(slug), method="GET")
-    if r.get("message", "") == "Not Found":
-        return
+    try:
+        r = api_call(endpoint="/repos/{}".format(slug), method="GET")
+    except GitHubAPIMessage as e:
+        if str(e) == "Not Found":
+            return
+        raise
     return r
 
 
@@ -79,6 +82,8 @@ def get_repo_setuppy(url_or_slug, normalised_name):
 
     try:
         languages = api_call(endpoint="/repos/{}/languages".format(slug), method="GET")
+    except GitHubAPIMessage:
+        raise
     except (NameError, SystemExit) as e:  # pragma: no cover
         logger.warning("get_repo_setuppy gh {} failed {}".format(slug, e))
         return
@@ -113,9 +118,14 @@ def get_repo_setuppy(url_or_slug, normalised_name):
                 method="GET",
                 field_name="content",
             )
+        except GitHubAPIMessage as e:
+            if str(e) == "Not Found":
+                continue
+            else:
+                raise
         except Exception as e:  # pragma: no cover
             logger.warning("gh {} failed {}".format(slug, e))
-            continue
+            raise
         if not c:
             continue
         c = base64.b64decode(c).decode("utf-8")
