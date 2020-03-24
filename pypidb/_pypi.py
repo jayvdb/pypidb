@@ -324,16 +324,15 @@ class Converter(object):
 
                 seen_list += list(urls)
 
-                fetch_urls = []
                 result_urls = []
 
-                for url in urls:
+                for url in self._group_urls(rule, urls, name):
                     rv = self._accept_url(rule, name, url)
                     if rv:
                         results.append(rv)
                         result_urls.append(rv)
                     elif rv is not False:
-                        fetch_urls.append(url)
+                        queue.append(Url(url))
 
                 if len(result_urls) == 1 and len(fetch_list) <= 1:
                     results.append(result_urls[0])
@@ -344,10 +343,6 @@ class Converter(object):
                     )
                 else:
                     logger.debug("--none of this set: {}".format(item.value))
-
-                logger.debug("queuing {}".format(sorted(fetch_urls)))
-                for url in self._group_urls(rule, fetch_urls, name):
-                    queue.append(Url(url))
 
                 logger.info(
                     "{}: from {} added urls {}".format(
