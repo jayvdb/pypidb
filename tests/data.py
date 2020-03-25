@@ -1340,6 +1340,7 @@ setuppy_mismatches = [
     "webapp",
     "XStatic-Angular-lrdragndrop",
     "XStatic-JQuery-Migrate",  # these use https://github.com/openstack/xstatic-angular-lrdragndrop/blob/master/xstatic/pkg/angular_lrdragndrop/__init__.py
+    "XStatic-JQuery-TableSorter",
     "XStatic-smart-table",
     "XStatic-Spin",
     "yowsup2",  # repo contains yowsup
