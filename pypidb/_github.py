@@ -122,30 +122,20 @@ def raw_get_file(slug, filename):
     return r.content.decode("utf-8")
 
 
-def get_repo_setuppy(url_or_slug, normalised_name):
+def get_repo_setuppy(url_or_slug, matches, filenames=None):
     if url_or_slug.startswith("https://github.com/"):  # pragma: no cover
         slug = url_or_slug[len("https://github.com/") :]
     else:
         slug = url_or_slug
 
-    setuppy = None
-    to_check = ["setup.py", "pyproject.toml", "setup.cfg"]
-    if normalised_name in ["bobo", "infi-clickhouse-orm"]:
-        to_check = ["buildout.cfg"]
-    if normalised_name in ["pygam"]:
-        to_check = ["flit.ini"]
-    if normalised_name in ["spark-sklearn"]:
-        to_check = ["build.sbt"]
-    if normalised_name == "pyficache":
-        to_check = ["__pkginfo__.py"]
-    if normalised_name == "tensorboard":
-        to_check = ["package.json"]
-    if normalised_name in ["py9p", "juicer"]:
-        to_check = ["setup.py.in"]
-    if normalised_name in ["infi-execute"]:
-        to_check = ["setup.in"]
+    if not isinstance(matches, list):
+        matches = [matches]
 
-    for filename in to_check:
+    setuppy = None
+    if not filenames:
+        filenames = ["setup.py", "pyproject.toml", "setup.cfg"]
+
+    for filename in filenames:
         try:
             c = raw_get_file(slug, filename)
         except Exception as e:
@@ -156,12 +146,12 @@ def get_repo_setuppy(url_or_slug, normalised_name):
         c = normalize(c)
         if not setuppy:
             setuppy = c
-        if normalised_name in c:
+        if all(match in c for match in matches):
             return c
         try:
-            logger.info("{} not found in {}".format(normalised_name, c))
+            logger.info("{} not found in {}".format(matches, c))
         except Exception:  # pragma: no cover
-            logger.info("{} not found in {}".format(normalised_name, filename))
+            logger.info("{} not found in {}".format(matches, filename))
 
-    logger.warning("{} not found in {}".format(normalised_name, to_check))
+    logger.warning("{}: {} not found in {}".format(slug, matches, filenames))
     return setuppy

@@ -523,7 +523,7 @@ class Converter(object):
 
         rule = rules.get(normalised_name)
         if not rule:
-            rule = DefaultRule(name)  # , do_old_reject_match=True)
+            rule = DefaultRule(name)
         logger.debug("rule {} {}".format(rule.__class__.__name__, rule))
         if rule.preload:
             self._add_mappings(rule.preload)

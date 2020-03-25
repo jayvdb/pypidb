@@ -305,7 +305,7 @@ class TestXStatic(_TestBase):
         self.assertInsensitiveEqual(url, "https://github.com/takluyver/XStatic-termjs")
 
     def test_XStatic_ThomasWaldmann_jquery_ui(self):
-        url = self.converter.get_vcs("XStatic-jquery-ui")
+        url = self._get_scm("XStatic-jquery-ui")
         self.assertInsensitiveEqual(
             url, "https://github.com/xstatic-py/xstatic-jquery_ui"
         )

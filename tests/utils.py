@@ -10,8 +10,15 @@ from pypidb._db import Database, multipackage_repos
 from pypidb._github import check_repo as check_github_repo, get_repo_setuppy
 from pypidb._github import GitHubAPIMessage, get_repo_setuppy
 from pypidb._pypi import IncompletePackageMetadata, InvalidPackage
+from pypidb._rules import DefaultRule, rules
 from pypidb._similarity import _compute_similarity, normalize
-from tests.data import mismatch, missing_repos, setuppy_mismatches, wrong_result
+from tests.data import (
+    mismatch,
+    missing_repos,
+    setuppy_mismatches,
+    setuppy_mismatches_xstatic,
+    wrong_result,
+)
 
 _stdlib_all = stdlib_list()
 _stdlib = set(i.split(".")[0] for i in _stdlib_all)
@@ -104,9 +111,9 @@ class _TestBase(unittest.TestCase):
             raise
         return rv
 
-    def _check_github_setuppy(self, slug, normalised_name):
+    def _check_github_setuppy(self, slug, matches, filenames):
         try:
-            rv = get_repo_setuppy(slug, normalised_name)
+            rv = get_repo_setuppy(slug, matches, filenames)
         except GitHubAPIMessage as e:
             raise unittest.SkipTest(str(e))
         except HTTPError as e:
@@ -121,6 +128,10 @@ class _TestBase(unittest.TestCase):
 
         name = names[0]
         normalised_name = normalize(name)
+
+        rule = rules.get(normalised_name)
+        if not rule:
+            rule = DefaultRule(name)
 
         try:
             url = self._get_scm(name)
@@ -227,11 +238,21 @@ class _TestBase(unittest.TestCase):
                 if normalised_name.startswith(rule):
                     return
 
-            rv = self._check_github_setuppy(slug, normalised_name)
+            matches = normalised_name
+            filenames = None
+            try:
+                filenames = [rule.repo_filename]
+            except AttributeError:
+                pass
+
+            if normalised_name in setuppy_mismatches_xstatic:
+                matches = ["xstatic-pkg", normalised_name[8:]]
+            rv = self._check_github_setuppy(slug, matches, filenames)
 
             if rv is not None:
-                assert normalised_name in normalize(rv), "{}: {} not in:\n{}".format(
-                    name, normalised_name, rv
+                match_results = [match in normalize(rv) for match in matches]
+                assert all(match_results), "{}: {} not in:\n{}".format(
+                    name, matches, rv
                 )
 
         else:
