@@ -111,7 +111,7 @@ class _TestBase(unittest.TestCase):
             raise
         return rv
 
-    def _check_github_setuppy(self, slug, matches, filenames):
+    def _check_github_setuppy(self, slug, matches, filenames=None):
         try:
             rv = get_repo_setuppy(slug, matches, filenames)
         except GitHubAPIMessage as e:
