@@ -294,57 +294,57 @@ class TestSTScI(_TestBase):
 
 
 class TestXStatic(_TestBase):
-    def test_XStatic_openstack_jquery_tablesorter(self):
+    def test_openstack_jquery_tablesorter(self):
         url = self._get_scm("XStatic-JQuery-TableSorter")
         self.assertInsensitiveEqual(
             url, "https://github.com/openstack/XStatic-JQuery.TableSorter"
         )
 
-    def test_XStatic_takluyver_term_dot_js(self):
-        url = self.converter.get_vcs("XStatic-term.js")
+    def test_takluyver_term_dot_js(self):
+        url = self._get_scm("XStatic-term.js")
         self.assertInsensitiveEqual(url, "https://github.com/takluyver/XStatic-termjs")
 
-    def test_XStatic_ThomasWaldmann_jquery_ui(self):
+    def test_ThomasWaldmann_jquery_ui(self):
         url = self._get_scm("XStatic-jquery-ui")
         self.assertInsensitiveEqual(
             url, "https://github.com/xstatic-py/xstatic-jquery_ui"
         )
 
-    def test_XStatic_r1chardj0n3s_smart_table(self):
-        url = self.converter.get_vcs("XStatic-smart-table")
+    def test_r1chardj0n3s_smart_table(self):
+        url = self._get_scm("XStatic-smart-table")
         self.assertInsensitiveEqual(
             url, "https://github.com/r1chardj0n3s/xstatic-smart-table"
         )
 
-    def test_XStatic_dmsimard_patternfly(self):
-        url = self.converter.get_vcs("XStatic-patternfly")
+    def test_dmsimard_patternfly(self):
+        url = self._get_scm("XStatic-patternfly")
         self.assertInsensitiveEqual(url, "https://github.com/python-xstatic/patternfly")
 
-    def test_XStatic_dmsimard_objectpath(self):
-        url = self.converter.get_vcs("XStatic-objectpath")
+    def test_dmsimard_objectpath(self):
+        url = self._get_scm("XStatic-objectpath")
         self.assertInsensitiveEqual(
             url, "https://github.com/dmsimard/python-XStatic-objectpath-distgit"
         )
 
-    def test_XStatic_dmsimard_tv4(self):
-        url = self.converter.get_vcs("XStatic-tv4")
+    def test_dmsimard_tv4(self):
+        url = self._get_scm("XStatic-tv4")
         self.assertInsensitiveEqual(
             url, "https://github.com/dmsimard/python-XStatic-tv4-distgit"
         )
 
-    def test_XStatic_dmsimard_Angular_Schema_Form(self):
-        url = self.converter.get_vcs("XStatic-Angular-Schema-Form")
+    def test_dmsimard_Angular_Schema_Form(self):
+        url = self._get_scm("XStatic-Angular-Schema-Form")
         self.assertInsensitiveEqual(
             url,
             "https://github.com/dmsimard/python-XStatic-angular-schema-form-distgit",
         )
 
-    def test_XStatic_Spin(self):
-        url = self.converter.get_vcs("XStatic-Spin")
+    def test_Spin(self):
+        url = self._get_scm("XStatic-Spin")
         self.assertInsensitiveEqual(url, "https://github.com/openstack/XStatic-spin")
 
-    def test_XStatic_jquery_quicksearch(self):
-        url = self.converter.get_vcs("XStatic-jquery-quicksearch")
+    def test_jquery_quicksearch(self):
+        url = self._get_scm("XStatic-jquery-quicksearch")
         self.assertInsensitiveEqual(
             url, "https://github.com/openstack/xstatic-jquery.quicksearch"
         )
