@@ -24,6 +24,7 @@ reverse_mappings = {
     "https://opendev.org/openstack-dev/pbr": "pbr",
     "https://github.com/vmalloc/flux": "flux",
     "https://github.com/getslash/flux": "flux",
+    "https://github.com/esnme/ultrajson": "ujson",
 }
 
 multipackage_repos = {
