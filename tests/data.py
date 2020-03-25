@@ -262,7 +262,7 @@ name_mismatch_fetched = {
     "lomond": "https://github.com/wildfoundry/dataplicity-lomond",
     "mailjet-rest": "https://github.com/mailjet/mailjet-apiv3-python",
     "marionette-driver": "https://wiki.mozilla.org/Auto-tools/Projects/Marionette",
-    "maxminddb": "https://github.com/maxmind/libmaxminddb",
+    "maxminddb": "https://github.com/maxmind/MaxMind-DB-Reader-python",
     "mercurial": "https://www.mercurial-scm.org/repo/hg",
     "mibian": "https://github.com/yassinemaaroufi/MibianLib",
     "minimal-snowplow-tracker": "https://github.com/fishtown-analytics/snowplow-python-tracker",

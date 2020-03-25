@@ -436,7 +436,6 @@ rules.from_set(
         ),
         Rule("logging", link_extract=_url_no_extract, expect_none=True),
         Rule("magma-lang", link_extract=_url_no_extract),
-        Rule("mastodon", ignore_bad_metadata=True),
         Rule(
             "mailgun",
             ignore_urls=[
@@ -447,6 +446,8 @@ rules.from_set(
             link_extract=_url_no_extract,
             expect_none=True,
         ),
+        Rule("mastodon", ignore_bad_metadata=True),
+        Rule("maxminddb", match="maxmind-db-reader-python"),
         Rule(
             "membrete",
             ["django-contact-form"],

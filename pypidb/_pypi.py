@@ -455,7 +455,7 @@ class Converter(object):
                 fetch_count += 1
 
             if not result_url and results and results != previous_results:
-                result_url = get_best_match(name, results)
+                result_url = get_best_match(rule.match, results)
                 previous_results = results[:]
 
             if result_url:
@@ -476,7 +476,7 @@ class Converter(object):
             _fetch_mapping[normalized_name] = fetch_list
 
         if results:
-            return get_best_match(name, results)
+            return get_best_match(rule.match, results)
 
     def _split_emails(self, project_info):
         emails = set(
