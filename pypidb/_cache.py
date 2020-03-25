@@ -111,6 +111,7 @@ class ForceTimeoutHTTPAdapter(
 ):
     def __init__(self, *args, **kw):
         timeout = kw.pop("timeout", None)
+        kw["max_retries"] = retry
         super(ForceTimeoutHTTPAdapter, self).__init__(*args, **kw)
         self.timeout = timeout
 
