@@ -436,6 +436,7 @@ rules.from_set(
         ),
         Rule("logging", link_extract=_url_no_extract, expect_none=True),
         Rule("magma-lang", link_extract=_url_no_extract),
+        Rule("maxminddb", match="maxmind-db-reader-python"),
         Rule("mastodon", ignore_bad_metadata=True),
         Rule(
             "mailgun",
