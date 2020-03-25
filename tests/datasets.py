@@ -14,6 +14,8 @@ from tests.utils import _stdlib_all
 if PY2:
     raise unittest.SkipTest("datasets not supported on Python 2")
 
+R2C_WEB_CACHE = "tests/.datasets_requests_cache"
+
 
 class PortingdbLoader(Loader):
 
@@ -508,7 +510,7 @@ def get_top_packages(kind="top4kmonth"):
         name=kind,
         from_type="list",
         registry="pypi",
-        cache_dir="tests/.top_requests_cache",
+        cache_dir=R2C_WEB_CACHE,
     )
 
     for project in ds.projects:
@@ -520,7 +522,7 @@ def get_fedora_packages():
         name="fedora",
         from_type="list",
         registry="portingdb",
-        cache_dir="tests/.top_requests_cache",
+        cache_dir=R2C_WEB_CACHE,
     )
 
     names = set([project.get_name() for project in ds.projects])
@@ -532,7 +534,7 @@ def get_opensuse_packages(project):
         name=project,
         from_type="list",
         registry="opensuse",
-        cache_dir="tests/.top_requests_cache",
+        cache_dir=R2C_WEB_CACHE,
     )
 
     # Avoid dups like python2-cmd2 and python-cmd2
