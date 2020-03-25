@@ -207,8 +207,8 @@ class _TestBase(unittest.TestCase):
                 elif name.lower().startswith("xstatic-"):
                     pass
                 else:
-                    for rule in setuppy_mismatches:
-                        if rule.endswith("-") and normalised_name.startswith(rule):
+                    for setuppy_rule in setuppy_mismatches:
+                        if setuppy_rule.endswith("-") and normalised_name.startswith(setuppy_rule):
                             break
                     else:
                         raise Exception(
@@ -233,12 +233,12 @@ class _TestBase(unittest.TestCase):
                     return
                 assert False, slug
 
-            for rule in setuppy_mismatches:
-                rule = normalize(rule.strip("$"))
-                if normalised_name.startswith(rule):
+            for setuppy_rule in setuppy_mismatches:
+                setuppy_rule = normalize(setuppy_rule.strip("$"))
+                if normalised_name.startswith(setuppy_rule):
                     return
 
-            matches = normalised_name
+            matches = [normalised_name]
             filenames = None
             try:
                 filenames = [rule.repo_filename]

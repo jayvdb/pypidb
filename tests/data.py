@@ -8,6 +8,7 @@ exact_fetched = {
     "giacpy": "https://gitlab.math.univ-paris-diderot.fr/han/giacpy",
     "github-api-python": "https://github.com/hivesolutions/github_api",
     "mygpoclient": "https://github.com/gpodder/mygpoclient",
+    "oslo-upgradecheck": "https://opendev.org/openstack/oslo.upgradecheck",
     "oslo-vmware": "https://opendev.org/openstack/oslo.vmware",
     "pycli": "https://github.com/whilp/cli",
     "pycryptodomex": "https://github.com/Legrandin/pycryptodome",
@@ -81,6 +82,8 @@ exact_metadata = {
     "evergreen-py": "https://github.com/evergreen-ci/evergreen.py",
     "facebookads": "https://github.com/facebook/facebook-python-ads-sdk",
     "facebook-business": "https://github.com/facebook/facebook-python-business-sdk",
+    "gdata": "https://github.com/google/gdata-python-client",
+    "getchanges": "https://github.com/TheKevJames/getchanges",
     "girder-client": "https://github.com/girder/girder",
     "google-apitools": "https://github.com/google/apitools",
     "google-nucleus": "https://github.com/google/nucleus",
@@ -111,7 +114,6 @@ exact_metadata = {
     "nteract-scrapbook": "https://github.com/nteract/scrapbook",
     "open3d-python": "https://github.com/intel-isl/Open3D",
     "opentracing-instrumentation": "https://github.com/uber-common/opentracing-python-instrumentation",
-    "oslo-upgradecheck": "https://opendev.org/openstack/oslo.upgradecheck",
     "pantsbuild-pants": "https://github.com/pantsbuild/pants",
     "path-py": "https://github.com/jaraco/path",
     "PEAK": "https://github.com/peak-legacy/peak",
@@ -266,7 +268,6 @@ name_mismatch_fetched = {
     "mercurial": "https://www.mercurial-scm.org/repo/hg",
     "mibian": "https://github.com/yassinemaaroufi/MibianLib",
     "minimal-snowplow-tracker": "https://github.com/fishtown-analytics/snowplow-python-tracker",
-    "misspellings": "https://github.com/lyda/misspell-check",
     "mozcrash": "https://wiki.mozilla.org/Auto-tools/Projects/Mozbase",
     "mozdebug": "https://wiki.mozilla.org/Auto-tools/Projects/Mozbase",
     "mozdevice": "https://wiki.mozilla.org/Auto-tools/Projects/Mozbase",
@@ -456,8 +457,6 @@ name_mismatch_metadata = {
     "fs-s3fs": "https://github.com/PyFilesystem/s3fs",
     "fsspec": "https://github.com/intake/filesystem_spec",
     "ftputil": "https://ftputil.sschwarzer.net/",
-    "gdata": "https://github.com/google/gdata-python-client",
-    "getchanges": "https://github.com/TheKevJames/experiments",
     "geventhttpclient-wheels": "https://github.com/gwik/geventhttpclient",
     "gherkin-official": "https://github.com/cucumber/gherkin-python",
     "ghubunix": "https://github.com/BBloggsbott/ghub",
@@ -538,6 +537,7 @@ name_mismatch_metadata = {
     "MDP": "https://sourceforge.net/projects/mdp-toolkit",
     "medusa": "https://sourceforge.net/projects/oedipus",
     "mglob": "https://code.google.com/p/vvtools",
+    "misspellings": "https://github.com/lyda/misspell-check",
     "mlperf-compliance": "https://github.com/mlperf/training",
     "monkeypatcher": "https://github.com/iki/monkeypatch",
     "msk": "https://github.com/MycroftAI/mycroft-skills-kit",
@@ -1095,6 +1095,7 @@ missing_repos = [
     "emencia_django_newsletter",
     "flask-mail",
     "fontconfig",  # https://bitbucket.org/gm/fontconfig
+    "freecell-solver",  # Python may not in https://github.com/shlomif/fc-solve
     "galley",  # https://github.com/rackerlabs/galley
     "github-console",  # https://github.com/luoyeah/github-console
     "github-languages",  # https://github.com/upcwangying/github-languages-python
@@ -1147,8 +1148,13 @@ setuppy_mismatches = [
     "aliyun-",
     "allure-",
     "ansible-tower-cli",
+    "antlr-",
+    "antlr3-",
+    "antlr4-",
+    "apache-beam",
     "asgi-redis",
     "aspy.yaml",
+    "aws-cdk-",
     "awscli-cwlogs",
     "aws-kinesis-agg",
     "azure-",
@@ -1187,9 +1193,11 @@ setuppy_mismatches = [
     "django-celery-email",
     "django-logicaldelete",  # pinax-models
     "django-notification",
+    "django-pyodbc-azure",  # wrong branch
     "django-ranged-response",  # -> django-ranged-fileresponse
     "djangorestframework-jwt",
     "django-storages-redux",
+    "dotnetcore2",  # doesnt contain the Python wrapper
     "dnspython3",  # dnspython
     "drf-jwt",  # lots o forks
     "ebcdic",
@@ -1201,6 +1209,7 @@ setuppy_mismatches = [
     "fake-factory",  # renamed to faker
     "fastdiff",  # python/ subdir
     "fbprophet",
+    "feather-format",
     "flake8-junit-report",
     "fluent",
     "fysom",
@@ -1215,15 +1224,20 @@ setuppy_mismatches = [
     "gitdb2",  # 'mirror' of gitdb (i.e. they rolled it back into the old project, and maybe the repos should actually be different)
     "google-api-",
     "googleapis-",
+    "googleappenginecloudstorageclient",
     "google-cloud-",
     "google-cloud$",
     "google-compute-",
     "googledatastore",
     "google-nucleus",
+    "google-python-cloud-debugger",  # src/
+    "googletranslate",  # wrong name in setup.py
     "gremlinpython",
     "grpc-google-",
     "grpcio-",
     "grpcio$",
+    "h2o",
+    "h2o-",
     "httpcore",  # renamed to httpx
     "http-ece",
     "husl",  # https://github.com/hsluv/hsluv-python/blob/master/setup.py uses hsluv, but hsluv is 404 on pypi
@@ -1231,7 +1245,9 @@ setuppy_mismatches = [
     "ibm-db",
     "ibm-db-sa",
     "ibmiotf",
+    "igraph",  # renamed to jgraph
     "interpret-community",
+    "interpret-core",
     "jinja",
     "jinja2",  # https://github.com/pallets/jinja2-compat
     "jupyter-nbformat",
@@ -1241,6 +1257,7 @@ setuppy_mismatches = [
     "kivy-garden",  # https://github.com/kivy-garden/garden/pull/34
     "ldclient-py",
     "letsencrypt",
+    "lit",
     "localstack-ext",
     "mapgitconfig",  # this is now https://gitlab.com/jmcs/python-gitconfig/blob/master/setup.py , which does include Map
     "MDAnalysis",  # setup not in root
@@ -1257,6 +1274,7 @@ setuppy_mismatches = [
     "nose-parameterized",
     "nox-automation",
     "numpy-stl",
+    "open3d-python",  # Intel
     "opencensus-ext-azure",
     "opencensus-ext-stackdriver",
     "opencensus-ext-threading",
@@ -1267,12 +1285,15 @@ setuppy_mismatches = [
     "phonenumberslite",  # -> phonenumbers
     "pinax-notifications",
     "pip-requ",
+    "plaidml",
     "ply",  # has no setup.py
     "proto-",
     "proto-google-",
+    "pyarrow",
     "pybitbucket-fork",
     "pybuilder-pip-tools",
     "pycli",  # name lives in <src>/__init__.py
+    "pycocotools",
     "pydocumentdb",  # repo & project renamed to azure-cosmos
     "pydot2",  # folded back into pydot project
     "PyGrid",
@@ -1284,6 +1305,7 @@ setuppy_mismatches = [
     "pypic",
     "pyros-",  # stringops to create name
     "pyshark",  # setup in src
+    "pyspark",
     "pysyft",
     "pytest-devpi-server",
     "pytest-fixture-config",
@@ -1298,6 +1320,7 @@ setuppy_mismatches = [
     "pytest-verbose-parametrize",
     "pytest-virtualenv",
     "python-awk",
+    "pythonz-bd",  # setup.py contains pythonz
     "python-geoip-geolite2",
     "python-graph-core",
     "python-owasp-zap-v2-4",
@@ -1305,12 +1328,14 @@ setuppy_mismatches = [
     "pytorch-transformers",
     "py-vapid",
     "pyviz",
+    "pywatchman",
     "Qprompt",
     "rasa-nlu",  # merged into rasa
     "ray",
     "records",
     "referer-parser",
     "requests-cache-latest",  # copy of requests-cache
+    "rfpimp",  # src dir
     "rosdistro",
     "rpm",
     "rwt",  # pip-run github rename
@@ -1323,22 +1348,31 @@ setuppy_mismatches = [
     "sk-video",
     "smmap2",  # 'mirror' of smmap
     "smsapi-client",
+    "snowballstemmer",
     "sseclient-py",
     "stompest",
     "stompest",
     "tb-nightly",
+    "tdlib",
     "tensorflow-",
     "tf-estimator-nightly",
+    "tf-nightly",
+    "tg-ext-silverplate",  # empty repo
+    "tox-monorepo",
     "treeherder-client",
     "turbomail",
+    "tvb-gdist",  # string is split in setup.py
     "twitter-common-",
     "typing-extensions",
+    "ujson-",  # lots of forks
     "umalqurra",
     "uritemplate-py",
     "vsts",
     "vsts-",
     "webapp",
+    "xstatic-term-js",
     "yowsup2",  # repo contains yowsup
+    "z3-solver",  # src/api/python/setup.py
     "zabbix-api",
     "zetup",
     "zodb3",
@@ -1346,8 +1380,16 @@ setuppy_mismatches = [
 
 setuppy_mismatches_xstatic = [
     "xstatic-angular-lrdragndrop",
+    "xstatic-bootstrap-datepicker",
+    "xstatic-datatables",
+    "xstatic-hogan",
+    "xstatic-jquery",
+    "xstatic-jquery-ui",
     "xstatic-jquery-migrate",  # these use https://github.com/openstack/xstatic-angular-lrdragndrop/blob/master/xstatic/pkg/angular_lrdragndrop/__init__.py
+    "xstatic-jquery-quicksearch",
     "xstatic-jquery-tablesorter",
+    "xstatic-magic-search",
+    "xstatic-rickshaw",
     "xstatic-smart-table",
     "xstatic-spin",
 ]

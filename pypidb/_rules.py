@@ -256,6 +256,7 @@ rules.from_set(
             ignore_urls=["peak.telecommunity.com", "trac.edgewall.org"],
             expect_none=True,
         ),
+        Rule("dash-table", repo_filename="package.json"),
         Rule(
             "databricks-connect",
             ignore_urls=["docs.databricks.com", "docs.azuredatabricks.net"],
@@ -373,8 +374,8 @@ rules.from_set(
         Rule(
             "getchanges",
             ["coverage", "coveralls"],
-            match="experiments",
             link_extract=_url_no_extract,
+            patch="https://github.com/TheKevJames/getchanges/pull/43",
         ),
         Rule(
             "git-pylint-commit-hook",

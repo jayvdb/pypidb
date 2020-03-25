@@ -6,6 +6,7 @@ from pypidb._compat import PY2
 from pypidb._db import _fetch_mapping
 from pypidb._github import GitHubAPIMessage, check_repo, get_repo_setuppy
 from pypidb._pypi import InvalidPackage
+from pypidb._rules import rules
 from pypidb._similarity import _compute_similarity, normalize
 from tests.data import (
     exact,
@@ -17,6 +18,7 @@ from tests.data import (
     name_mismatch_fetched,
     name_mismatch_metadata,
     setuppy_mismatches,
+    setuppy_mismatches_xstatic,
 )
 from tests.utils import _TestBase, normalise_list, web_session
 
@@ -75,22 +77,30 @@ class TestExactFromJson(_TestBase):
                 raise unittest.SkipTest(str(e))
 
             self.assertTrue(rv)
-            for rule in setuppy_mismatches:
-                rule = normalize(rule.strip("$"))
-                if normalised_name.startswith(rule):
+
+            for setuppy_rule in setuppy_mismatches:
+                setuppy_rule = normalize(setuppy_rule.strip("$"))
+                if normalised_name.startswith(setuppy_rule):
                     return
 
+            matches = [normalised_name]
+            if normalised_name in setuppy_mismatches_xstatic:
+                matches = ["xstatic-pkg", normalised_name[8:]]
+
+            rule = rules.get(normalised_name)
+            filenames = None
             try:
-                rv = get_repo_setuppy(slug, normalised_name)
-            except GitHubAPIMessage as e:
-                raise unittest.SkipTest(str(e))
+                filenames = [rule.repo_filename]
+            except AttributeError:
+                pass
 
-            if rv is False:
-                return
-            self.assertTrue(rv)
+            rv = self._check_github_setuppy(slug, matches, filenames)
 
-            if normalised_name not in normalize(rv):
-                assert False, "{} : {} not in \n{}".format(name, normalised_name, rv)
+            if rv is not None:
+                match_results = [match in normalize(rv) for match in matches]
+                assert all(match_results), "{}: {} not in:\n{}".format(
+                    name, matches, rv
+                )
 
         else:
             r = web_session.get(url, allow_redirects=False)
