@@ -119,7 +119,10 @@ def raw_get_file(slug, filename):
     if r.status_code == 404:
         return
     r.raise_for_status()
-    return r.content.decode("utf-8")
+    try:
+        return r.content.decode(r.apparent_encoding)
+    except Exception:
+        return r.content.decode("utf-8")
 
 
 def get_repo_setuppy(url_or_slug, matches, filenames=None):
