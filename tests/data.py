@@ -1148,8 +1148,13 @@ setuppy_mismatches = [
     "aliyun-",
     "allure-",
     "ansible-tower-cli",
+    "antlr-",
+    "antlr3-",
+    "antlr4-",
+    "apache-beam",
     "asgi-redis",
     "aspy.yaml",
+    "aws-cdk-",
     "awscli-cwlogs",
     "aws-kinesis-agg",
     "azure-",
@@ -1188,9 +1193,11 @@ setuppy_mismatches = [
     "django-celery-email",
     "django-logicaldelete",  # pinax-models
     "django-notification",
+    "django-pyodbc-azure",  # wrong branch
     "django-ranged-response",  # -> django-ranged-fileresponse
     "djangorestframework-jwt",
     "django-storages-redux",
+    "dotnetcore2",  # doesnt contain the Python wrapper
     "dnspython3",  # dnspython
     "drf-jwt",  # lots o forks
     "ebcdic",
@@ -1202,8 +1209,10 @@ setuppy_mismatches = [
     "fake-factory",  # renamed to faker
     "fastdiff",  # python/ subdir
     "fbprophet",
+    "feather-format",
     "flake8-junit-report",
     "fluent",
+    "freecell-solver",  # Python may not in https://github.com/shlomif/fc-solve
     "fysom",
     "galaxy-lib",
     "gapic-",
@@ -1216,15 +1225,20 @@ setuppy_mismatches = [
     "gitdb2",  # 'mirror' of gitdb (i.e. they rolled it back into the old project, and maybe the repos should actually be different)
     "google-api-",
     "googleapis-",
+    "googleappenginecloudstorageclient",
     "google-cloud-",
     "google-cloud$",
     "google-compute-",
     "googledatastore",
     "google-nucleus",
+    "google-python-cloud-debugger",  # src/
+    "googletranslate",  # wrong name in setup.py
     "gremlinpython",
     "grpc-google-",
     "grpcio-",
     "grpcio$",
+    "h2o",
+    "h2o-",
     "httpcore",  # renamed to httpx
     "http-ece",
     "husl",  # https://github.com/hsluv/hsluv-python/blob/master/setup.py uses hsluv, but hsluv is 404 on pypi
@@ -1232,7 +1246,9 @@ setuppy_mismatches = [
     "ibm-db",
     "ibm-db-sa",
     "ibmiotf",
+    "igraph",  # renamed to jgraph
     "interpret-community",
+    "interpret-core",
     "jinja",
     "jinja2",  # https://github.com/pallets/jinja2-compat
     "jupyter-nbformat",
@@ -1242,6 +1258,7 @@ setuppy_mismatches = [
     "kivy-garden",  # https://github.com/kivy-garden/garden/pull/34
     "ldclient-py",
     "letsencrypt",
+    "lit",
     "localstack-ext",
     "mapgitconfig",  # this is now https://gitlab.com/jmcs/python-gitconfig/blob/master/setup.py , which does include Map
     "MDAnalysis",  # setup not in root
@@ -1258,6 +1275,7 @@ setuppy_mismatches = [
     "nose-parameterized",
     "nox-automation",
     "numpy-stl",
+    "open3d-python",  # Intel
     "opencensus-ext-azure",
     "opencensus-ext-stackdriver",
     "opencensus-ext-threading",
@@ -1268,12 +1286,15 @@ setuppy_mismatches = [
     "phonenumberslite",  # -> phonenumbers
     "pinax-notifications",
     "pip-requ",
+    "plaidml",
     "ply",  # has no setup.py
     "proto-",
     "proto-google-",
+    "pyarrow",
     "pybitbucket-fork",
     "pybuilder-pip-tools",
     "pycli",  # name lives in <src>/__init__.py
+    "pycocotools",
     "pydocumentdb",  # repo & project renamed to azure-cosmos
     "pydot2",  # folded back into pydot project
     "PyGrid",
@@ -1285,6 +1306,7 @@ setuppy_mismatches = [
     "pypic",
     "pyros-",  # stringops to create name
     "pyshark",  # setup in src
+    "pyspark",
     "pysyft",
     "pytest-devpi-server",
     "pytest-fixture-config",
@@ -1299,6 +1321,7 @@ setuppy_mismatches = [
     "pytest-verbose-parametrize",
     "pytest-virtualenv",
     "python-awk",
+    "pythonz-bd",  # setup.py contains pythonz
     "python-geoip-geolite2",
     "python-graph-core",
     "python-owasp-zap-v2-4",
@@ -1306,12 +1329,14 @@ setuppy_mismatches = [
     "pytorch-transformers",
     "py-vapid",
     "pyviz",
+    "pywatchman",
     "Qprompt",
     "rasa-nlu",  # merged into rasa
     "ray",
     "records",
     "referer-parser",
     "requests-cache-latest",  # copy of requests-cache
+    "rfpimp",  # src dir
     "rosdistro",
     "rpm",
     "rwt",  # pip-run github rename
@@ -1324,22 +1349,33 @@ setuppy_mismatches = [
     "sk-video",
     "smmap2",  # 'mirror' of smmap
     "smsapi-client",
+    "snowballstemmer",
     "sseclient-py",
     "stompest",
     "stompest",
     "tb-nightly",
+    "tdlib",
     "tensorflow-",
     "tf-estimator-nightly",
+    "tf-nightly",
+    "tg-ext-silverplate",  # empty repo
+    "tox-monorepo",
     "treeherder-client",
+    "trollius",  # branch trollius
     "turbomail",
+    "turicreate",  # src/python/
+    "tvb-gdist",  # string is split in setup.py
     "twitter-common-",
     "typing-extensions",
+    "ujson-",  # lots of forks
     "umalqurra",
     "uritemplate-py",
     "vsts",
     "vsts-",
     "webapp",
+    "xstatic-term-js",
     "yowsup2",  # repo contains yowsup
+    "z3-solver",  # src/api/python/setup.py
     "zabbix-api",
     "zetup",
     "zodb3",
@@ -1347,8 +1383,16 @@ setuppy_mismatches = [
 
 setuppy_mismatches_xstatic = [
     "xstatic-angular-lrdragndrop",
+    "xstatic-bootstrap-datepicker",
+    "xstatic-datatables",
+    "xstatic-hogan",
+    "xstatic-jquery",
+    "xstatic-jquery-ui",
     "xstatic-jquery-migrate",  # these use https://github.com/openstack/xstatic-angular-lrdragndrop/blob/master/xstatic/pkg/angular_lrdragndrop/__init__.py
+    "xstatic-jquery-quicksearch",
     "xstatic-jquery-tablesorter",
+    "xstatic-magic-search",
+    "xstatic-rickshaw",
     "xstatic-smart-table",
     "xstatic-spin",
 ]
