@@ -1,0 +1,11 @@
+jobs:
+  - job: 'MacOS'
+    pool:
+      vmImage: macOS-10.13
+    steps:
+      - task: UsePythonVersion@0
+        displayName: 'Use Python 3.x'
+      - script: python -m pip install tox
+        displayName: 'Setup dependencies'
+      - script: tox
+        displayName: 'Run tests'
