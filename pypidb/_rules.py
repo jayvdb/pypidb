@@ -375,12 +375,7 @@ rules.from_set(
         Rule("galaxy", ignore_urls="galaxyproject.org", ignore_bad_metadata=True),
         Rule("galaxy-lib", ["galaxy"]),
         Rule("geopandas", ["shapely"]),
-        Rule(
-            "getchanges",
-            ["coverage", "coveralls"],
-            match="experiments",
-            link_extract=_url_no_extract,
-        ),
+        Rule("getchanges", patch="https://github.com/TheKevJames/getchanges/pull/43"),
         Rule(
             "git-pylint-commit-hook",
             patch="https://github.com/sebdah/git-pylint-commit-hook/pull/74",
