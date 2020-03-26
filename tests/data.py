@@ -1311,6 +1311,7 @@ setuppy_mismatches = [
     "pyshark",  # setup in src
     "pyspark",
     "pysyft",
+    "pytest-codestyle",  # renamed to pytest-pycodestyle
     "pytest-devpi-server",
     "pytest-fixture-config",
     "pytest-git",

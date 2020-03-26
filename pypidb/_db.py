@@ -53,6 +53,7 @@ multipackage_repos = {
     "https://github.com/Kami/python-yubico-client",
     "https://sourceforge.net/projects/pyopengl",
     "https://github.com/mcfletch/pyopengl",
+    "https://github.com/henry0312/pytest-codestyle",  # rename
 }
 multipackage_repos = set(i.lower() for i in multipackage_repos)
 
