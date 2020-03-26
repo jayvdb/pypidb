@@ -4,7 +4,7 @@ from unittest_expander import expand, foreach
 
 from pypidb._compat import PY2
 from pypidb._db import _fetch_mapping
-from pypidb._github import GitHubAPIMessage, check_repo, get_repo_setuppy
+from pypidb._github import GitHubAPIMessage, check_repo
 from pypidb._pypi import InvalidPackage
 from pypidb._similarity import _compute_similarity, normalize
 from tests.data import (
@@ -16,7 +16,6 @@ from tests.data import (
     missing_repos,
     name_mismatch_fetched,
     name_mismatch_metadata,
-    setuppy_mismatches,
 )
 from tests.utils import _TestBase, normalise_list, web_session
 
@@ -24,7 +23,6 @@ expected = {}
 expected.update(exact)
 expected.update(mismatch)
 
-setuppy_mismatches = normalise_list(setuppy_mismatches)
 missing_repos = normalise_list(missing_repos)
 
 
@@ -75,22 +73,15 @@ class TestExactFromJson(_TestBase):
                 raise unittest.SkipTest(str(e))
 
             self.assertTrue(rv)
-            for rule in setuppy_mismatches:
-                rule = normalize(rule.strip("$"))
-                if normalised_name.startswith(rule):
-                    return
 
             try:
-                rv = get_repo_setuppy(slug, normalised_name)
+                rv = self._check_github_setuppy(slug, normalised_name)
             except GitHubAPIMessage as e:
                 raise unittest.SkipTest(str(e))
 
             if rv is False:
                 return
             self.assertTrue(rv)
-
-            if normalised_name not in normalize(rv):
-                assert False, "{} : {} not in \n{}".format(name, normalised_name, rv)
 
         else:
             r = web_session.get(url, allow_redirects=False)
@@ -175,22 +166,15 @@ class TestExactFetched(_TestBase):
                 raise unittest.SkipTest(str(e))
 
             self.assertTrue(rv)
-            for rule in setuppy_mismatches:
-                rule = normalize(rule.strip("$"))
-                if normalised_name.startswith(rule):
-                    return
 
             try:
-                rv = get_repo_setuppy(slug, normalised_name)
+                rv = self._check_github_setuppy(slug, normalised_name)
             except GitHubAPIMessage as e:
                 raise unittest.SkipTest(str(e))
 
             if rv is False:
                 return
             self.assertTrue(rv)
-
-            if normalised_name not in normalize(rv):
-                assert False, "{} : {} not in \n{}".format(name, normalised_name, rv)
 
         else:
             r = web_session.get(url)
@@ -256,22 +240,15 @@ class TestMismatchFromJson(_TestBase):
                 raise unittest.SkipTest(str(e))
 
             self.assertTrue(rv)
-            for rule in setuppy_mismatches:
-                rule = normalize(rule.strip("$"))
-                if normalised_name.startswith(rule):
-                    return
 
             try:
-                rv = get_repo_setuppy(slug, normalised_name)
+                rv = self._check_github_setuppy(slug, normalised_name)
             except GitHubAPIMessage as e:
                 raise unittest.SkipTest(str(e))
 
             if rv is False:
                 return
             self.assertTrue(rv)
-
-            if normalised_name not in normalize(rv):
-                assert False, "{} : {} not in \n{}".format(name, normalised_name, rv)
 
         else:
             r = web_session.get(url)
@@ -326,22 +303,15 @@ class TestMismatchFetched(_ExplicitBase, _TestBase):
                 raise unittest.SkipTest(str(e))
 
             self.assertTrue(rv)
-            for rule in setuppy_mismatches:
-                rule = normalize(rule.strip("$"))
-                if normalised_name.startswith(rule):
-                    return
 
             try:
-                rv = get_repo_setuppy(slug, normalised_name)
+                rv = self._check_github_setuppy(slug, normalised_name)
             except GitHubAPIMessage as e:
                 raise unittest.SkipTest(str(e))
 
             if rv is False:
                 return
             self.assertTrue(rv)
-
-            if normalised_name not in normalize(rv):
-                assert False, "{} : {} not in \n{}".format(name, normalised_name, rv)
 
         elif url == "https://wiki.mozilla.org/Auto-tools/Projects/Mozbase":
             # Fetching is a bit slow, and failures for moz* are very repetitive

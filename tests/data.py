@@ -703,6 +703,9 @@ name_mismatch_metadata = {
     "word2number": "https://github.com/akshaynagpal/w2n",
     "wordaxe": "https://sourceforge.net/projects/deco-cow",
     "ws4py": "https://github.com/Lawouach/WebSocket-for-Python",
+    "XStatic-Angular-Schema-Form": "https://github.com/dmsimard/python-XStatic-Angular-Schema-Form-distgit",
+    "XStatic-objectpath": "https://github.com/dmsimard/python-XStatic-objectpath-distgit",
+    "XStatic-tv4": "https://github.com/dmsimard/python-XStatic-tv4-distgit",
     "yarn-api-client": "https://github.com/toidi/hadoop-yarn-api-python-client",
     "yolk3k": "https://github.com/myint/yolk",
     "youtube-dl-server": "https://github.com/jaimeMF/youtube-dl-api-server",
@@ -1373,7 +1376,10 @@ setuppy_mismatches = [
     "vsts",
     "vsts-",
     "webapp",
+    "XStatic-Angular-Schema-Form",
+    "XStatic-objectpath",
     "xstatic-term-js",
+    "XStatic-tv4",
     "yowsup2",  # repo contains yowsup
     "z3-solver",  # src/api/python/setup.py
     "zabbix-api",

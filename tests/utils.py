@@ -8,9 +8,9 @@ from pypidb._cache import get_file_cache, get_timeout
 from pypidb._compat import PY2
 from pypidb._db import Database, multipackage_repos
 from pypidb._github import check_repo as check_github_repo, get_repo_setuppy
-from pypidb._github import GitHubAPIMessage, get_repo_setuppy
+from pypidb._github import GitHubAPIMessage
 from pypidb._pypi import IncompletePackageMetadata, InvalidPackage
-from pypidb._rules import DefaultRule, rules
+from pypidb._rules import DefaultRule, Rule, rules
 from pypidb._similarity import _compute_similarity, normalize
 from tests.data import (
     mismatch,
@@ -111,7 +111,28 @@ class _TestBase(unittest.TestCase):
             raise
         return rv
 
-    def _check_github_setuppy(self, slug, matches, filenames=None):
+    def _check_github_setuppy(self, slug, rule):
+        if not isinstance(rule, Rule):
+            normalised_name = rule
+            rule = rules.get(normalised_name)
+            if not rule:
+                rule = DefaultRule(normalised_name)
+
+        for setuppy_rule in setuppy_mismatches:
+            setuppy_rule = normalize(setuppy_rule.strip("$"))
+            if rule.key.startswith(setuppy_rule):
+                return False
+
+        matches = [rule.key]
+        if normalised_name in setuppy_mismatches_xstatic:
+            matches = ["xstatic-pkg", normalised_name[8:]]
+
+        filenames = None
+        try:
+            filenames = [rule.repo_filename]
+        except AttributeError:
+            pass
+
         try:
             rv = get_repo_setuppy(slug, matches, filenames)
         except GitHubAPIMessage as e:
@@ -120,6 +141,13 @@ class _TestBase(unittest.TestCase):
             if "403" in str(e):
                 raise unittest.SkipTest(str(e))
             raise
+
+        if rv is not None:
+            match_results = [match in normalize(rv) for match in matches]
+            assert all(match_results), "{}: {} not in:\n{}".format(
+                rule.key, matches, rv
+            )
+
         return rv
 
     def _test_names(self, names, ignore_not_found=False):
@@ -128,10 +156,6 @@ class _TestBase(unittest.TestCase):
 
         name = names[0]
         normalised_name = normalize(name)
-
-        rule = rules.get(normalised_name)
-        if not rule:
-            rule = DefaultRule(name)
 
         try:
             url = self._get_scm(name)
@@ -204,8 +228,6 @@ class _TestBase(unittest.TestCase):
             else:
                 if name.startswith("azure"):
                     pass
-                elif name.lower().startswith("xstatic-"):
-                    pass
                 else:
                     for rule in setuppy_mismatches:
                         if rule.endswith("-") and normalised_name.startswith(rule):
@@ -222,7 +244,7 @@ class _TestBase(unittest.TestCase):
                 rv = self._check_github_repo(slug)
             except unittest.SkipTest:
                 raise
-            except Exception as e:
+            except Exception:
                 rv = None
             if not rv:
                 if PY2 or name in self.expected_failures:
@@ -233,27 +255,7 @@ class _TestBase(unittest.TestCase):
                     return
                 assert False, slug
 
-            for rule in setuppy_mismatches:
-                rule = normalize(rule.strip("$"))
-                if normalised_name.startswith(rule):
-                    return
-
-            matches = normalised_name
-            filenames = None
-            try:
-                filenames = [rule.repo_filename]
-            except AttributeError:
-                pass
-
-            if normalised_name in setuppy_mismatches_xstatic:
-                matches = ["xstatic-pkg", normalised_name[8:]]
-            rv = self._check_github_setuppy(slug, matches, filenames)
-
-            if rv is not None:
-                match_results = [match in normalize(rv) for match in matches]
-                assert all(match_results), "{}: {} not in:\n{}".format(
-                    name, matches, rv
-                )
+            self._check_github_setuppy(slug, normalised_name)
 
         else:
             r = web_session.get(url, timeout=get_timeout(url))
