@@ -201,6 +201,7 @@ rules.from_set(
         Rule("antlr-python-runtime", ignore_bad_metadata=True),
         Rule("antlr3-python-runtime", ["antlr4-python3-runtime"]),
         Rule("anyvc", patch="https://github.com/RonnyPfannschmidt-Attic/anyvc/pull/1"),
+        Rule("archinfo", patch="https://github.com/angr/archinfo/pull/83"),
         Rule("aspects", ignore_urls=["www.logilab.org"], expect_none=True),
         Rule(
             "awsebcli",
