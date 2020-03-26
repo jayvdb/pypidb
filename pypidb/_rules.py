@@ -192,7 +192,12 @@ rules = Rules()
 rules.from_set(
     {
         Rule("aexpect", ["avocado-framework"]),
-        Rule("amazon-dax-client", ["boto3", "botocore"], expect_none=True),
+        Rule(
+            "amazon-dax-client",
+            ["boto3", "botocore"],
+            ignore_urls=["docs.aws.amazon.com"],
+            expect_none=True,
+        ),
         Rule("antlr-python-runtime", ignore_bad_metadata=True),
         Rule("antlr3-python-runtime", ["antlr4-python3-runtime"]),
         Rule("anyvc", patch="https://github.com/RonnyPfannschmidt-Attic/anyvc/pull/1"),
