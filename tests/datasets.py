@@ -137,6 +137,7 @@ class PortingdbLoader(Loader):
             "engineio",
             "fedora",
             "gammu",
+            "gilt",
             "glanceclient",
             "heatclient",
             "hglib",

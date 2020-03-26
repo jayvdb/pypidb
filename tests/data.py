@@ -536,6 +536,7 @@ name_mismatch_metadata = {
     "marbles.mixins": "https://github.com/twosigma/marbles",
     "MDAnalysisTests": "https://github.com/mdanalysis/mdanalysis",
     "MDP": "https://sourceforge.net/projects/mdp-toolkit",
+    "mdx_gh_links": "https://github.com/Python-Markdown/github-links",
     "medusa": "https://sourceforge.net/projects/oedipus",
     "mglob": "https://code.google.com/p/vvtools",
     "misspellings": "https://github.com/lyda/misspell-check",
