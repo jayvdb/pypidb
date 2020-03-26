@@ -42,6 +42,13 @@ def api_call(endpoint, method, field_name=None):
         if list(rj.keys()) == ["message", "documentation_url"]:
             raise GitHubAPIMessage(rj["message"])
 
+        logger.info("r status code {}: {}".format(r.status_code, r.reason))
+
+        if r.status_code in [403, 404]:
+            raise GitHubAPIMessage("Not Found")
+
+        r.raise_for_status()
+
         if field_name:
             if field_name in rj:
                 return rj[field_name]
@@ -53,9 +60,6 @@ def api_call(endpoint, method, field_name=None):
             except json.JSONDecodeError as e:  # pragma: no cover
                 logger.error("failed to decode {}: {}\n{}".format(endpoint, e, r.text))
                 raise
-
-        if r.status_code == 404:
-            logger.warning("status code 404")
 
 
 def check_repo(url_or_slug):
@@ -70,6 +74,7 @@ def check_repo(url_or_slug):
         if str(e) == "Not Found":
             return
         raise
+
     return r
 
 
