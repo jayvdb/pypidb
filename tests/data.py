@@ -603,7 +603,7 @@ name_mismatch_metadata = {
     "pymacaroons-pynacl": "https://github.com/matrix-org/pymacaroons",
     "pymatbridge": "https://github.com/arokem/python-matlab-bridge",
     "pynut2": "https://github.com/mezz64/python-nut2",
-    "pyobjc-core": "https://bitbucket.org/ronaldoussoren/pyobjc",
+    "pyobjc-core": "https://github.com/ronaldoussoren/pyobjc",
     "pyopengl-accelerate": "https://sourceforge.net/projects/pyopengl",
     "pypakr-pkg": "https://github.com/ajanicij/pypakr",
     "pypd": "https://github.com/PagerDuty/pagerduty-api-python-client",
@@ -1360,7 +1360,9 @@ setuppy_mismatches = [
     "tg-ext-silverplate",  # empty repo
     "tox-monorepo",
     "treeherder-client",
+    "trollius",  # branch trollius
     "turbomail",
+    "turicreate",  # src/python/
     "tvb-gdist",  # string is split in setup.py
     "twitter-common-",
     "typing-extensions",
