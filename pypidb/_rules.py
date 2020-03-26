@@ -261,6 +261,7 @@ rules.from_set(
             ignore_urls=["peak.telecommunity.com", "trac.edgewall.org"],
             expect_none=True,
         ),
+        Rule("dash-table", repo_filename="package.json"),
         Rule(
             "databricks-connect",
             ignore_urls=["docs.databricks.com", "docs.azuredatabricks.net"],
@@ -402,7 +403,7 @@ rules.from_set(
         Rule("imagecodecs", link_extract=get_html_hrefs),
         Rule("imreg", link_extract=get_html_hrefs),
         Rule("infi-clickhouse-orm", repo_filename="buildout.cfg"),
-        Rule("infi-execute", repo_filename="setup.in"),
+        Rule("infi-execute", repo_filename="buildout.cfg"),
         Rule(
             "intel-openmp",
             ignore_urls=["software.intel.com"],
