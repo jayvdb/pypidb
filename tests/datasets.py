@@ -23,7 +23,9 @@ class PortingdbLoader(Loader):
         "django-database-url": "dj-database-url",
         "django-email-url": "dj-email-url",
         "django-search-url": "dj-search-url",
+        "dns": "dnspython",
         "epi": "entry_point_inspector",
+        "github3py": "github3.py",
         "glusterfs-api": "gfapi",
         # 'hwdata': 'pciutils', according to https://github.com/xsuchy/python-hwdata/blob/master/setup.py , but that is also not pypi name
         "jupyter-polymake": "jupyter-kernel-polymake",
@@ -36,7 +38,9 @@ class PortingdbLoader(Loader):
         "sphinx-theme-alabaster": "alabaster",
         "sphinx-theme-py3doc-enhanced": "sphinx-py3doc-enhanced-theme",
         "uri-templates": "uritemplate",
+        "webpy": "web.py",
         "XStatic-termjs": "XStatic-term.js",
+        "zmq": "pyzmq",
     }
 
     _not_pypi = [
@@ -52,6 +56,7 @@ class PortingdbLoader(Loader):
         "distutils-extra",  # http://launchpad.net/python-distutils-extra/
         "docs",
         "evic",  # pypi_name is wrong
+        "firkin",
         "grabserial",
         "gradunwarp",
         "gstreamer1",
@@ -63,13 +68,11 @@ class PortingdbLoader(Loader):
         "linux-procfs",  # http://userweb.kernel.org/python-linux-procfs (also mirrored on github)
         "lxc",
         "olpcgames",
-        "openqa_client",  # https://github.com/os-autoinst/openQA-python-client/issues/8
         "phyghtmap",
         "pip-epel",
         "postgresql",
         "pycxx",  # http://cxx.sourceforge.net/
         "pyev",  # setup.py checked; it is pyev
-        "pyfim",
         "pygiftiio",
         "pyobd",
         "pyoptical",
@@ -79,7 +82,6 @@ class PortingdbLoader(Loader):
         "simpleline",
         "smartcols",
         "socksipychain",
-        "telepathy",  # not the same as on PyPI
         "ttystatus",
         "typeshed",  # Removed from PyPI
         "uranium-lulzbot",  # uranium
@@ -128,6 +130,7 @@ class PortingdbLoader(Loader):
             "can",
             "cinderclient",
             "congressclient",
+            "daemon",
             "dateutil",
             "dbusmock",
             "debian",
@@ -147,6 +150,7 @@ class PortingdbLoader(Loader):
             "k8sclient",
             "Levenshtein",
             "libdiscid",
+            "ly",
             "lzo",
             "magnumclient",
             "manilaclient",
@@ -165,11 +169,13 @@ class PortingdbLoader(Loader):
             "openid",
             "openid-cla",
             "openid-teams",
+            "pam",
             "poppler-qt4",
             "poppler-qt5",
             "qt5",
             "rsdclient",
             "saharaclient",
+            "sane",
             "socketio",
             "stdnum",
             "string_utils",

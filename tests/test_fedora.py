@@ -2,16 +2,20 @@ import unittest
 
 from unittest_expander import expand, foreach
 
+from pypidb._exceptions import InvalidPackage
+
 from tests.data import expected, failures
 from tests.test_top import _all as _top_all
 from tests.utils import _stdlib, _TestBase
 
 try:
-    from tests.datasets import get_fedora_packages
+    from tests.datasets import get_fedora_packages, PortingdbLoader
 except (SyntaxError, ImportError):
     raise unittest.SkipTest("Disabled on Python 2")
 
-repeat_expected = False
+repeat_all = True
+repeat_expected = True
+repeat_failures = True
 
 
 def _fetch_names():
@@ -22,13 +26,13 @@ def _fetch_names():
         if name in _stdlib:
             continue
 
-        if name.lower() in [i.lower() for i in _top_all]:
+        if not repeat_all and name.lower() in [i.lower() for i in _top_all]:
             continue
 
         if not repeat_expected and name.lower() in [i.lower() for i in expected]:
             continue
 
-        if name.lower() in [i.lower() for i in failures]:
+        if not repeat_failures and name.lower() in [i.lower() for i in failures]:
             continue
 
         names.append(name)
@@ -43,8 +47,83 @@ _fedora_packages = _fetch_names()
 class TestFedora(_TestBase):
 
     names = _fedora_packages
-    expected_failures = ["nose-fixes"]
+    expected_failures = [
+        "abclient",
+        "anykeystore",
+        "augeas",
+        "bigsuds",
+        "bottle-sqlite",
+        "catkin-sphinx",
+        "Cerealizer",
+        "certifi",
+        "coverage_pth",
+        "cvxopt",
+        "dbf",
+        "dbus-signature-pyparsing",
+        "demjson",
+        "dialog",
+        "digitalocean",  # version 0
+        "dmidecode",
+        "dtopt",
+        "fiat",
+        "geoip",
+        "graph-tool",
+        "hs-dbus-signature",
+        "interfile",
+        "justbases",
+        "keystoneclient",  # version 0
+        "kitchen",
+        "kmod",
+        "marshmallow-enum",
+        "moksha.common",
+        "moksha.hub",
+        "mallard-ducktype",
+        "nose-fixes",
+        "openoffice",
+        "openopt",
+        "oslo.sphinx",  # no license
+        "petlink",
+        "pivy",
+        "pyalsa",
+        "pycpuinfo",
+        "pyfim",
+        "pygal",
+        "pykdtree",  # no license
+        "pyprocdev",
+        "pyro",
+        "pyrpm",
+        "ptrace",
+        "python-hglib",
+        "python-mpd",
+        "python-uinput",
+        "pyvirtualize",
+        "random2",
+        "reportlab",
+        "requestsexceptions",
+        "script",  # no files
+        "simplewrap",
+        "suds",
+        "tambo",
+        "tempita",
+        "termcolor",
+        "TroveClient",
+        "zbase32",
+        "zuul-sphinx",  # no license
+    ]
 
     @foreach(names)
     def test_package(self, name):
         self._test_names([name])
+
+    @foreach(PortingdbLoader._not_pypi)
+    def test_invalid_name(self, name):
+        # Different software
+        if name not in ["docs"]:
+            with self.assertRaises(InvalidPackage):
+                self._get_scm(name)
+        if not name.startswith("python-"):
+            with self.assertRaises(InvalidPackage):
+                self._get_scm("python-" + name)
+        if not name.startswith("py") and name not in ["docs", "lxc"]:
+            with self.assertRaises(InvalidPackage):
+                self._get_scm("py" + name)
