@@ -32,12 +32,12 @@ class _ExplicitBase(object):
 
     def _test_package(self, name):
         try:
-            url = self.converter.get_vcs(name)
-        except GitHubAPIMessage as e:
-            raise unittest.SkipTest(str(e))
+            url = self._get_scm(name)
         except InvalidPackage:
             self.assertIn(name, invalid)
             raise unittest.SkipTest("{} is an invalid package".format(name))
+        except unittest.SkipTest:
+            raise
         except Exception as e:
             self.assertIn(name, self.expected_failures, e)
 
@@ -67,10 +67,7 @@ class TestExactFromJson(_TestBase):
             pass
         elif url.startswith("https://github.com/"):
             slug = url[len("https://github.com/") :]
-            try:
-                rv = check_repo(slug)
-            except GitHubAPIMessage as e:
-                raise unittest.SkipTest(str(e))
+            rv = self._check_github_repo(slug)
 
             self.assertTrue(rv)
 
@@ -103,10 +100,7 @@ class TestExactFromJson(_TestBase):
     def test_package(self, name):
         expected = self.expected[name]
 
-        try:
-            url = self.converter.get_vcs(name)
-        except GitHubAPIMessage as e:
-            raise unittest.SkipTest(str(e))
+        url = self._get_scm(name)
 
         self.assertIsNotNone(url)
         self.assertInsensitiveEqual(url, expected)
@@ -144,10 +138,7 @@ class TestExactFetched(_TestBase):
     def test_package(self, name):
         expected = self.expected[name]
 
-        try:
-            url = self.converter.get_vcs(name)
-        except GitHubAPIMessage as e:
-            raise unittest.SkipTest(str(e))
+        url = self._get_scm(name)
 
         self.assertIsNotNone(url)
         self.assertInsensitiveEqual(url, expected)
@@ -160,10 +151,7 @@ class TestExactFetched(_TestBase):
             pass
         elif url.startswith("https://github.com/"):
             slug = url[len("https://github.com/") :]
-            try:
-                rv = check_repo(slug)
-            except GitHubAPIMessage as e:
-                raise unittest.SkipTest(str(e))
+            rv = self._check_github_repo(slug)
 
             self.assertTrue(rv)
 
@@ -210,9 +198,9 @@ class TestMismatchFromJson(_TestBase):
         expected = self.expected[name]
 
         try:
-            url = self.converter.get_vcs(name)
-        except GitHubAPIMessage as e:
-            raise unittest.SkipTest(str(e))
+            url = self._get_scm(name)
+        except unittest.SkipTest:
+            raise
         except Exception:
             if name in self.expected_failures:
                 return
@@ -234,10 +222,7 @@ class TestMismatchFromJson(_TestBase):
             pass
         elif url.startswith("https://github.com/"):
             slug = url[len("https://github.com/") :]
-            try:
-                rv = check_repo(slug)
-            except GitHubAPIMessage as e:
-                raise unittest.SkipTest(str(e))
+            rv = self._check_github_repo(slug)
 
             self.assertTrue(rv)
 
@@ -297,10 +282,7 @@ class TestMismatchFetched(_ExplicitBase, _TestBase):
             pass
         elif url.startswith("https://github.com/"):
             slug = url[len("https://github.com/") :]
-            try:
-                rv = check_repo(slug)
-            except GitHubAPIMessage as e:
-                raise unittest.SkipTest(str(e))
+            rv = self._check_github_repo(slug)
 
             self.assertTrue(rv)
 
