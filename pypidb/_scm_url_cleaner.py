@@ -140,7 +140,7 @@ def _hostname_first_path(url):
     return "https://{}/{}".format(p.netloc, repo)
 
 
-def _hostname_two_paths(url, scheme="https", hostname=None):
+def _hostname_two_paths(url, scheme="https", hostname=None, trailing=""):
     p = urlsplit(url)
 
     path = p.path[1:]
@@ -150,7 +150,7 @@ def _hostname_two_paths(url, scheme="https", hostname=None):
         return
     if not hostname:
         hostname = p.netloc
-    return "{}://{}/{}/{}".format(scheme, hostname, path1, path2)
+    return "{}://{}/{}/{}{}".format(scheme, hostname, path1, path2, trailing)
 
 
 def _hostname_three_paths(url):
@@ -700,7 +700,8 @@ class SCMURLCleaner(object):
         "gitlab.lis-lab.fr": _gitlab,
         "forge-2.ircam.fr": _gitlab,  # pysndfile
         "www.graphics.rwth-aachen.de:9000": _hostname_two_paths,
-        "www.saddi.com/software/": _hostname_two_paths,  # svn.saddi.com': _hostname_first_path,  # offline
+        "www.saddi.com/software/": partial(_hostname_two_paths, trailing="/"),
+        # svn.saddi.com': _hostname_first_path,
         "svn.hepforge.org": _hostname_first_path,  # 404 pyfeyn
         "http://peak.telecommunity.com/DevCenter/": _telecommunity,
         "http://svn.eby-sarna.com/svnroot/": _telecommunity,

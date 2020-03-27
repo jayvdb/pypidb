@@ -1060,7 +1060,6 @@ sometimes_wrong_result = [
     "azureml-pipeline",
     "azureml-telemetry",
     "azure-cli-storage",
-    "flup",  #  403 Client Error: Forbidden for url: https://www.saddi.com/software/flup and https://svn.saddi.com/flup is offline
     "onedrivesdk",  # sometimes https://github.com/microsoftgraph/microsoft-graph-docs
     "pyfeyn",  # https://svn.hepforge.org/pyfeyn and hepforge.org is offline
 ]
