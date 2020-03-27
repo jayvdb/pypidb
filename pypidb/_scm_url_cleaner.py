@@ -671,6 +671,7 @@ class SCMURLCleaner(object):
         "gitlab.math.univ-paris-diderot.fr": _gitlab,
         "git.tremily.us/?p=": _strip_after_dot_git,  # also git://tremily.us/igor.git
         "hg.python.org/lookup": _reject,
+        "hg.python.org/tracker": _hostname_two_paths,
         "hg.python.org": _hostname_first_path,
         "www.mercurial-scm.org/repo/hg": _all,
         "svn.python.org/projects/": _hostname_two_paths,
