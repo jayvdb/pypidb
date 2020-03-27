@@ -96,6 +96,10 @@ class _TestBase(unittest.TestCase):
     def _get_scm(self, name):
         try:
             url = self.converter.get_vcs(name)
+        except HTTPError as e:
+            if "403" in str(e):
+                raise unittest.SkipTest(str(e))
+            raise
         except GitHubAPIMessage as e:
             raise unittest.SkipTest(str(e))
         return url
