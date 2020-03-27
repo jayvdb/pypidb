@@ -1,5 +1,7 @@
 import unittest
 
+from pypidb._exceptions import IncompletePackageMetadata
+
 from unittest_expander import expand, foreach
 
 from tests.data import bad_metadata, expected, failures
@@ -144,7 +146,10 @@ class TestOpenSUSEAzure(_TestBase):
 
     @foreach(names)
     def test_package(self, name):
-        self._test_names([name])
+        try:
+            self._test_names([name], ignore_setuppy=True)
+        except IncompletePackageMetadata:
+            pass
 
 
 @expand

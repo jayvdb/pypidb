@@ -108,8 +108,6 @@ class TestTopFirstThousandTail(_TestBase):
 
     names = _all[360:1000]
     expected_failures = _TestBase.expected_failures + [
-        "azureml-dataprep-native",  # https://github.com/MicrosoftDocs/MachineLearning-Python-pr
-        "azureml-dataprep",
         "google-cloud-dataflow",  # no urls
         "intel-openmp",
         "marshmallow-enum",  # no urls
@@ -131,7 +129,7 @@ class TestTopFirstThousandTail(_TestBase):
 class TestTopSecondThousand(_TestBase):
 
     names = _all[1000:2000]
-    expected_failures = _TestBase.expected_failures + ["azureml-sdk", "oset"]
+    expected_failures = _TestBase.expected_failures + ["oset"]
 
     @foreach(names)
     def test_package(self, name):
@@ -148,7 +146,6 @@ class TestTopTail(_TestBase):
         "comet-ml",
         "dbus-python",
         "dm.xmlsec-binding",
-        "onedrivesdk",  # https://github.com/microsoftgraph/microsoft-graph-docs
         "pycuda",  # repo is auth protected
         "scons",
     ]

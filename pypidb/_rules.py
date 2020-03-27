@@ -1,3 +1,4 @@
+from functools import partial
 import os.path
 
 from appdirs import user_cache_dir
@@ -23,6 +24,21 @@ from ._similarity import normalize
 logger = setup_logging()
 
 dns_cache.expiration.MIN_TTL = NO_EXPIRY
+
+_azure_exclude = [
+    "azure-batch-samples",
+    "azure-samples",
+    "azureml-containers",
+    "azureml-sdk-for-r",
+    "azuresearch_jfk_files",
+    "botframework-solutions",
+    "cla-assistant",
+    "machinelearningnotebooks",
+    "microsoft/ai",
+    "mlops",
+    "open-telemetry/opencensus-website",  # azure-core-tracing-opencensus
+    "open-telemetry/opentelemetry-python",  # "
+]
 
 
 class NoExpirationDiskCache(DiskCache, dns_cache.expiration.NoExpirationCache):
@@ -129,11 +145,49 @@ def xstatic_reject_match(name, url):
         return True
 
 
+def reject_docs_match(name, url):
+    if not name.lower().startswith("docs") and "docs" in url.lower():
+        return True
+
+
+def reject_names(name, url, names):
+    for name in names:
+        if name in url.lower():
+            return True
+
+
+def ms_azure_reject_match(name, url):
+    if url.endswith("azure/azure-sdk"):
+        return True
+    return reject_names(name, url, _azure_exclude)
+
+
+def combine(name, url, funcs):
+    for func in funcs:
+        if func(name, url):
+            return True
+
+
 class DefaultRule(Rule):
     def __init__(self, name, preload=None, **kwargs):
         key = normalize(name)
         if key.startswith("xstatic-"):
             kwargs["reject_match_func"] = xstatic_reject_match
+        elif key.startswith("azure") or key == "onedrivesdk":
+            if key != "azure":
+                preload = ["azure"]
+            if key == "azure-kusto-ingest":
+                preload = ["azure", "jupyterhub"]
+            kwargs["reject_match_func"] = partial(
+                combine, funcs=[reject_docs_match, ms_azure_reject_match]
+            )
+            if key == "azure-cosmosdb-table":
+                kwargs["repo_filename"] = "build_packages.py"
+            elif key.startswith("azure-storage-"):
+                kwargs["repo_filename"] = "tool_build_packages.py"
+            else:
+                kwargs["repo_filename"] = "README.md"
+            ignore_urls = ["readthedocs.org"]  # azure-monitor
         elif key.startswith("sphinxcontrib-"):
             kwargs["ignore_urls"] = ["sphinx-doc.org", "sphinx.pocoo.org"]
         elif key == "jupyter-js-widgets-nbextension":
@@ -212,12 +266,6 @@ rules.from_set(
         ),
         Rule("aws-sam-translator", ["aws-sam-cli"]),
         Rule("awsretry", ignore_bad_metadata=True),
-        Rule(
-            "azureml-sdk",
-            ignore_urls=[
-                "https://docs.microsoft.com/en-us/azure/machine-learning/service/"
-            ],
-        ),
         Rule("backports", ignore_bad_metadata=True),
         Rule("barnum", ignore_urls=["wordpress.org"]),
         Rule("basemap", ignore_bad_metadata=True),

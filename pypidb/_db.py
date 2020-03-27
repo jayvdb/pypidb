@@ -54,6 +54,11 @@ multipackage_repos = {
     "https://sourceforge.net/projects/pyopengl",
     "https://github.com/mcfletch/pyopengl",
     "https://github.com/henry0312/pytest-codestyle",  # rename
+    "https://github.com/Azure/azure-cli",
+    "https://github.com/Azure/azure-sdk-for-python",
+    "https://github.com/Azure/azure-cosmosdb-python",
+    "https://github.com/Azure/azure-kusto-python",
+    "https://github.com/Azure/azure-storage-python",
 }
 multipackage_repos = set(i.lower() for i in multipackage_repos)
 
