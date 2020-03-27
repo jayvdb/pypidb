@@ -154,7 +154,7 @@ class _TestBase(unittest.TestCase):
 
         return rv
 
-    def _test_names(self, names, ignore_not_found=False):
+    def _test_names(self, names, ignore_not_found=False, ignore_setuppy=False):
         assert len(names) == 1
         expected_failures = [normalize(i) for i in self.expected_failures]
 
@@ -219,7 +219,12 @@ class _TestBase(unittest.TestCase):
                 for key, value in mismatch.items()
                 if normalize(key) == normalised_name
             ]
-            if mismatch_urls:
+            if url.lower() in [
+                "https://github.com/azure/azure-sdk-for-python",
+                "https://github.com/azure/azure-cli",
+            ]:
+                return
+            elif mismatch_urls:
                 if (
                     url not in multipackage_repos
                     and url.lower() not in multipackage_repos
@@ -230,9 +235,7 @@ class _TestBase(unittest.TestCase):
                 expected_url = mismatch_urls[0]
                 self.assertInsensitiveEqual(url, expected_url)
             else:
-                if name.startswith("azure"):
-                    pass
-                else:
+                if True:
                     for rule in setuppy_mismatches:
                         if rule.endswith("-") and normalised_name.startswith(rule):
                             break
@@ -255,7 +258,7 @@ class _TestBase(unittest.TestCase):
                     return
                 elif name in wrong_result:
                     return
-                elif name.startswith("azure") or slug == "MicrosoftDocs/databricks-pr":
+                elif ignore_setuppy:
                     return
                 assert False, slug
 
