@@ -58,6 +58,13 @@ def _url_no_extract(content, url):
     return []
 
 
+def _url_extract_both(content, url):
+    for url in get_html_hrefs(content, url):
+        yield url
+    for url in _url_extractor_wrapper(content, url):
+        yield url
+
+
 def preload_reject_match(name, url):
     name = normalize(name)
     existing_result = reverse_mappings.get(url.lower())
@@ -544,6 +551,7 @@ rules.from_set(
         Rule("pdfminer3k", ignore_bad_metadata=True),
         Rule("peak", ignore_bad_metadata=True),
         Rule("peak-rules", ignore_bad_metadata=True),
+        Rule("pigpio", link_extract=_url_extract_both),
         Rule("pinax", ["django"], expect_none=True),
         Rule("pip-requ", ["setuptools-gitver"]),
         Rule("plaintable", patch="https://github.com/jonathaneunice/plaintable/pull/1"),
@@ -561,6 +569,7 @@ rules.from_set(
             patch="https://github.com/jefftune/pycountry-convert/pull/1",
         ),
         Rule("pyficache", repo_filename="__pkginfo__.py"),
+        Rule("pyfim", ignore_urls=["www.borgelt.net"], expect_none=True),
         Rule("pygam", repo_filename="flit.ini"),
         Rule(
             "pygobject",
@@ -639,6 +648,7 @@ rules.from_set(
         Rule("setuptools-cython", ignore_urls=["mail.python.org"], expect_none=True),
         Rule("shiboken2", ["pyside2"], expect_none=True),
         Rule("shippo", ignore_urls=["goshippo.com"], expect_none=True),
+        Rule("should-dsl", patch="https://github.com/nsi-iff/should-dsl/pull/37"),
         Rule("silver-platter", ["dulwich"]),
         Rule("simplegeneric", link_extract=_url_no_extract),
         Rule("simpletal", ignore_bad_metadata=True),
@@ -750,6 +760,7 @@ _email_matches = {
     "ian@datagram.co": "boot2docker",
     "ipython-dev@scipy.org": ("ipython", "jupyter-widgets"),
     "jeremy@jeremysanders.net": "veusz",
+    "joan@abyz.me.uk": "joan2937",
     "jupyter@googlegroups.com": "jupyter",
     "peak@eby-sarna.com": "PEAK-Legacy",
     "philip@semanchuk.com": "osvenskan",  # sysv_ipc/posix_ipc

@@ -133,6 +133,8 @@ class Converter(object):
                 matches.add(url)
             elif "python" in url.lower():
                 related.add(url)
+            elif "download" in url.lower():
+                related.add(url)
             else:
                 non_matches.add(url)
         return list(matches) + list(related) + list(non_matches)
@@ -533,10 +535,12 @@ class Converter(object):
         try:
             url = self._get_vcs_links(rule, name, data, inputs)
         except PackageWithoutUrls as err:
-            logger.error("_get_vcs_links raised PackageWithoutUrls {!r}".format(err))
+            logger.error(
+                "_get_vcs_links({}) raised PackageWithoutUrls {!r}".format(name, err)
+            )
             raise
 
-        logger.debug("_get_vcs_links returned .. {}".format(url))
+        logger.debug("_get_vcs_links({}) returned .. {}".format(name, url))
         if not url:
             self._raise_no_result_exception(rule, name, data)
 

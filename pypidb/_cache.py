@@ -51,11 +51,11 @@ def cache_subdir(name):
 
 
 def get_timeout(url):
-    if "wiki.ros.org" in url:
+    if "wiki.ros.org" in url or "abyz.me.uk" in url:
         return Timeout(connect=15, read=20, total=45)
     if "svn.eby-sarna.com" in url or "gitorious.org" in url:  # pragma: no cover
         return Timeout(connect=30, read=30, total=60)
-    if "w3.org" in url:
+    if "w3.org" in url or "pygal.org" in url:
         return Timeout(connect=30, read=30, total=45)
 
     return Timeout(connect=15, read=11, total=40)
@@ -277,7 +277,8 @@ def CacheControl(
     sess.mount("https://cdn.shortpixel.ai", _block_request_adapter)
     sess.mount("https://cdnjs.cloudflare.com", _block_request_adapter)
     sess.mount("https://maxcdn.bootstrapcdn.com", _block_request_adapter)
-    sess.mount("static.docs.com", _block_request_adapter)
+    sess.mount("https://static.docs.com", _block_request_adapter)
+    sess.mount("https://cdn.arduino.cc", _block_request_adapter)  # rpi-gpio
     sess.mount(
         "https://imgix.datadoghq.com", _block_request_adapter
     )  # dogstatsd-python
@@ -349,6 +350,10 @@ def get_file_cache_session(cache_name):
         "code.welldev.org",  # pypi oauth_provider; nothing on https; http is parked
         "fedmsg.com",  # https redirects to http, causing too-many-redirects
         "farmdev.com",  # SSL_ERROR_RX_RECORD_TOO_LONG
+        "abyz.me.uk",  # expired pigpio
+        "api.arduino.cc",
+        "cdn.arduino.cc",  # rpi-gpio
+        "lamb.cc",  # script
         # https very slow:
         "pybrary.net",
         "fabfile.org",  # port 80 also timing out
@@ -384,6 +389,8 @@ def get_file_cache_session(cache_name):
         "eh.org",
         "www.4guysfromrolla.com",
         "svn.eby-sarna.com",
+        "www.should-dsl.info",  # should_dsl
+        "cvs.bigasterisk.com",  # pyalsa
         "decida.org",  # DeCiDa
         "antirez.com",  # redlock-py
         "docs.h2o.ai",  # https://github.com/h2oai/sparkling-water/issues/1953
@@ -392,8 +399,10 @@ def get_file_cache_session(cache_name):
         "pybrain.org",  # cert for *.kasserver.com, kasserver.com (unrelated)
         "www.unnotebook.com",  # cloudfront.net, *.cloudfront.net
         "download.ros.org",  # *.osuosl.org
+        "fimi.ua.ac.be",  # pyfim
         "www.hackersdelight.org",  # *.ipower.com
         "download.qt-project.org",  # *.qt.io
+        "occiput.scienceontheweb.net",  # petlink
         "urlgrabber.baseurl.org",  # beaverbarcamp.org, www.beaverbarcamp.org
         "celljam.net",  # *.webfaction.com, webfaction.com
         "www.acooke.org",  # *.webfaction.com, webfaction.com

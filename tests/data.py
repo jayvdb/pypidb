@@ -1011,7 +1011,6 @@ bad_metadata = [
     "setuptools_cython",
     "shiboken2",
     "shippo",
-    "should_dsl",
     "simplewrap",
     "singer-python",
     "skimage",
