@@ -680,7 +680,7 @@ class TestPyPiMisc(_TestBase):
 
     def test_flup(self):
         url = self.converter.get_vcs("flup")
-        self.assertEqual(url, "https://www.saddi.com/software/flup")
+        self.assertEqual(url, "https://www.saddi.com/software/flup/")
 
 
 class TestEmail(_TestBase):
