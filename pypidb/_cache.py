@@ -29,7 +29,6 @@ try:
 except ImportError:  # pragma: no cover
     pass
 
-
 _block_request_adapter = Status500Adapter()
 logger = setup_logging()
 
@@ -408,9 +407,12 @@ def get_file_cache_session(cache_name):
         "cthedot.de",  # *.mivitec.net
         "www.acoular.org",  # *.webgo24.de
         "bibfra.me",  # *.library.link
+        "www.grantjenks.com",  # https://github.com/grantjenks/python-diskcache/issues/141
+        "www.nomadblue.com",  # *.herokuapp.com
         "www.likit.lt",  # ebcdic, *.serveriai.lt
         "demo.drfdocs.com",  # cert github
         "spockframework.org",  # github
+        "schemaform.io",  # github
         "octopress.org",  # github
         "augeas.net",  # github
         "blog.myrhy.me",  # github
