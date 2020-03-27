@@ -277,6 +277,7 @@ def CacheControl(
     sess.mount("https://cdn.shortpixel.ai", _block_request_adapter)
     sess.mount("https://cdnjs.cloudflare.com", _block_request_adapter)
     sess.mount("https://maxcdn.bootstrapcdn.com", _block_request_adapter)
+    sess.mount("static.docs.com", _block_request_adapter)
     sess.mount(
         "https://imgix.datadoghq.com", _block_request_adapter
     )  # dogstatsd-python
