@@ -32,6 +32,14 @@ def api_call(endpoint, method, field_name=None):
         r = gh_session.get(
             "https://api.github.com/{}".format(endpoint), headers=headers
         )
+
+        logger.info("r status code {}: {}".format(r.status_code, r.reason))
+
+        if r.status_code in [404]:
+            raise GitHubAPIMessage("Not Found")
+
+        r.raise_for_status()
+
         try:
             rj = r.json()
         except json.JSONDecodeError:  # pragma: no cover
@@ -52,9 +60,6 @@ def api_call(endpoint, method, field_name=None):
             except json.JSONDecodeError as e:  # pragma: no cover
                 logger.error("failed to decode {}: {}\n{}".format(endpoint, e, r.text))
                 raise
-
-        if r.status_code == 404:
-            logger.warning("status code 404")
 
 
 def check_repo(url_or_slug):
