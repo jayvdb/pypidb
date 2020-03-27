@@ -30,7 +30,7 @@ class TestPyPiBadMetadata(_TestBase):
         self.assertNotIn(name, missing_repos)
 
         try:
-            url = self.converter.get_vcs(name)
+            url = self._get_scm(name)
         except (InvalidPackage, IncompletePackageMetadata, PackageWithoutUrls):
             if self._debug_no_urls:
                 self.assertTrue(False)
@@ -53,10 +53,7 @@ class TestWrong(_TestBase):
         self.assertNotIn(name, sometimes_wrong_result)
         self.assertNotIn(name, missing_repos)
 
-        try:
-            url = self.converter.get_vcs(name)
-        except Exception:
-            url = None
+        url = self._get_scm(name)
         self.assertIsNotNone(url)
 
         r = web_session.get(url, timeout=20)
@@ -78,12 +75,14 @@ class TestWrongSometimes(_TestBase):
         self.assertNotIn(name, wrong_result)
         self.assertNotIn(name, missing_repos)
 
-        try:
-            url = self.converter.get_vcs(name)
-        except Exception:
-            return
+        url = self._get_scm(name)
         if not url:
-            return  # do not require a url here
+            return
+
+        r = web_session.get(url, timeout=20)
+        if r.status_code == 404:
+            return
+        r.raise_for_status()
 
 
 @expand
@@ -94,10 +93,7 @@ class TestMissingRepo(_TestBase):
         self.assertNotIn(name, wrong_result)
         self.assertNotIn(name, sometimes_wrong_result)
 
-        try:
-            url = self.converter.get_vcs(name)
-        except Exception:
-            url = None
+        url = self._get_scm(name)
         self.assertIsNotNone(url)
 
         try:
@@ -125,8 +121,5 @@ class TestSetuppyMismatch(_TestBase):
         self.assertNotIn(name, wrong_result)
         self.assertNotIn(name, sometimes_wrong_result)
         self.assertNotIn(name, missing_repos)
-        try:
-            url = self.converter.get_vcs(name)
-        except Exception:
-            url = None
+        url = self._get_scm(name)
         self.assertIsNotNone(url)
