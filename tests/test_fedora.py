@@ -49,6 +49,7 @@ class TestFedora(_TestBase):
     names = _fedora_packages
     expected_failures = [
         "abclient",
+        "ana",
         "anykeystore",
         "augeas",
         "bigsuds",
@@ -117,7 +118,6 @@ class TestFedora(_TestBase):
 
     @foreach(PortingdbLoader._not_pypi)
     def test_invalid_name(self, name):
-        # Different software
         if name not in ["docs"]:
             with self.assertRaises(InvalidPackage):
                 self._get_scm(name)
