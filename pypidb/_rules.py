@@ -232,7 +232,7 @@ class DefaultRule(Rule):
                 "sphinx-rtd-theme",
             ]
         elif key.startswith("gax-google-") or key.startswith("gapic-"):
-            preload = ["google-gax"]
+            preload = ["google-gax", "virtualenv"]
         elif key.startswith("h2o-pysparkling"):
             # https://github.com/h2oai/sparkling-water/issues/1953
             kwargs["ignore_urls"] = ["docs.h2o.ai"]
@@ -288,6 +288,7 @@ rules.from_set(
         Rule("catkin", ignore_bad_metadata=True),
         Rule("ccxt", ignore_urls=["ccxt.trade"]),
         Rule("cdecimal", ignore_bad_metadata=True),
+        Rule("celery-redbeat", ["celery"]),
         Rule("certifi", ["pip", "requests", "urllib3"], expect_none=True),
         Rule("cffi", patch="https://foss.heptapod.net/pypy/cffi/commit/9b98da72.patch"),
         Rule("cfscrape", ignore_urls=["nodejs.org"]),
@@ -568,7 +569,7 @@ rules.from_set(
             "pycountry-convert",
             patch="https://github.com/jefftune/pycountry-convert/pull/1",
         ),
-        Rule("pyficache", repo_filename="__pkginfo__.py"),
+        Rule("pyficache", ["coverage"], repo_filename="__pkginfo__.py"),
         Rule("pyfim", ignore_urls=["www.borgelt.net"], expect_none=True),
         Rule("pygal", patch="https://github.com/Kozea/pygal/pull/494"),
         Rule("pygam", repo_filename="flit.ini"),
