@@ -306,7 +306,6 @@ class OpenSUSEOBSLoader(Loader):
         "nose-random",  # https://github.com/xlwings/nose-random/issues/2
         "oci-sdk",
         "onionshare",  # https://github.com/micahflee/onionshare/issues/910 (packaging related)
-        "openqa_client",  # https://github.com/os-autoinst/openQA-python-client/issues/8
         "pycxx",  # http://cxx.sourceforge.net/
         "pygments-style-railscasts",  # https://github.com/DrMegahertz/pygments-style-railscasts is 404
         #                               https://github.com/JoeyButler/pygments-style-railscasts might be ok
@@ -318,7 +317,6 @@ class OpenSUSEOBSLoader(Loader):
         "typeshed",  # package deleted from PyPI
         "virtkey",  # https://launchpad.net/virtkey/
         "xcaplib",  # https://github.com/AGProjects/python-xcaplib
-        "yamldoc",  # this was a fake package
         "zope.proxy-doc",
     ]
 
@@ -370,6 +368,8 @@ class OpenSUSEOBSLoader(Loader):
             "markdown-math",
             "mhash",
             "nss",
+            "sane",
+            "yamldoc",
         ]:
             return "python-" + name
 

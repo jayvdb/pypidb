@@ -1,6 +1,6 @@
 import unittest
 
-from pypidb._exceptions import IncompletePackageMetadata
+from pypidb._exceptions import IncompletePackageMetadata, InvalidPackage
 
 from unittest_expander import expand, foreach
 
@@ -10,9 +10,13 @@ from tests.test_top import _all as _top_all
 from tests.utils import _stdlib, _TestBase
 
 try:
-    from tests.datasets import get_opensuse_packages
+    from tests.datasets import get_opensuse_packages, OpenSUSEOBSLoader
 except (SyntaxError, ImportError):
     raise unittest.SkipTest("Disabled on Python 2")
+
+repeat_all = True
+repeat_expected = True
+repeat_failures = True
 
 
 def _fetch_names(project, ignore_failures=True):
@@ -22,19 +26,23 @@ def _fetch_names(project, ignore_failures=True):
         if name in _stdlib:
             continue
 
-        if name.lower() in [i.lower() for i in _top_all]:
+        if not repeat_all and name.lower() in [i.lower() for i in _top_all]:
             continue
 
         if name.lower() in [i.lower() for i in _fedora_packages]:
             continue
 
-        if name.lower() in [i.lower() for i in expected]:
+        if not repeat_expected and name.lower() in [i.lower() for i in expected]:
             continue
 
-        if name.lower() in [i.lower() for i in bad_metadata]:
+        if not repeat_failures and name.lower() in [i.lower() for i in bad_metadata]:
             continue
 
-        if ignore_failures and name.lower() in [i.lower() for i in failures]:
+        if (
+            not repeat_failures
+            and ignore_failures
+            and name.lower() in [i.lower() for i in failures]
+        ):
             continue
 
         names.append(name)
@@ -43,13 +51,56 @@ def _fetch_names(project, ignore_failures=True):
 
 
 @expand
+class TestOpenSUSE(_TestBase):
+    @foreach(OpenSUSEOBSLoader._not_pypi)
+    def test_invalid_name(self, name):
+        if name not in ["docs", "pyGRID"]:
+            with self.assertRaises(InvalidPackage):
+                self._get_scm(name)
+        if not name.startswith("python-"):
+            with self.assertRaises(InvalidPackage):
+                self._get_scm("python-" + name)
+        if not name.startswith("py") and name not in ["espeak"]:
+            with self.assertRaises(InvalidPackage):
+                self._get_scm("py" + name)
+
+
+@expand
 class TestOpenSUSEMain(_TestBase):
 
     names = _fetch_names(project="devel:languages:python", ignore_failures=False)
     expected_failures = _TestBase.expected_failures + [
+        "ana",
+        "application",
+        "bencode",
+        "bindep",
+        "bitvector",
+        "bobodoctestumentation",
+        "bpython",
+        "durus",
+        "evtx",
         "flup",
         "Gloo",
+        "inifile",
+        "kid",
+        "mulpyplexer",
+        "mysql-connector-python",
         "nagios-http-json",  # deleted
+        "ovirt-engine-sdk",
+        "project-config",  # invalid package
+        "pychart",
+        "pyjwkest",
+        "pygments-ansi-color",
+        "pykerberos",
+        "pyprint",
+        "python-axolotl-curve25519",
+        "python-docs-theme",
+        "pythonwhois",
+        "pytidylib",
+        "qet-tb-generator",
+        "selection",
+        "strict-rfc3339",
+        "testflo",
     ]
 
     @foreach(names)
@@ -61,7 +112,16 @@ class TestOpenSUSEMain(_TestBase):
 class TestOpenSUSENumeric(_TestBase):
 
     names = _fetch_names(project="devel:languages:python:numeric")
-    expected_failures = ["pylineclip", "pyzo"]  # wrong result  # read timeout
+    expected_failures = [
+        "morfessor",
+        "pomegranate",
+        "pyfeyn",
+        "pylineclip",
+        "pymol",
+        "pyprimes",
+        "pyzo",
+        "psylab",
+    ]
 
     @foreach(names)
     def test_package(self, name):
@@ -92,7 +152,6 @@ class TestOpenSUSEDjango(_TestBase):
 class TestOpenSUSEFlask(_TestBase):
 
     names = _fetch_names(project="devel:languages:python:flask")
-    _allow_missing = False
 
     @foreach(names)
     def test_package(self, name):
@@ -103,6 +162,7 @@ class TestOpenSUSEFlask(_TestBase):
 class TestOpenSUSEJupyter(_TestBase):
 
     names = _fetch_names(project="devel:languages:python:jupyter")
+    expected_failures = ["ipympl", "ipysheet", "jupyterlab-pygments"]
 
     @foreach(names)
     def test_package(self, name):
@@ -113,6 +173,7 @@ class TestOpenSUSEJupyter(_TestBase):
 class TestOpenSUSEAvocado(_TestBase):
 
     names = _fetch_names(project="devel:languages:python:avocado")
+    expected_failures = ["libvirt-python"]
 
     @foreach(names)
     def test_package(self, name):
@@ -123,6 +184,7 @@ class TestOpenSUSEAvocado(_TestBase):
 class TestOpenSUSEMailman(_TestBase):
 
     names = _fetch_names(project="devel:languages:python:mailman")
+    expected_failures = ["mailman-web"]
 
     @foreach(names)
     def test_package(self, name):
@@ -166,6 +228,12 @@ class TestOpenSUSEAWS(_TestBase):
 class TestOpenSUSEMisc(_TestBase):
 
     names = _fetch_names(project="devel:languages:python:misc")
+    expected_failures = [
+        "emencia-django-newsletter",  # missing repo
+        "schevo",  # missing repo
+        "schevogears",
+        "schevosql",
+    ]
     _allow_missing = True
     _ignore_invalid = True
 
