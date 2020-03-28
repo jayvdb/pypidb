@@ -126,9 +126,9 @@ class TestPyPiMisc(_TestBase):
     def test_Pyrex(self):
         url = self.converter.get_vcs("Pyrex")
         self.assertInsensitiveEqual(
-            url, "http://www.cosc.canterbury.ac.nz/~greg/python/pyrex/"
+            url, "https://www.csse.canterbury.ac.nz/greg.ewing/python/Pyrex/"
         )
-        # hg repo at http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/hg/
+        # hg repo at https://www.csse.canterbury.ac.nz/greg.ewing/python/Pyrex/hg/
 
     def test_GeoIP2(self):
         url = self.converter.get_vcs("GeoIP2")
