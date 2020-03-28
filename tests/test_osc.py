@@ -79,7 +79,6 @@ class TestOpenSUSEMain(_TestBase):
         "bpython",
         "durus",
         "evtx",
-        "flup",
         "Gloo",
         "inifile",
         "kid",

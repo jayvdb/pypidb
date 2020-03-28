@@ -27,7 +27,7 @@ def _compute_similarity(name, url, algo=_similarity_func, comp_op=min):
     p = urlsplit(url)
     path = p.path
     path = path[1:]
-    first, _, second = path.rpartition("/")
+    first, _, second = path.rstrip("/").rpartition("/")
     first = first.replace("/", ".")
     first = normalize(first).replace("-", "")
     second = normalize(second).replace("-", "")

@@ -21,6 +21,7 @@ exact_fetched = {
     "roundup": "https://sourceforge.net/projects/roundup",
     "rpy2": "https://github.com/rpy2/rpy2",
     "South": "https://bitbucket.org/andrewgodwin/south",
+    "tinysegmenter": "http://git.tuxfamily.org/tinysegmente/tinysegmenter/",
     "webapp2": "https://github.com/GoogleCloudPlatform/webapp2",  # upgrade to https
     "web.py": "https://github.com/webpy/webpy",
 }
@@ -107,6 +108,7 @@ exact_metadata = {
     "localstack-client": "https://github.com/localstack/localstack-python-client",
     "logentries-lecli": "https://github.com/logentries/lecli",
     "lzmaffi": "https://github.com/r3m0t/backports.lzma",
+    "mailman-hyperkitty": "https://gitlab.com/mailman/mailman-hyperkitty/",
     "mesh-tensorflow": "https://github.com/tensorflow/mesh",
     "mockredispy": "https://github.com/locationlabs/mockredis",
     "neo4j-driver": "https://github.com/neo4j/neo4j-python-driver",
@@ -333,7 +335,6 @@ name_mismatch_fetched = {
     "tf-nightly-gpu": "https://github.com/tensorflow/tensorflow",
     "tf-nightly": "https://github.com/tensorflow/tensorflow",
     "thLib": "http://work.thaslwanter.at/thLib/html/",
-    "tinysegmenter": "http://git.tuxfamily.org/tinysegmente/tinysegmenter/",
     "turbomail": "https://github.com/marrow/marrow.mailer",
     "umap-learn": "https://github.com/lmcinnes/umap",
     "urlgrabber": "http://yum.baseurl.org/gitwebd27a.html?p=urlgrabber",
@@ -539,7 +540,6 @@ name_mismatch_metadata = {
     "lxc-python2": "https://github.com/lxc/python2-lxc",
     "m3-cdecimal": "https://www.bytereef.org/mpdecimal",
     "magma-lang": "https://github.com/phanrahan/magma",
-    "mailman-hyperkitty": "https://gitlab.com/mailman/mailman-hyperkitty/",
     "MapGitConfig": "https://github.com/zalando/python-gitconfig",
     "marbles.core": "https://github.com/twosigma/marbles",
     "marbles.mixins": "https://github.com/twosigma/marbles",
