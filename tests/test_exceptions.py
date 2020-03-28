@@ -145,10 +145,6 @@ class TestExceptions(_TestBase):
         with self.assertRaises(PackageWithoutFiles):
             self.converter.get_vcs("sane")
 
-    def test_no_urls_pygal(self):
-        with self.assertRaises(IncompletePackageMetadata):
-            self.converter.get_vcs("pygal")
-
     def test_no_urls_testflo(self):
         with self.assertRaises(IncompletePackageMetadata):
             self.converter.get_vcs("testflo")

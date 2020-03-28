@@ -570,6 +570,7 @@ rules.from_set(
         ),
         Rule("pyficache", repo_filename="__pkginfo__.py"),
         Rule("pyfim", ignore_urls=["www.borgelt.net"], expect_none=True),
+        Rule("pygal", patch="https://github.com/Kozea/pygal/pull/494"),
         Rule("pygam", repo_filename="flit.ini"),
         Rule(
             "pygobject",

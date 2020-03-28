@@ -445,6 +445,7 @@ def get_file_cache_session(cache_name):
         "docs.buildout.org",  # *.readthedocs.io, readthedocs.io
         "babel.pocoo.org",  # *.readthedocs.io, readthedocs.io
         "www.zodb.org",  # *.readthedocs.io, readthedocs.io
+        "www.pygal.org",
         "www.getlfs.com",  # cert wrong host
         "demo.getlfs.com",  # www.holz-hoehne.de
         "docs.getlfs.com",  # rtd
