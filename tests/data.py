@@ -772,7 +772,6 @@ bad_metadata = [
     "BitVector",
     "bobodoctestumentation",
     "bottle-sqlite",
-    "bpython",
     "bs4",
     "btrc",
     "bugjar",

@@ -20,6 +20,7 @@ from ._exceptions import (
     UnrecognisedStdlibBackport,
 )
 from ._github import normalize
+from ._rtd import get_repo as get_rtd_repo
 from ._rules import DefaultRule, _find_named_repo, rules
 from ._scm_url_cleaner import SCMURLCleaner
 from ._similarity import _compute_similarity, get_best_match
@@ -443,18 +444,31 @@ class Converter(object):
                             r.__class__.__name__, r.url, r.elapsed
                         )
                     )
+                    logger.debug("r {} headers: {}".format(r.url, r.headers))
                     r.raise_for_status()
                 except Exception as e:
                     logger.warning("{}: {}".format(url, e))
                     continue
+
+                urls = []
                 if r.url != url:
-                    queue.append(UrlSet(set([r.url])))
+                    urls.append(r.url)
+
+                if r.headers.get("X-RTD-Project"):
+                    rtd_url = get_rtd_repo(r.headers.get("X-RTD-Project"))
+                    if rtd_url:
+                        logger.warning("{}: rtd {}".format(url, rtd_url))
+                        urls.append(rtd_url)
+
+                if urls:
+                    queue.append(UrlSet(set(urls)))
+
                 if not r.text:
                     logger.warning("{}: empty page".format(url))
-                    continue
-                queue.append(Webpage(r, url))
-                fetch_list.append(url)
-                fetch_count += 1
+                else:
+                    queue.append(Webpage(r, url))
+                    fetch_list.append(url)
+                    fetch_count += 1
 
             if not result_url and results and results != previous_results:
                 result_url = get_best_match(rule.match, results)

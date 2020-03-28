@@ -142,6 +142,10 @@ class TestPyPiMisc(_TestBase):
         url = self.converter.get_vcs("Cython")
         self.assertEqual(url, "https://github.com/cython/cython")
 
+    def test_bpython(self):
+        url = self.converter.get_vcs("bpython")
+        self.assertEqual(url, "https://github.com/bpython/bpython")
+
     def test_amqpstorm(self):
         url = self.converter.get_vcs("amqpstorm")
         self.assertEqual(url, "https://github.com/eandersson/amqpstorm")

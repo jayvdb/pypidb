@@ -253,11 +253,6 @@ class TestExceptions(_TestBase):
         with self.assertRaises(PackageWithoutUrls):
             self.converter.get_vcs("pyweblib")
 
-    def test_bpython(self):
-        # Needs crawler depth 2 to find github
-        with self.assertRaises(PackageWithoutUrls):
-            self.converter.get_vcs("bpython")
-
     def test_pytidylib(self):
         with self.assertRaises(PackageWithoutUrls):
             self.converter.get_vcs("pytidylib")
