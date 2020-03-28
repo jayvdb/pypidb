@@ -172,6 +172,10 @@ def get_repo(slug, version="latest", dot_com=None, v2=None, strip_docs_suffix=Tr
             docless_url = url[:-5]
         elif url.endswith("/documentation"):
             docless_url = url[: len("/documentation")]
+        elif url.endswith("/devguide"):  # CPython
+            return
+        elif url.endswith("/packaging.python.org"):
+            return
 
         if docless_url and "github.com" in docless_url:
             if check_repo(docless_url):
