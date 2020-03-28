@@ -175,6 +175,7 @@ def CacheControl(
         "http://www.amazon.com/exec/obidos/external-search", _block_request_adapter
     )  # simplegeneric https://github.com/lipoja/URLExtract/issues/62
     sess.mount("https://www.googletagmanager.com/", _block_request_adapter)
+    sess.mount("www.google-analytics.com", _block_request_adapter)
     sess.mount("https://www.youtube.com", _block_request_adapter)
     sess.mount("https://youtu.be", _block_request_adapter)
 
@@ -279,6 +280,7 @@ def CacheControl(
     sess.mount("https://maxcdn.bootstrapcdn.com", _block_request_adapter)
     sess.mount("https://static.docs.com", _block_request_adapter)
     sess.mount("https://cdn.arduino.cc", _block_request_adapter)  # rpi-gpio
+    sess.mount("https://ajax.googleapis.com", _block_request_adapter)
     sess.mount(
         "https://imgix.datadoghq.com", _block_request_adapter
     )  # dogstatsd-python
@@ -403,6 +405,8 @@ def get_file_cache_session(cache_name):
         "www.hackersdelight.org",  # *.ipower.com
         "download.qt-project.org",  # *.qt.io
         "occiput.scienceontheweb.net",  # petlink
+        "morpho.aalto.fi",  # Morfessor
+        "www.anderoid.com",  # BitVector
         "urlgrabber.baseurl.org",  # beaverbarcamp.org, www.beaverbarcamp.org
         "celljam.net",  # *.webfaction.com, webfaction.com
         "www.acooke.org",  # *.webfaction.com, webfaction.com
