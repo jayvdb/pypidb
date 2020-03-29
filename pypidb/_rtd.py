@@ -176,6 +176,8 @@ def get_repo(slug, version="latest", dot_com=None, v2=None, strip_docs_suffix=Tr
             return
         elif url.endswith("/packaging.python.org"):
             return
+        elif url.endswith("/pypa.io"):  # certifi
+            return
 
         if docless_url and "github.com" in docless_url:
             if check_repo(docless_url):
