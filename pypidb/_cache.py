@@ -32,6 +32,7 @@ except ImportError:  # pragma: no cover
 _block_request_adapter = Status500Adapter()
 logger = setup_logging()
 
+MAX_REDIRECTS = 10
 retries = 3
 backoff_factor = 0.3
 status_forcelist = (500, 502, 504)
@@ -492,6 +493,7 @@ def get_file_cache_session(cache_name):
         blocklist=os.path.join(base, "park_providers.txt"),
         https_exceptions=https_exceptions,
     )
+    session.max_redirects = MAX_REDIRECTS
 
     if cache_name == "web":
         session.mount("http://pypi.org", _block_request_adapter)
