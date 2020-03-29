@@ -738,6 +738,7 @@ class SCMURLCleaner(object):
         "owlfish.com/software/": _hostname_two_paths,
         "http://zesty.ca/python/": _hostname_two_paths,
         "http://code.krypto.org/": _all,
+        "guaix.fis.ucm.es/projects/": _hostname_two_paths,
         "people.csail.mit.edu/hubert/": _hostname_two_paths,
         "owlfish.com/software/simpleTAL/": _hostname_two_paths,
         "www.panix.com/~asl2/software/": _hostname_three_paths,

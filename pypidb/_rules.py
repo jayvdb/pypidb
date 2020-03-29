@@ -579,8 +579,10 @@ rules.from_set(
             link_extract=get_html_hrefs,
             ignore_urls=["ftp.acc.umu.se", "python-gtk-3-tutorial.readthedocs.io"],
         ),
+        Rule("pyke", ignore_bad_metadata=True),
         Rule("pylirc", ignore_urls=["www.lirc.org"]),
         Rule("pymetar", ["future"]),
+        Rule("pymilia", ignore_urls=["www.boost.org"], ignore_bad_metadata=True),
         Rule("pymilter", patch="https://github.com/sdgathman/pymilter/pull/36"),
         Rule("pymock", link_extract=get_html_hrefs, ignore_bad_metadata=True),
         Rule("pyqt4", ignore_bad_metadata=True),
@@ -594,6 +596,7 @@ rules.from_set(
         Rule("pyrouge", ignore_bad_metadata=True),
         Rule("pysphere", ignore_bad_metadata=True),
         Rule("pysmt", ["z3-solver"]),
+        Rule("pystatgrab", ignore_bad_metadata=True),
         Rule("pytest-server-fixtures", ["python-jenkins"]),
         Rule("pytext", link_extract=_url_no_extract),
         Rule(

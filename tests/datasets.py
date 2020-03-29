@@ -33,6 +33,10 @@ class PortingdbLoader(Loader):
         "novaclient-os-networks": "os_networksv2_python_novaclient_ext",
         "novaclient-os-virtual-interfaces": "os_virtual_interfacesv2_python_novaclient_ext",
         "podman-api": "podman",
+        "pycolumnize": "columnize",
+        "pyhunspell": "hunspell",
+        "pyobd": "obd",
+        "pyosmium": "osmium",
         "pywt": "PyWavelets",
         "rtslib": "rtslib-fb",
         "sphinx-theme-alabaster": "alabaster",
@@ -71,12 +75,25 @@ class PortingdbLoader(Loader):
         "phyghtmap",
         "pip-epel",
         "postgresql",
+        "pyatspi",
+        "pybox2d",  # box2d is different https://code.google.com/p/pybox2d
+        "pycanberra",
         "pycxx",  # http://cxx.sourceforge.net/
         "pyev",  # setup.py checked; it is pyev
+        "pyflowtools",
         "pygiftiio",
-        "pyobd",
+        "pygobject2",
+        "pygobject3",
+        "pygtk2",
+        "pyhoca-cli",
+        "pyhoca-gui",
         "pyoptical",
+        "pyotherside",
         "pyrpmmd",
+        "pysvn",
+        "pythia8",
+        "pyxtrlock",
+        "pyzy",
         "rpm-generators",
         "schedutils",
         "simpleline",
@@ -101,11 +118,17 @@ class PortingdbLoader(Loader):
             name = package_name[7:]
         elif package_name.startswith("python2-") or package_name.startswith("python3-"):
             name = package_name[8:]
+        elif package_name.startswith("py"):
+            name = package_name
         else:
             return
 
         # multiple packages, per version
         if name[-1].isdigit():
+            if package_name in ["python26", "python27", "python3"]:
+                return
+            if package_name[:-1] == "python3":
+                return
             if name.startswith("tornado"):
                 return
             if name.startswith("pytest"):

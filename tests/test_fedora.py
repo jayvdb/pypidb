@@ -86,13 +86,17 @@ class TestFedora(_TestBase):
         "petlink",
         "pivy",
         "pyalsa",
+        "pybugz",
+        "pychess",
+        "pycmd",
         "pycpuinfo",
         "pyfim",
-        "pygal",
         "pykdtree",  # no license
+        "pymol",  # no files
         "pyprocdev",
         "pyro",
         "pyrpm",
+        "py-spidev",
         "ptrace",
         "python-hglib",
         "python-mpd",
@@ -127,3 +131,6 @@ class TestFedora(_TestBase):
         if not name.startswith("py") and name not in ["docs", "lxc"]:
             with self.assertRaises(InvalidPackage):
                 self._get_scm("py" + name)
+        if name.startswith("py") and name not in ["pybox2d", "pyev", "pysvn"]:
+            with self.assertRaises(InvalidPackage):
+                self._get_scm(name[2:])
