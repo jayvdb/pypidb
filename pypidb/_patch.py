@@ -74,6 +74,9 @@ def _get_patch_redirects(patch, allow_add_only=False):
 
                 for url in removed_urls:
                     redirect_mappings.append((url, to_url))
+            elif not added_urls:
+                for url in removed_urls:
+                    redirect_mappings.append((url, None))
             else:
                 if len(added_urls) != len(removed_urls):
                     logger.info(

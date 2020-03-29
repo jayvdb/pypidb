@@ -267,9 +267,15 @@ class Converter(object):
         summary = project_info.get("summary", "")
         description = project_info.get("description", "")
 
-        patch_urls = rule.extra_urls()
-        if patch_urls:
-            inputs.append(UrlSet(patch_urls))
+        redirects = rule.url_redirects()
+        if redirects:
+            for from_, to_ in redirects:
+                if from_ and from_ in urls:
+                    urls.remove(from_)
+                    if to_:
+                        urls.add(to_)
+                elif to_:
+                    urls.add(to_)
 
         if urls:
             inputs.append(UrlSet(urls))

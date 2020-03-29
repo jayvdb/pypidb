@@ -103,7 +103,7 @@ class Rule(object):
             self.key, self.match, self.name, self.preload, self._data
         )
 
-    def extra_urls(self):
+    def url_redirects(self):
         if not self.patch:
             return
 
@@ -118,11 +118,7 @@ class Rule(object):
         ), response.headers["content-type"]
         redirects = _get_patch_redirects(response.content, allow_add_only=True)
         assert redirects
-        adds = []
-        for from_, to_ in redirects:
-            if to_:
-                adds.append(to_)
-        return adds
+        return redirects
 
     def reject_match(self, name, url):
         name = self.match
