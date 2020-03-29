@@ -104,6 +104,9 @@ def _skip_one_path(url, owner=None, hostname=None, scheme="https"):
     p = urlsplit(url)
 
     path = p.path[1:]
+    if not path:
+        return
+
     # Skip next 'foo/' in path
     _, _, path = path.partition("/")
     if not owner:
@@ -535,7 +538,6 @@ class SCMURLCleaner(object):
         "raw.github.com": _github,
         "travis-ci.org": _github,
         "travis-ci.com": _github,
-        "http://travis-ci.org/#!/": _skip_one_path,  # misspellings
         "www.travis-ci.org": _github,  # civisml-extensions
         "api.travis-ci.org": _github,
         "api.travis-ci.com": _github,

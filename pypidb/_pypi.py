@@ -162,6 +162,9 @@ class Converter(object):
             hash_pos = url.find("#")
             if hash_pos == -1:
                 new_urls.add(url)
+            elif url[hash_pos - 1:].startswith("/#!/"):
+                # http://travis-ci.org/#!/ misspellings, yara
+                new_urls.add(url.replace("/#!/", "/"))
             else:
                 new_urls.add(url[:hash_pos])
         return new_urls
@@ -372,7 +375,7 @@ class Converter(object):
                         rule.link_extract, len(text), len(urls)
                     )
                 )
-                logger.debug("queuing {}".format(sorted(urls)))
+                logger.debug("extracted {}".format(sorted(urls)))
                 queue.append(UrlSet(urls, item.source))
 
             elif isinstance(item, Email):

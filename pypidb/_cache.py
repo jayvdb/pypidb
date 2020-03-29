@@ -329,6 +329,11 @@ def CacheControl(
         "https://fedoraproject.org/wiki/Infrastructure/Fedorahosted-retirement",
         _block_request_adapter,
     )
+    # CI
+    sess.mount("http://travis-ci.org", _block_request_adapter)
+    sess.mount("http://travis-ci.com", _block_request_adapter)
+    sess.mount("https://travis-ci.org", _block_request_adapter)
+    sess.mount("https://travis-ci.com", _block_request_adapter)
 
     # More distracting than useful
     sess.mount("http://infrae.com", _block_request_adapter)
