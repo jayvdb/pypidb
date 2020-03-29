@@ -55,6 +55,7 @@ multipackage_repos = {
     "https://github.com/mcfletch/pyopengl",
     "https://github.com/henry0312/pytest-codestyle",  # rename
     "https://github.com/Azure/azure-cli",
+    "https://github.com/Microsoft/vsts-python-api",
     "https://github.com/Azure/azure-sdk-for-python",
     "https://github.com/Azure/azure-cosmosdb-python",
     "https://github.com/Azure/azure-kusto-python",
