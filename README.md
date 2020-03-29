@@ -103,8 +103,9 @@ https://downloads.mysql.com/docs/connector-python-en.pdf: 500 Server Error: HTTP
 https://downloads.mysql.com/docs/licenses/connector-python-com-en.pdf: 500 Server Error: HTTPS Everywhere for url: https://downloads.mysql.com/docs/licenses/connector-python-com-en.pdf
 ```
 
-Resolution of many packages requires a Read the Docs token
-which can be obtained from https://readthedocs.org/accounts/tokens/
+Resolution of many packages uses Read the Docs metadata, which performs
+better when using a token which can be obtained from
+https://readthedocs.org/accounts/tokens/
 
 It should be stored in the default [`.netrc`](https://docs.python.org/3/library/netrc.html)
 file, in the user home, and should have the following format.
@@ -120,7 +121,10 @@ it may be necessary to add a GitHub token, also stored in `.netrc`.
 
 ## Testing
 
-Testing requires a Read the Docs and GitHub token in `.netrc`.
+Testing requires a GitHub token in `.netrc`.
+Without a GitHub token, many tests will be skipped, and some will
+fail.
+(The tests can be easily fixed to detect that the API limit was reached)
 
 ```sh
 git clone https://github.com/jayvdb/pypidb
@@ -129,12 +133,18 @@ tox
 ```
 A complete test run takes several hours.  There is aggressive caching
 of web content using `CacheControl` and DNS results using `dns-cache`,
-so subsiquent runs should complete a little over on hour.
+so subsequent runs should complete in a little over an hour.
 
 Running only tests on the top 360 most popular PyPI packages can be done
 without any tokens, and completes within approximately five minutes.
 ```sh
 tox -- -k TestTop360
+```
+Similarly, running the tests on the top 4000 most popular PyPI packages can
+be done without any tokens, and completes within approximately twenty minutes,
+and tests requiring a GitHub token will be skipped.
+```sh
+tox -- tests/test_top.py
 ```
 
 As the tests are inspecting and validating the results for live project
@@ -148,4 +158,4 @@ divided into four subsets.  In the case of projects that have moved, and
 the algorithm has correctly followed the move, those URLs need to be
 updated.
 
-There is rudimentary support for marking projects as untestable.
+There is rudimentary support for marking PyPI projects as untestable.
