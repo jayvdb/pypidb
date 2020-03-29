@@ -11,6 +11,7 @@ openstack_opendev = [
     "hacking",
     "mox3",
     "neutron-lib",
+    "openstacksdk",
     "os-ken",
     "osc-lib",
     "pyeclib",
@@ -19,9 +20,6 @@ openstack_opendev = [
 ]
 
 openstack_lp = ["lockfile"]
-
-# TODO: storyboard.openstack.org support appears to be unnecessary
-openstack_storyboard = []
 
 openstack_cgit = [
     "pbr",
@@ -62,12 +60,3 @@ class TestOpenStackLaunchpad(_TestBase):
         url = self.converter.get_vcs(name)
         self.assertIsNotNone(url)
         self.assertIn("//launchpad.", url)
-
-
-@expand
-class TestOpenStackStoryBoard(_TestBase):
-    @foreach(openstack_storyboard)
-    def test_package(self, name):
-        url = self.converter.get_vcs(name)
-        self.assertIsNotNone(url)
-        self.assertIn("//storyboard.", url)

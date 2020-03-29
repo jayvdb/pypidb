@@ -668,7 +668,6 @@ class SCMURLCleaner(object):
         "gitlab.gnome.org": _gitlab,
         "foss.heptapod.net": _gitlab,
         "code.qt.io/cgit/": _strip_after_dot_git,
-        "storyboard.openstack.org": _all,  # fixme: Need a rewrite to https rule instead of _all
         "gitlab.freedesktop.org": _gitlab,
         "git.tuxfamily.org/gitroot": _reject,
         "git.tuxfamily.org": _strip_after_dot_git,
