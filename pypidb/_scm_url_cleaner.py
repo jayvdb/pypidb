@@ -557,6 +557,7 @@ class SCMURLCleaner(object):
         "drone.io/bitbucket.org/": _bitbucket,
         "ci.appveyor.com/api/projects/status/github/": partial(_skip_x_path, skip=4),
         "requires.io/github/": _skip_one_path,
+        "pyup.io/repos/github/": partial(_skip_x_path, skip=2),
         "img.shields.io/appveyor/ci/": partial(_skip_x_path, skip=2),
         "img.shields.io/codecov/c/github/": partial(_skip_x_path, skip=3),
         "img.shields.io/github/commit-activity/y/": partial(_skip_x_path, skip=3),
@@ -583,7 +584,10 @@ class SCMURLCleaner(object):
         "translations.launchpad.net/": _launchpad,
         "pagure.io": _pagure_io,
         "savannah.gnu.org/projects/": _hostname_two_paths,
-        "git.savannah.gnu.org/cgit/": _all,
+        "git.savannah.gnu.org/cgit/": _all,  # todo rewrite to savannah.gnu.org
+        "git.sv.gnu.org": partial(
+            _add_first_path, owner="projects", hostname="savannah.gnu.org"
+        ),
         "savannah.nongnu.org/projects/": _hostname_two_paths,
         "sourceforge.net/project/platformdownload.php?group_id=": _sf,
         "sourceforge.net/project/showfiles.php?group_id=": _sf,
