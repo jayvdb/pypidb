@@ -633,6 +633,7 @@ rules.from_set(
         Rule("salt", ignore_urls=["saltstack.org", "repo.saltstack.com"]),
         Rule(
             "scikits-sparse",
+            match="scikit-sparse",
             patch="https://github.com/scikit-sparse/scikit-sparse/commit/66b3a518.patch",
         ),
         Rule(
