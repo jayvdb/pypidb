@@ -179,10 +179,17 @@ class TestPyPiMisc(_TestBase):
         )
 
     def test_logreduce(self):
+        # https://github.com/jayvdb/pypidb/issues/46
         url = self.converter.get_vcs("logreduce")
         self.assertInsensitiveEqual(
             url, "https://softwarefactory-project.io/cgit/logreduce"
         )
+
+    def test_Unidecode(self):
+        url = self.converter.get_vcs("Unidecode")
+        self.assertInsensitiveEqual(
+            url, "https://github.com/avian2/unidecode"
+        )  # https://www.tablix.org/~avian/git/unidecode.git
 
     def test_musicbrainzngs(self):
         url = self.converter.get_vcs("musicbrainzngs")

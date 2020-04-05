@@ -95,7 +95,7 @@ def _skip_x_path(url, skip=0, include_hostname=False, prefix=None):
         prefix = owner
 
     if include_hostname:
-        return p.netloc, prefix, repo
+        return "https://{}/{}/{}".format(p.netloc, prefix, repo)
     else:
         return prefix, repo
 
@@ -609,11 +609,16 @@ class SCMURLCleaner(object):
         "sf.net/projects/": _sf,
         "*.sourceforge.net": _sf,
         "*.sf.net": _sf,
-        "softwarefactory-project.io/cgit/": _hostname_two_paths,
-        "www.logilab.org/project/": _hostname_two_paths,
+        # https://github.com/jayvdb/pypidb/issues/46
+        "softwarefactory-project.io/r/": partial(
+            _skip_x_path,
+            skip=0, include_hostname=True, prefix="cgit",
+        ),  # logreduce
         "*.softwarefactory-project.io": partial(
             _subdomain_to_path, prefix="cgit/"
         ),  # logreduce
+        "softwarefactory-project.io/cgit/": _hostname_two_paths,
+        "www.logilab.org/project/": _hostname_two_paths,
         "git-wip-us.apache.org/repos/": _all,
         "gitbox.apache.org/repos/": _all,
         "*.apache.org": partial(
@@ -708,7 +713,7 @@ class SCMURLCleaner(object):
         "hg.anteru.net": _hostname_first_path,
         "www.tablix.org/~avian/git/": partial(
             _skip_x_path, skip=4, include_hostname=True
-        ),
+        ),  # Unidecode & publicsuffix are here, but they use GitHub now
         "yum.baseurl.org/gitwebd27a.html?p=": _strip_dot_git,
         "yum.baseurl.org/gitweb?p=": _strip_dot_git,
         "opendev.org": _gitea,
