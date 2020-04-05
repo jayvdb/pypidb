@@ -35,7 +35,7 @@ class TestGitHubRepo(_TestBase):
 
     def test_simplekml(self):
         url = get_repo("simplekml")
-        self.assertInsensitiveEqual(url, "https://bitbucket.org/eisoldt/simplekml")
+        self.assertInsensitiveEqual(url, "https://github.com/eisoldt/simplekml")
 
     def test_mailgun_docs(self):
         try:
