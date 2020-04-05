@@ -630,6 +630,7 @@ rules.from_set(
         ),
         Rule("reviewboard", link_extract=_url_no_extract, expect_none=True),
         Rule("rfc6555", ignore_bad_metadata=True),
+        Rule("robinhood-aiokafka", ["aiokafka"], link_extract=_url_no_extract, expect_none=True),
         Rule("rook", ignore_urls=["rookout.com"], expect_none=True),
         Rule("rpy2", patch="https://github.com/rpy2/rpy2/commit/ededbbf.patch"),
         Rule("s3cmd", patch="https://github.com/s3tools/s3cmd/commit/8d314b01.patch"),

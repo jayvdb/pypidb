@@ -146,6 +146,7 @@ class TestTopTail(_TestBase):
         "dbus-python",
         "dm.xmlsec-binding",
         "pycuda",  # repo is auth protected
+        "robinhood-aiokafka",
         "scons",
     ]
 

@@ -999,6 +999,7 @@ bad_metadata = [
     "requestsexceptions",
     "ReviewBoard",
     "rfc6555",  # 0.0.0 (fixme)
+    "robinhood-aiokafka",
     "rook",
     "ruptures",
     "s3pip",
