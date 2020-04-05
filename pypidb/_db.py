@@ -50,6 +50,7 @@ multipackage_repos = {
     "https://www.bytereef.org/mpdecimal",
     "https://github.com/gfxmonk/termstyle",
     "https://github.com/OpenMined/PySyft",
+    "https://github.com/plaidml/plaidml",
     "https://github.com/Kami/python-yubico-client",
     "https://sourceforge.net/projects/pyopengl",
     "https://github.com/mcfletch/pyopengl",

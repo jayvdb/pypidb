@@ -767,6 +767,7 @@ _email_matches = {
     "jupyter@googlegroups.com": "jupyter",
     "peak@eby-sarna.com": "PEAK-Legacy",
     "philip@semanchuk.com": "osvenskan",  # sysv_ipc/posix_ipc
+    "plaidml-dev@googlegroups.com": "plaidml/plaidml",
     "pygame@pygame.org": "pygame",
     "pypi@tjaart.co.za": "tjaartvdwalt",
     "richard@tartarus.org": "snowballstem",
