@@ -707,7 +707,6 @@ rules.from_set(
         Rule("tlslite", patch="https://github.com/trevp/tlslite/pull/123"),
         Rule("turbocheetah", ["turbogears2", "fabric", "sphinx-rtd-theme"]),
         Rule("turbogears", ["turbogears2", "pyramid", "genshi"]),
-        Rule("tvb-gdist", patch="https://github.com/the-virtual-brain/tvb-geodesic/pull/24"),
         Rule("tw-dynforms", ["tw2-core"], expect_none=True),
         Rule(
             "tw-forms", ["tw2-core"], ignore_urls=["toscawidgets.org"], expect_none=True
