@@ -315,11 +315,7 @@ rules.from_set(
             expect_none=True,
         ),
         Rule("dash-table", repo_filename="package.json"),
-        Rule(
-            "databricks-connect",
-            ignore_urls=["docs.databricks.com", "docs.azuredatabricks.net"],
-            expect_none=True,
-        ),
+        Rule("databricks-connect", link_extract=_url_no_extract, expect_none=True),
         Rule("datadog-checks-base", match="integrations-core"),
         Rule("dbf", ["epydoc"], expect_none=True),
         Rule(
