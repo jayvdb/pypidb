@@ -778,6 +778,7 @@ class SCMURLCleaner(object):
         "hg.vehq.ru": _all,  # TODO: test entries on http://hg.vehq.ru/index.html
         "tracpub.yaco.es/djangoapps/wiki/": _all,
         "git.liw.fi/cgi-bin/cgit/cgit.cgi/": _all,  # ttystatus https://liw.fi/ttystatus/
+        "www.funaba.org/code": _all,
     }
 
     def _get_fixer(self, url):
