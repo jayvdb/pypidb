@@ -397,6 +397,7 @@ def get_file_cache_session(cache_name):
         "eh.org",
         "www.4guysfromrolla.com",
         "svn.eby-sarna.com",
+        "azure.archive.ubuntu.com",  # blurb
         "www.should-dsl.info",  # should_dsl
         "cvs.bigasterisk.com",  # pyalsa
         "decida.org",  # DeCiDa
