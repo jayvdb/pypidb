@@ -149,6 +149,7 @@ class TestTopTail(_TestBase):
         "robinhood-aiokafka",
         "scons",
         "tableauhyperapi",
+        "tensorboard-plugin-wit",
     ]
 
     @foreach(names)

@@ -1038,6 +1038,7 @@ bad_metadata = [
     "tableauhyperapi",
     "tambo",
     "Tempita",
+    "tensorboard-plugin-wit",
     "termcolor",
     "testflo",
     "tgfastdata",
