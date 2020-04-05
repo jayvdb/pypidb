@@ -612,7 +612,7 @@ rules.from_set(
         ),
         Rule("python-qt5", ignore_bad_metadata=True),
         Rule("pytidylib", link_extract=_url_no_extract, expect_none=True),
-        Rule("py-trello", ["tox"], expect_none=True),
+        Rule("py-trello", ["tox"], patch="https://github.com/sarumont/py-trello/pull/309"),
         Rule("pyviz-comms", ["pyviz", "jupyterlab"]),
         Rule("pyvows", patch="https://github.com/heynemann/pyvows/pull/135"),
         Rule("pyz3950", ignore_bad_metadata=True),

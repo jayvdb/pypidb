@@ -983,7 +983,6 @@ bad_metadata = [
     "pythonwhois",
     "pytidylib",
     "pytorch",
-    "py-trello",
     "pyudorandom",
     "pyVirtualize",
     "pyweblib",
