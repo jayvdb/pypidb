@@ -61,7 +61,6 @@ class TestTopStdlib(_TestBase):
         "faulthandler",
         "functools",
         "html",
-        "logging",
         "pprint",
         "resource",
         "typing",

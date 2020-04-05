@@ -44,6 +44,7 @@ exact_metadata = {
     "BytecodeAssembler": "https://github.com/peak-legacy/bytecodeassembler",
     "certbot": "https://github.com/certbot/certbot",  # TODO rename https://github.com/letsencrypt/letsencrypt
     "cffi": "https://foss.heptapod.net/pypy/cffi",  # https://foss.heptapod.net/pypy/cffi/issues/443
+    "config": "https://bitbucket.org/vinay.sajip/config",
     "Contextual": "https://github.com/peak-legacy/contextual",
     "couchbase": "https://github.com/couchbase/couchbase-python-client",
     "cssutils": "https://bitbucket.org/cthedot/cssutils",
@@ -107,6 +108,7 @@ exact_metadata = {
     "linaro-json": "https://launchpad.net/linaro-python-json",
     "localstack-client": "https://github.com/localstack/localstack-python-client",
     "logentries-lecli": "https://github.com/logentries/lecli",
+    "logging": "https://bitbucket.org/vinay.sajip/logging",
     "lzmaffi": "https://github.com/r3m0t/backports.lzma",
     "mailman-hyperkitty": "https://gitlab.com/mailman/mailman-hyperkitty/",
     "mesh-tensorflow": "https://github.com/tensorflow/mesh",
@@ -880,7 +882,6 @@ bad_metadata = [
     "locust",
     "logentries",
     "logger",
-    "logging",
     "lpshipit",
     "ly",
     "mailgun",
@@ -1117,6 +1118,7 @@ missing_repos = [
     "ipmi",
     "iptcinfo",  # https://bitbucket.org/gthomas/iptcinfo , history retained at https://github.com/20minutes/iptcinfo
     "kubetop",  # https://github.com/leastauthority.com/kubetop
+    "logging",
     "metafone",  # https://github.com/al45tair/metaphone, but this is a dead fork
     "nose-testconfig",  # https://bitbucket.org/jnoller/nose-testconfig history at https://github.com/singingwolfboy/nose-testconfig
     "octohot",  # https://github.com/Hotmart-Org/octohot

@@ -301,6 +301,7 @@ rules.from_set(
         Rule("collectd", ignore_bad_metadata=True),
         Rule("compatibility-lib", ignore_urls=["www.docker.com"], expect_none=True),
         Rule("compressed-segmentation", ignore_urls=["www.janelia.org"]),
+        Rule("config", ignore_urls=["docs.red-dove.com"]),
         Rule("contextual", ignore_bad_metadata=True),
         Rule("cronwatch", ignore_bad_metadata=True),
         Rule(
@@ -775,6 +776,7 @@ _email_matches = {
     "sympy@googlegroups.com": "sympy",
     "thatch45@gmail.com": "saltstack",
     "tomaz+pypi@tomaz.me": "Yubico/python-{name}",
+    "vinay_sajip@red-dove.com": "https://bitbucket.org/vinay.sajip/{name}",
     "vmalloc@gmail.com": "vmalloc",
     "yubico@yubico.com": "Yubico/python-{name}",
 }
@@ -903,5 +905,7 @@ def _find_named_repo(name, emails=None):
             )
 
         logger.info("checking {}".format(slug))
+        if slug.startswith("https://"):
+            return slug
         if check_repo(slug):
             return "https://github.com/{}".format(slug)
