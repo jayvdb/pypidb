@@ -683,6 +683,7 @@ rules.from_set(
             expect_none=True,
             ignore_urls=["www.stsci.edu"],
         ),
+        Rule("subgrab", patch="https://github.com/RafayGhafoor/Subscene-Subtitle-Grabber/pull/7"),
         Rule("supercaptcha", ["django"], expect_none=True),
         Rule("swapper", ["vera"]),
         Rule("sysv-ipc", ["posix-ipc"]),
