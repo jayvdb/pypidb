@@ -91,6 +91,8 @@ exact_metadata = {
     "google-apitools": "https://github.com/google/apitools",
     "google-nucleus": "https://github.com/google/nucleus",
     "google-pasta": "https://github.com/google/pasta",
+    "graphql-core": "https://github.com/graphql-python/graphql-core",
+    "graphql-core-next": "https://github.com/graphql-python/graphql-core-next",
     "guess_language-spirit": "https://bitbucket.org/spirit/guess_language",
     "hacs-frontend": "https://github.com/hacs/frontend",
     "hdfs": "https://github.com/mtth/hdfs",
@@ -492,7 +494,6 @@ name_mismatch_metadata = {
     "googlemaps": "https://github.com/googlemaps/google-maps-services-python",
     "google-python-cloud-debugger": "https://github.com/GoogleCloudPlatform/cloud-debug-python",
     "googletranslate": "https://github.com/weaming/py-googletrans",
-    "graphql-core": "https://github.com/graphql-python/graphql-core-next",
     "gremlinpython": "https://github.com/apache/tinkerpop",
     "grpc-google-iam-v1": "https://github.com/googleapis/googleapis",
     "grpc-google-logging-v2": "https://github.com/googleapis/googleapis",
@@ -1246,6 +1247,7 @@ setuppy_mismatches = [
     "google-nucleus",
     "google-python-cloud-debugger",  # src/
     "googletranslate",  # wrong name in setup.py
+    "graphql-core-next",  # old repo for graphql-core
     "gremlinpython",
     "grpc-google-",
     "grpcio-",
