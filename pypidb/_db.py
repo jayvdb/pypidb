@@ -61,6 +61,7 @@ multipackage_repos = {
     "https://github.com/Azure/azure-cosmosdb-python",
     "https://github.com/Azure/azure-kusto-python",
     "https://github.com/Azure/azure-storage-python",
+    "https://github.com/fabioz/PyDev.Debugger",
 }
 multipackage_repos = set(i.lower() for i in multipackage_repos)
 

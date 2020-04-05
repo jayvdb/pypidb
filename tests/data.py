@@ -305,6 +305,7 @@ name_mismatch_fetched = {
     "psycopg2-binary": "https://github.com/psycopg/psycopg2",
     "publicsuffixlist": "https://github.com/ko-zu/psl",
     "pycdio": "http://git.savannah.gnu.org/cgit/libcdio/pycdio.git",
+    "pydevd-pycharm": "https://github.com/fabioz/PyDev.Debugger",
     "pyficache": "https://github.com/rocky/python-filecache",
     "pygtkhelpers": "https://bitbucket.org/aafshar/pygtkhelpers-main",
     "pygtk": "https://gitlab.gnome.org/GNOME/pygobject",
@@ -1300,6 +1301,7 @@ setuppy_mismatches = [
     "pybuilder-pip-tools",
     "pycli",  # name lives in <src>/__init__.py
     "pycocotools",
+    "pydevd-pycharm",
     "pydocumentdb",  # repo & project renamed to azure-cosmos
     "pydot2",  # folded back into pydot project
     "PyGrid",
