@@ -239,10 +239,6 @@ class TestPyPiMisc(_TestBase):
         url = self.converter.get_vcs("pymad")
         self.assertEqual(url, "https://spacepants.org/src/pymad")
 
-    def test_gnome_three(self):
-        url = self.converter.get_vcs("pyocr")
-        self.assertEqual(url, "https://gitlab.gnome.org/World/OpenPaperwork/pyocr")
-
     def test_www_github_openid_cla(self):
         url = self.converter.get_vcs("python-openid-cla")
         self.assertEqual(url, "https://github.com/puiterwijk/python-openid-cla")
@@ -474,10 +470,6 @@ class TestPyPiMisc(_TestBase):
     def test_podcastparser(self):
         url = self.converter.get_vcs("podcastparser")
         self.assertInsensitiveEqual(url, "https://github.com/gpodder/podcastparser")
-
-    def test_pygtk(self):
-        url = self.converter.get_vcs("pygtk")
-        self.assertInsensitiveEqual(url, "https://gitlab.gnome.org/gnome/pygobject")
 
     def test_pluggy(self):
         url = self.converter.get_vcs("pluggy")
@@ -810,11 +802,6 @@ class TestMulti(_TestBase):
     def test_lecli(self):
         url = self.converter.get_vcs("logentries-lecli")
         self.assertInsensitiveEqual(url, "https://github.com/logentries/lecli")
-
-    def test_pyinsane2(self):
-        url = self.converter.get_vcs("pyinsane2")
-        self.assertInsensitiveEqual(url, "https://github.com/openpaperwork/pyinsane")
-        # Should be "https://gitlab.gnome.org/World/OpenPaperwork/pyinsane")
 
     def test_pyload_ng(self):
         url = self.converter.get_vcs("pyload-ng")

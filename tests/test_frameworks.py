@@ -769,6 +769,29 @@ class TestEnthought(_TestBase):
         self.assertInsensitiveEqual(url, "https://github.com/enthought/etsdevtools")
 
 
+class TestGnome(_TestBase):
+    def test_pygtk(self):
+        url = self.converter.get_vcs("pygtk")
+        self.assertInsensitiveEqual(url, "https://gitlab.gnome.org/gnome/pygobject")
+
+    def test_pygobject(self):
+        url = self.converter.get_vcs("pygobject")
+        self.assertInsensitiveEqual(url, "https://gitlab.gnome.org/gnome/pygobject")
+
+    def test_pyocr(self):
+        url = self.converter.get_vcs("pyocr")
+        self.assertEqual(url, "https://gitlab.gnome.org/World/OpenPaperwork/pyocr")
+
+    def test_pyinsane2(self):
+        url = self.converter.get_vcs("pyinsane2")
+        self.assertInsensitiveEqual(url, "https://github.com/openpaperwork/pyinsane")
+        # Should be "https://gitlab.gnome.org/World/OpenPaperwork/pyinsane")
+
+    def test_pypillowfight(self):
+        url = self.converter.get_vcs("pypillowfight")
+        self.assertEqual(url, "https://gitlab.gnome.org/World/OpenPaperwork/libpillowfight")
+
+
 class TestQt(_TestBase):
     def _test_dip(self):
         url = self.converter.get_vcs("dip")

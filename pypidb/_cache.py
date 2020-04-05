@@ -396,6 +396,7 @@ def get_file_cache_session(cache_name):
         "sparrow.telecommunity.com",
         "blog.pediapress.com",
         "eh.org",
+        "www.linuxrising.org",  # pygtk
         "www.4guysfromrolla.com",
         "svn.eby-sarna.com",
         "azure.archive.ubuntu.com",  # blurb
@@ -438,6 +439,7 @@ def get_file_cache_session(cache_name):
         "octopress.org",  # github
         "augeas.net",  # github
         "blog.myrhy.me",  # github
+        "mypaint.org",  # github, pygtyk
         "www.cheetahtemplate.org",  # github
         "www.keyczar.org",  # redirects to github, hosted by shortener.secureserver.net
         "nltk.org",  # redirects to docs site, hosted by shortener.secureserver.net
