@@ -814,6 +814,7 @@ bad_metadata = [
     "dci-utils",
     "demjson",
     "dependency_management",  # recheck
+    "dai-sgqlc-3-5",
     "dialog",
     "digitalocean",
     "distribute",
