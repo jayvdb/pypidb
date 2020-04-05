@@ -244,6 +244,7 @@ name_mismatch_fetched = {
     "datanommer-consumer": "https://github.com/fedora-infra/datanommer",
     "datanommer-models": "https://github.com/fedora-infra/datanommer",
     "ddg3": "https://github.com/jpetrucciani/python-duckduckgo",
+    "doc-warden": "https://github.com/Azure/azure-sdk-tools",
     "dogpile": "https://bitbucket.org/zzzeek/dogpile.core",
     "ebcdic": "https://github.com/roskakori/CodecMapper",
     "exifread": "https://github.com/ianare/exif-py",
@@ -1203,6 +1204,7 @@ setuppy_mismatches = [
     "django-ranged-response",  # -> django-ranged-fileresponse
     "djangorestframework-jwt",
     "django-storages-redux",
+    "doc-warden",  # azure
     "dotnetcore2",  # doesnt contain the Python wrapper
     "dnspython3",  # dnspython
     "drf-jwt",  # lots o forks

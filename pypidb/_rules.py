@@ -190,7 +190,10 @@ class DefaultRule(Rule):
                 kwargs["repo_filename"] = "tool_build_packages.py"
             else:
                 kwargs["repo_filename"] = "README.md"
-            ignore_urls = ["readthedocs.org"]  # azure-monitor
+            kwargs["ignore_urls"] = [
+                "readthedocs.org",  # azure-monitor
+                "dev.azure.com",
+            ]
         elif key.startswith("sphinxcontrib-"):
             kwargs["ignore_urls"] = ["sphinx-doc.org", "sphinx.pocoo.org"]
         elif key == "jupyter-js-widgets-nbextension":

@@ -282,6 +282,7 @@ def CacheControl(
     sess.mount("https://static.docs.com", _block_request_adapter)
     sess.mount("https://cdn.arduino.cc", _block_request_adapter)  # rpi-gpio
     sess.mount("https://ajax.googleapis.com", _block_request_adapter)
+    sess.mount("https://cdn.vsassets.io", _block_request_adapter)  # azure
     sess.mount(
         "https://imgix.datadoghq.com", _block_request_adapter
     )  # dogstatsd-python
