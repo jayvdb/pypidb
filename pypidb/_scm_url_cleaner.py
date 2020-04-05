@@ -238,6 +238,9 @@ def _github_io(url):
     repo, _, _ = path.partition("/")
     if not repo:  # pragma: no cover
         return
+    # https://github.com/lipoja/URLExtract/issues/62#issuecomment-609275267
+    if repo == "&":
+        return
     if (owner, repo) in [("smartsheet-platform", "api-docs")]:
         return
     return (owner, repo)
@@ -815,7 +818,9 @@ class SCMURLCleaner(object):
                 if at != -1:
                     repo = repo[:at]
 
-                repo = repo.strip("`")  # PyPI `package.py` description fools URLExtract
+                # package and cffi end up with repo``
+                # https://github.com/lipoja/URLExtract/issues/13
+                repo = repo.strip("`")
 
                 if (
                     repo.endswith(".git")
@@ -823,6 +828,8 @@ class SCMURLCleaner(object):
                     or repo.endswith(".png")
                 ):
                     repo = repo[:-4]
+
+                # https://github.com/lipoja/URLExtract/issues/13
                 repo = repo.strip(".")  # ebcdic / CodecMapper description
 
                 if "bitbucket.org/" in url:
