@@ -1050,7 +1050,6 @@ bad_metadata = [
     "ts-flint",
     "tw.dynforms",
     "tw.forms",
-    "twill",
     "typing",
     "typogrify-engineer",
     "unittest",
