@@ -43,6 +43,7 @@ exact_metadata = {
     "bolt-python": "https://github.com/bolt-project/bolt",
     "BytecodeAssembler": "https://github.com/peak-legacy/bytecodeassembler",
     "certbot": "https://github.com/certbot/certbot",  # TODO rename https://github.com/letsencrypt/letsencrypt
+    "certifi": "https://github.com/certifi/python-certifi",
     "cffi": "https://foss.heptapod.net/pypy/cffi",  # https://foss.heptapod.net/pypy/cffi/issues/443
     "config": "https://bitbucket.org/vinay.sajip/config",
     "Contextual": "https://github.com/peak-legacy/contextual",
@@ -786,7 +787,6 @@ bad_metadata = [
     "catkin-sphinx",
     "cd",
     "cerealizer",
-    "certifi",
     "Cheesecake",  # should be https://github.com/griggheo/cheesecake
     "chromedriver",
     "chubby",

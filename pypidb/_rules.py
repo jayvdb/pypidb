@@ -288,7 +288,6 @@ rules.from_set(
         Rule("ccxt", ignore_urls=["ccxt.trade"]),
         Rule("cdecimal", ignore_bad_metadata=True),
         Rule("celery-redbeat", ["celery"]),
-        Rule("certifi", ["pip", "requests", "urllib3"], expect_none=True),
         Rule("cffi", patch="https://foss.heptapod.net/pypy/cffi/commit/9b98da72.patch"),
         Rule("cfscrape", ignore_urls=["nodejs.org"]),
         Rule("cheesecake", link_extract=_url_no_extract, expect_none=True),
