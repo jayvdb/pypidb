@@ -832,3 +832,17 @@ class TestQt(_TestBase):
         self.assertInsensitiveEqual(
             url, "https://www.riverbankcomputing.com/software/pyqtdatavisualization"
         )
+
+
+class TestMaxmind(_TestBase):
+    def test_GeoIP(self):
+        url = self.converter.get_vcs("GeoIP")
+        self.assertInsensitiveEqual(url, "https://github.com/maxmind/GeoIP-api-python")
+
+    def test_GeoIP2(self):
+        url = self.converter.get_vcs("GeoIP2")
+        self.assertInsensitiveEqual(url, "https://github.com/maxmind/GeoIP2-python")
+
+    def test_minfraud(self):
+        url = self.converter.get_vcs("minfraud")
+        self.assertInsensitiveEqual(url, "https://github.com/maxmind/minfraud-api-python")

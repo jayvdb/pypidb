@@ -130,10 +130,6 @@ class TestPyPiMisc(_TestBase):
         )
         # hg repo at https://www.csse.canterbury.ac.nz/greg.ewing/python/Pyrex/hg/
 
-    def test_GeoIP2(self):
-        url = self.converter.get_vcs("GeoIP2")
-        self.assertInsensitiveEqual(url, "https://github.com/maxmind/GeoIP2-python")
-
     def test_tryton_GooCalendar(self):
         url = self.converter.get_vcs("GooCalendar")
         self.assertEqual(url, "https://hg.tryton.org/goocalendar")

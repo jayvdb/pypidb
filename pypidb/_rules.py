@@ -773,6 +773,7 @@ _email_matches = {
     "richard@tartarus.org": "snowballstem",
     "shlomi@smore.com": "smore-inc",
     "smithnick@google.com": "google/{suffix}",  # https://github.com/google/pasta/pull/81
+    "support@maxmind.com": "maxmind/{name}-api-python",
     "support@sigopt.com": "sigopt/{name}-python",
     "sympy@googlegroups.com": "sympy",
     "thatch45@gmail.com": "saltstack",

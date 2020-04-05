@@ -214,10 +214,6 @@ class TestExceptions(_TestBase):
             self.converter.get_vcs("cerealizer")
         # requires depth 2 to find https://bitbucket.org/jibalamy/cerealizer
 
-    def test_GeoIP_not_found(self):
-        with self.assertRaises(PackageWithoutUrls):
-            self.converter.get_vcs("GeoIP")
-
     def test_non_found_pybibframe(self):
         with self.assertRaises(PackageWithoutUrls):
             self.converter.get_vcs("pybibframe")
