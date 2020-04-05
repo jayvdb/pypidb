@@ -723,6 +723,7 @@ rules.from_set(
         Rule("webunit", ["docutils"], expect_none=True),
         Rule("wmi", ["pywin32"], expect_none=True),
         Rule("wordaxe", ignore_bad_metadata=True),
+        Rule("xpyb", ignore_bad_metadata=True),
         Rule("xml2rfc", ["weasyprint"]),
         Rule("xmltramp", ignore_bad_metadata=True),
         Rule(
@@ -871,6 +872,8 @@ def _find_named_repo(name, emails=None):
             sf_project_name, list_type = address.rsplit("-", 1)
             if list_type in ["bugs", "discuss"]:
                 return "https://sourceforge.net/projects/{}".format(sf_project_name)
+        elif domain == "lists.freedesktop.org":
+            return "https://gitlab.freedesktop.org/{}/{}".format(address, name)
 
         email_rules = _email_matches.get(email, [])
         if isinstance(email_rules, str):

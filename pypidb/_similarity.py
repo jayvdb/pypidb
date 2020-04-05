@@ -174,6 +174,14 @@ def _get_shortest(urls):
 def _get_prefered(urls):
     orig_urls = urls
 
+    freedesktop_urls = [url for url in urls if "gitlab.freedesktop.org" in url]
+    if len(freedesktop_urls) == 1:
+        return freedesktop_urls[0]
+
+    freedesktop_urls = [url for url in urls if "cgit.freedesktop.org" in url]
+    if len(freedesktop_urls) == 1:
+        return freedesktop_urls[0]
+
     opendev_urls = [url for url in urls if "opendev.org" in url]
     if len(opendev_urls) == 1:
         return opendev_urls[0]

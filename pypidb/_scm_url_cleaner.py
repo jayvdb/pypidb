@@ -168,16 +168,22 @@ def _hostname_three_paths(url):
     return "https://{}/{}/{}/{}".format(p.netloc, path1, path2, path3)
 
 
-def _subdomain_to_path(url, hostname=None, prefix=None, exclude=[]):
+def _subdomain_to_path(url, hostname=None, prefix=None, exclude=[], append_part=None):
     p = urlsplit(url)
     subdomain, _, domain = p.netloc.partition(".")
     if not hostname:
         hostname = domain
     if subdomain in exclude:
         return
+    suffix = ""
+    if append_part:
+       if p.path[0] != "/":
+           return
+       parts = p.path[1:].split("/")
+       suffix = "/" + parts[append_part - 1]
     if prefix:
-        return "https://{}/{}{}".format(hostname, prefix, subdomain)
-    return "https://{}/{}".format(hostname, subdomain)  # pragma: no cover
+        return "https://{}/{}{}{}".format(hostname, prefix, subdomain, suffix)
+    return "https://{}/{}{}".format(hostname, subdomain, suffix)  # pragma: no cover
 
 
 def _ghbtns(url):
@@ -669,6 +675,13 @@ class SCMURLCleaner(object):
         "foss.heptapod.net": _gitlab,
         "code.qt.io/cgit/": _strip_after_dot_git,
         "gitlab.freedesktop.org": _gitlab,
+        "*.freedesktop.org/releases/": partial(
+            _subdomain_to_path,
+            hostname="gitlab.freedesktop.org",
+            append_part=2,
+        ),  # dbus-python
+        "cgit.freedesktop.org/wiki/": _reject,
+        "cgit.freedesktop.org": _hostname_two_paths,
         "git.tuxfamily.org/gitroot": _reject,
         "git.tuxfamily.org": _strip_after_dot_git,
         "salsa.debian.org": _all,

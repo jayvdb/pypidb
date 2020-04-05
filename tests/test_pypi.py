@@ -460,10 +460,6 @@ class TestPyPiMisc(_TestBase):
             url, "https://github.com/ros-infrastructure/catkin_pkg"
         )
 
-    def _test_pyxdg(self):
-        url = self.converter.get_vcs("pyxdg")
-        self.assertInsensitiveEqual(url, "https://github.com/takluyver/pyxdg")
-
     def test_imagecodecs(self):
         url = self.converter.get_vcs("imagecodecs")
         self.assertInsensitiveEqual(url, "https://github.com/cgohlke/imagecodecs")

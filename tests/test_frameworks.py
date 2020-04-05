@@ -834,6 +834,31 @@ class TestQt(_TestBase):
         )
 
 
+class TestFreedesktop(_TestBase):
+    def test_pyxdg(self):
+        # https://github.com/jayvdb/pypidb/issues/41 should be
+        # http://cgit.freedesktop.org/xdg/pyxdg/
+        url = self.converter.get_vcs("pyxdg")
+        #self.assertInsensitiveEqual(url, "https://github.com/takluyver/pyxdg")
+        self.assertInsensitiveEqual(url, "https://gitlab.freedesktop.org/xdg/pyxdg")
+
+    def test_dbus(self):
+        url = self.converter.get_vcs("dbus-python")
+        self.assertInsensitiveEqual(url, "https://gitlab.freedesktop.org/dbus/dbus-python")
+
+    def test_hid_tools(self):
+        url = self.converter.get_vcs("hid-tools")
+        self.assertInsensitiveEqual(url, "https://gitlab.freedesktop.org/libevdev/hid-tools")
+
+    def test_libevdev(self):
+        url = self.converter.get_vcs("libevdev")
+        self.assertInsensitiveEqual(url, "https://gitlab.freedesktop.org/libevdev/python-libevdev")
+
+    def test_xpyb(self):
+        url = self.converter.get_vcs("xpyb")
+        self.assertInsensitiveEqual(url, "https://gitlab.freedesktop.org/xcb/xpyb")
+
+
 class TestMaxmind(_TestBase):
     def test_GeoIP(self):
         url = self.converter.get_vcs("GeoIP")
