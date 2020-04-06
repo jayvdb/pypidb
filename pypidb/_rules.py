@@ -314,7 +314,7 @@ rules.from_set(
         Rule("cvxopt", ["sphinx-rtd-theme"], expect_none=True),
         Rule(
             "darcsver",
-            ["tahoe-lafs"],
+            ["babel", "tahoe-lafs"],
             ignore_urls=["peak.telecommunity.com", "trac.edgewall.org"],
             expect_none=True,
         ),
