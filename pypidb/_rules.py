@@ -304,6 +304,7 @@ rules.from_set(
         Rule("coards", ["sphinx-rtd-theme", "zc-buildout"]),
         Rule("cogapp", ignore_urls=["rubyforge.org"]),
         Rule("collectd", ignore_bad_metadata=True),
+        Rule("comet-ml", ignore_urls=["comet.ml", "www.comet.ml"], expect_none=True),
         Rule("compatibility-lib", ignore_urls=["www.docker.com"], expect_none=True),
         Rule("compressed-segmentation", ignore_urls=["www.janelia.org"]),
         Rule("config", ignore_urls=["docs.red-dove.com"]),

@@ -810,6 +810,7 @@ bad_metadata = [
     "cloudshell-automation-api",
     "cognite-logger",
     "comet-git-pure",
+    "comet-ml",
     "config",
     "coverage_pth",
     "cronwatch",
