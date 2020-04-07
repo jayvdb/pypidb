@@ -612,6 +612,7 @@ rules.from_set(
             patch="https://github.com/smathot/python-pseudorandom/pull/1",
         ),
         Rule("python-qt5", ignore_bad_metadata=True),
+        Rule("python-registry", patch="https://github.com/williballenthin/python-registry/pull/97"),
         Rule("pytidylib", link_extract=_url_no_extract, expect_none=True),
         Rule("py-trello", ["tox"], patch="https://github.com/sarumont/py-trello/pull/309"),
         Rule("pyviz-comms", ["pyviz", "jupyterlab"]),
