@@ -774,6 +774,7 @@ bad_metadata = [
     "azureml-dataprep",
     "azureml-defaults",
     "azureml-explain-model",
+    "azureml-mlflow",
     "azureml-pipeline-core",
     "azureml-pipeline-steps",
     "azureml-pipeline",

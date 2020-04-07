@@ -181,6 +181,8 @@ class DefaultRule(Rule):
                 preload = ["azure"]
             if key == "azure-kusto-ingest":
                 preload = ["azure", "jupyterhub"]
+            if key == "azureml-mlflow":
+                preload = ["azure", "mlflow"]
             kwargs["reject_match_func"] = partial(
                 combine, funcs=[reject_docs_match, ms_azure_reject_match]
             )
