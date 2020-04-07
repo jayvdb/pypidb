@@ -626,6 +626,7 @@ rules.from_set(
         Rule("quickproxy", ["tornado-proxy"], expect_none=True),
         Rule("repoze-sphinx-autointerface", ["docutils"]),
         Rule("repoze-who-plugins-sa", match="repoze-who-sqlalchemy"),
+        Rule("requests-opentracing", match="python-requests"),
         Rule(
             "requests-threads",
             patch="https://github.com/requests/requests-threads/commit/5cda6.patch",

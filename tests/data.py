@@ -669,6 +669,7 @@ name_mismatch_metadata = {
     "repoze.what.plugins.sql": "https://github.com/repoze/repoze.what-sql",
     "repoze.who.plugins.sa": "https://github.com/repoze/repoze.who-sqlalchemy",
     "requests-cache-latest": "https://github.com/reclosedev/requests-cache",
+    "requests-opentracing": "https://github.com/opentracing-contrib/python-requests",
     "respite": "https://github.com/jgorset/django-respite",
     "rest_framework_auth0": "https://github.com/mcueto/djangorestframework-auth0",
     "robotremoteserver": "https://github.com/robotframework/PythonRemoteServer",
