@@ -1354,6 +1354,7 @@ setuppy_mismatches = [
     "python-owasp-zap-v2-4",
     "pytorch-pretrained-bert",
     "pytorch-transformers",
+    "pyuwsgi",
     "py-vapid",
     "pyviz",
     "pywatchman",

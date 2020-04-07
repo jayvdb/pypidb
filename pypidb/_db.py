@@ -64,6 +64,7 @@ multipackage_repos = {
     "https://github.com/fabioz/PyDev.Debugger",
     "https://github.com/galaxyproject/galaxy",
     "https://github.com/kyamagu/faiss-wheels",
+    "https://github.com/unbit/uwsgi",
 }
 multipackage_repos = set(i.lower() for i in multipackage_repos)
 
