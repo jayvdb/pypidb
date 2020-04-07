@@ -850,6 +850,7 @@ bad_metadata = [
     "dox",
     "dtopt",  # https://svn.colorstudy.com/dtopt offline
     "Durus",
+    "electrical-calendar",
     "encutils",  # Should be https://code.google.com/p/cssutils
     "enum",  # stdlib
     "ephemeral-port-reserve",

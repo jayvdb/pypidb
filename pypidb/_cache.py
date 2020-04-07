@@ -351,6 +351,7 @@ def CacheControl(
     sess.mount("https://www.blueskyonmars.com", _block_request_adapter)
 
     sess.mount("https://gitorious.org", NoVerifyHTTPAdapter())  # oset
+    sess.mount("https://gisce.net", NoVerifyHTTPAdapter())  # electrical-calendar
 
     return sess
 
