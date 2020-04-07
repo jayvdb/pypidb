@@ -175,6 +175,7 @@ class PortingdbLoader(Loader):
             "libdiscid",
             "ly",
             "lzo",
+            "magic",
             "magnumclient",
             "manilaclient",
             "memcached",  # also python3-memcached
@@ -196,6 +197,7 @@ class PortingdbLoader(Loader):
             "poppler-qt4",
             "poppler-qt5",
             "qt5",
+            "registry",
             "rsdclient",
             "saharaclient",
             "sane",
