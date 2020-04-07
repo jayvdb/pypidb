@@ -1035,6 +1035,7 @@ bad_metadata = [
     "stscipython",
     "suds",
     "supercaptcha",
+    "tableauhyperapi",
     "tambo",
     "Tempita",
     "termcolor",

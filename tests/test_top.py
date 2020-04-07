@@ -148,6 +148,7 @@ class TestTopTail(_TestBase):
         "pycuda",  # repo is auth protected
         "robinhood-aiokafka",
         "scons",
+        "tableauhyperapi",
     ]
 
     @foreach(names)

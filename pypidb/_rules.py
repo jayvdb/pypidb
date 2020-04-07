@@ -688,6 +688,7 @@ rules.from_set(
         Rule("supercaptcha", ["django"], expect_none=True),
         Rule("swapper", ["vera"]),
         Rule("sysv-ipc", ["posix-ipc"]),
+        Rule("tableauhyperapi", ["tableauserverclient"], expect_none=True),
         Rule("telepathy", ["insights"]),
         Rule("tensorboard", repo_filename="package.json"),
         Rule(
