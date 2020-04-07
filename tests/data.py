@@ -656,6 +656,7 @@ name_mismatch_metadata = {
     "pytest-verbose-parametrize": "https://github.com/manahl/pytest-plugins",
     "pytest-virtualenv": "https://github.com/manahl/pytest-plugins",
     "python-graph-core": "https://github.com/pmatiello/python-graph",
+    "python-graph-dot": "https://github.com/pmatiello/python-graph",
     "python-owasp-zap-v2-4": "https://github.com/zaproxy/zap-api-python",
     "python-potr": "https://github.com/afflux/pure-python-otr",
     "pythonz-bd": "https://github.com/berdario/pythonz",
