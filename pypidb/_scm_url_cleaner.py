@@ -437,7 +437,7 @@ def _github(url):
         logger.info("github split: {}".format(e))
         return
 
-    if owner in ["site", "users"]:
+    if owner in ["site", "users", "notifications"]:
         return
 
     trimmed_repo, _, ext = repo.partition(".")
