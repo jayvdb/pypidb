@@ -234,6 +234,7 @@ name_mismatch_fetched = {
     "barnum": "https://github.com/chris1610/barnum-proj",
     "bert-serving-server": "https://github.com/hanxiao/bert-as-service",
     "blurb": "https://github.com/python/core-workflow",
+    "boto3-stubs": "https://github.com/vemel/mypy_boto3_builder",
     "buildbot-slave": "https://github.com/buildbot/buildbot",
     "buildbot-worker": "https://github.com/buildbot/buildbot",
     "c7n": "https://github.com/cloud-custodian/cloud-custodian",
@@ -251,12 +252,14 @@ name_mismatch_fetched = {
     "ddg3": "https://github.com/jpetrucciani/python-duckduckgo",
     "doc-warden": "https://github.com/Azure/azure-sdk-tools",
     "dogpile": "https://bitbucket.org/zzzeek/dogpile.core",
+    "dwave-qbsolv": "https://github.com/dwavesystems/qbsolv",
     "ebcdic": "https://github.com/roskakori/CodecMapper",
     "exifread": "https://github.com/ianare/exif-py",
     "extract-msg": "https://github.com/mattgwwalker/msg-extractor",
     "eyes-selenium": "https://github.com/applitools/eyes.sdk.python",
     "f5-sdk": "https://github.com/F5Networks/f5-common-python",
     "feather-format": "https://github.com/wesm/feather",
+    "flask-opentracing": "https://github.com/opentracing-contrib/python-flask",
     "freecell_solver": "https://github.com/shlomif/fc-solve",
     "gapic-google-cloud-logging-v2": "https://github.com/googleapis/googleapis",
     "gax-google-logging-v2": "https://github.com/googleapis/googleapis",
@@ -267,6 +270,8 @@ name_mismatch_fetched = {
     "gviz-api": "https://github.com/google/google-visualization-python",
     "h2": "https://github.com/python-hyper/hyper-h2",
     "hpsklearn": "https://github.com/hyperopt/hyperopt-sklearn",
+    "ibm-cloud-sdk-core": "https://github.com/IBM/python-sdk-core",
+    "ibm-watson": "https://github.com/watson-developer-cloud/python-sdk",
     "igor": "http://git.tremily.us/?p=igor.git",
     "jdatetime": "https://github.com/slashmili/python-jalali",
     "keras-mxnet": "https://github.com/awslabs/keras-apache-mxnet",
@@ -276,6 +281,7 @@ name_mismatch_fetched = {
     "lomond": "https://github.com/wildfoundry/dataplicity-lomond",
     "mailjet-rest": "https://github.com/mailjet/mailjet-apiv3-python",
     "marionette-driver": "https://wiki.mozilla.org/Auto-tools/Projects/Marionette",
+    "matrix-client": "https://github.com/matrix-org/matrix-python-sdk",
     "maxminddb": "https://github.com/maxmind/MaxMind-DB-Reader-python",
     "mercurial": "https://www.mercurial-scm.org/repo/hg",
     "mibian": "https://github.com/yassinemaaroufi/MibianLib",
@@ -298,7 +304,10 @@ name_mismatch_fetched = {
     "mwlib.ext": "https://github.com/pediapress/mwlib",
     "mwlib.xhtml": "https://github.com/pediapress/mwlib",
     "mws": "https://github.com/python-amazon-mws/python-amazon-mws",
+    "mypy-boto3": "https://github.com/vemel/mypy_boto3_builder",
     "nox-automation": "https://github.com/theacodes/nox",
+    "opencensus-ext-logging": "https://github.com/census-instrumentation/opencensus-python",
+    "opencensus-ext-requests": "https://github.com/census-instrumentation/opencensus-python",
     "opencensus-ext-stackdriver": "https://github.com/census-instrumentation/opencensus-python",
     "opencensus-ext-threading": "https://github.com/census-instrumentation/opencensus-python",
     "opencv-contrib-python-headless": "https://github.com/skvark/opencv-python",
@@ -347,6 +356,7 @@ name_mismatch_fetched = {
     "thLib": "http://work.thaslwanter.at/thLib/html/",
     "turbomail": "https://github.com/marrow/marrow.mailer",
     "umap-learn": "https://github.com/lmcinnes/umap",
+    "urbanairship": "https://github.com/urbanairship/python-library",
     "urlgrabber": "http://yum.baseurl.org/gitwebd27a.html?p=urlgrabber",
     "wandb": "https://github.com/wandb/client",
     "wxpython": "https://github.com/wxWidgets/Phoenix",
@@ -364,6 +374,7 @@ name_mismatch_metadata = {
     "adal": "https://github.com/AzureAD/azure-activedirectory-library-for-python",
     "adapt-parser": "https://github.com/MycroftAI/adapt",
     "adns": "https://github.com/trolldbois/python3-adns",
+    "adyen": "https://github.com/Adyen/adyen-python-api-library",
     "aliyun-python-sdk-core": "https://github.com/aliyun/aliyun-openapi-python-sdk",
     "allure-behave": "https://github.com/allure-framework/allure-python",
     "allure-pytest": "https://github.com/allure-framework/allure-python",
@@ -380,7 +391,9 @@ name_mismatch_metadata = {
     "aws-cdk-aws-iam": "https://github.com/aws/aws-cdk",
     "aws-cdk-aws-kms": "https://github.com/aws/aws-cdk",
     "aws-cdk-aws-s3": "https://github.com/aws/aws-cdk",
+    "aws-client": "https://github.com/collectrium/col-aws-clients",
     "awsiotpythonsdk": "https://github.com/aws/aws-iot-device-sdk-python",
+    "awswrangler": "https://github.com/awslabs/aws-data-wrangler",
     "azure-cosmosdb-nspkg": "https://github.com/Azure/azure-cosmosdb-python",
     "azure-cosmosdb-table": "https://github.com/Azure/azure-cosmosdb-python",
     "azure-devops": "https://github.com/Microsoft/vsts-python-api",
@@ -447,6 +460,8 @@ name_mismatch_metadata = {
     "django-storages-redux": "https://github.com/jschneier/django-storages",
     "django-vz-wiki": "https://github.com/jobscry/vz-wiki",
     "djay": "https://github.com/aleontiev/dj",
+    "dm-sonnet": "https://github.com/deepmind/sonnet",
+    "dm-tree": "https://github.com/deepmind/tree",
     "dns-lexicon": "https://github.com/AnalogJ/lexicon",
     "docxtpl": "https://github.com/elapouya/python-docx-template",
     "dohq-artifactory": "https://github.com/devopshq/artifactory",
@@ -527,6 +542,7 @@ name_mismatch_metadata = {
     "icinga2py": "https://github.com/tclh123/icinga2-api",
     "instana": "https://github.com/instana/python-sensor",
     "interpret-core": "https://github.com/interpretml/interpret",
+    "intuit-oauth": "https://github.com/intuit/oauth-pythonclient",
     "ipmi": "https://github.com/zhao-ji/check_ipmi_sensor_v3",
     "isim": "https://github.com/dalemyers/xcrun",
     "j1m.sphinxautozconfig": "https://github.com/jimfulton/sphinxautozconfig",
@@ -589,14 +605,17 @@ name_mismatch_metadata = {
     "onetoken": "https://github.com/1token-trade/onetoken-py-sdk",
     "opencensus-context": "https://github.com/census-instrumentation/opencensus-python",
     "opencensus-ext-azure": "https://github.com/census-instrumentation/opencensus-python",
+    "opencensus-ext-grpc": "https://github.com/census-instrumentation/opencensus-python",
     "openexr": "http://www.excamera.com/sphinx/articles-openexr.html",
     "openshift": "https://github.com/openshift/openshift-restclient-python",
     "optimizely-sdk": "https://github.com/optimizely/python-sdk",
     "os_virtual_interfacesv2_python_novaclient_ext": "https://github.com/rackerlabs/os_virtual_interfacesv2_ext",
+    "paperboy": "https://github.com/edgeflip/dispatch",
     "parameterizedtestcase": "https://github.com/msabramo/python_unittest_parameterized_test_case",
     "patch-ng": "https://github.com/conan-io/python-patch",
     "paypalrestsdk": "https://github.com/paypal/PayPal-Python-SDK",
     "pdbpp": "https://github.com/antocuni/pdb",
+    "pdoc3": "https://github.com/pdoc3/pdoc",
     "perfume-bench": "https://github.com/leifwalsh/perfume",
     "phonenumberslite": "https://github.com/daviddrysdale/python-phonenumbers",
     "pip-ppm": "https://github.com/ekinertac/ppm",
@@ -625,6 +644,7 @@ name_mismatch_metadata = {
     "pybloom": "https://github.com/jaybaird/python-bloomfilter",
     "pycocotools": "https://github.com/cocodataset/cocoapi",
     "pyculiar": "https://github.com/wdm0006/pyculiarity",
+    "pydeck": "https://github.com/uber/deck.gl",
     "pydevd": "https://github.com/fabioz/PyDev.Debugger",
     "pydocumentdb": "https://github.com/Azure/azure-documentdb-python",
     "pydomo": "https://github.com/domoinc/domo-python-sdk",
@@ -665,6 +685,7 @@ name_mismatch_metadata = {
     "qdarkstyle": "https://github.com/ColinDuquesnoy/QDarkStyleSheet",
     "qiniu": "https://github.com/qiniu/python-sdk",
     "qt4reactor": "https://github.com/ghtdak/qtreactor",
+    "rapid-framework": "https://github.com/BambooHR/rapid",
     "ravello-sdk": "https://github.com/ravello/python-sdk",
     "readability-lxml": "https://github.com/buriy/python-readability",
     "repoman-scm": "https://github.com/tuenti/python-repoman",
@@ -686,6 +707,7 @@ name_mismatch_metadata = {
     "sidecar": "https://github.com/jupyter-widgets/jupyterlab-sidecar",
     "slackweb": "https://github.com/satoshi03/slack-python-webhook",
     "smdebug-rulesconfig": "https://github.com/awslabs/sagemaker-debugger-rulesconfig",
+    "smdebug": "https://github.com/awslabs/sagemaker-debugger",
     "snowballstemmer": "https://github.com/snowballstem/snowball",
     "social-auth-app-django": "https://github.com/python-social-auth/social-app-django",
     "social-auth-app-flask": "https://github.com/python-social-auth/social-app-flask",
@@ -694,12 +716,14 @@ name_mismatch_metadata = {
     "social-auth-storage-mongoengine": "https://github.com/python-social-auth/social-storage-mongoengine",
     "social-auth-storage-peewee": "https://github.com/python-social-auth/social-storage-peewee",
     "social-auth-storage-sqlalchemy": "https://github.com/python-social-auth/social-storage-sqlalchemy",
+    "sparkdl": "https://github.com/allwefantasy/spark-deep-learning",
     "sq-blocks": "https://github.com/square/blocks",
     "sst": "https://launchpad.net/selenium-simple-test",
     "stormssh": "https://github.com/emre/storm",
     "stups-tokens": "https://github.com/zalando-stups/python-tokens",
     "stups-zign": "https://github.com/zalando-stups/zign",
     "subgrab": "https://github.com/RafayGhafoor/Subscene-Subtitle-Grabber",
+    "suds-community": "https://github.com/suds-community/suds",
     "systemd-python": "https://github.com/systemd/python-systemd",
     "taskcluster-urls": "https://github.com/taskcluster/taskcluster-lib-urls",
     "tb-nightly": "https://github.com/tensorflow/tensorboard",
@@ -733,6 +757,7 @@ name_mismatch_metadata = {
     "vsts": "https://github.com/Microsoft/vsts-python-api",
     "weka-easypy": "https://github.com/weka-io/easypy",
     "wn": "https://github.com/nltk/wordnet",
+    "woocommerce": "https://github.com/woocommerce/wc-api-python",
     "word2number": "https://github.com/akshaynagpal/w2n",
     "wordaxe": "https://sourceforge.net/projects/deco-cow",
     "ws4py": "https://github.com/Lawouach/WebSocket-for-Python",
@@ -755,7 +780,9 @@ mismatch.update(name_mismatch_fetched)
 invalid = ["tf-nightly-2-0-preview"]
 
 bad_metadata = [
+    "2to3",
     "abclient",
+    "affinity",
     "aiotask-context",
     "alooma",
     "Aman",
@@ -772,11 +799,13 @@ bad_metadata = [
     "awshelpers",
     "azure-functions",
     "azureml-automl-core",
+    "azureml-automl-runtime",
     "azureml-core",
     "azureml-dataprep-native",
     "azureml-dataprep",
     "azureml-defaults",
     "azureml-explain-model",
+    "azureml-interpret",
     "azureml-mlflow",
     "azureml-pipeline-core",
     "azureml-pipeline-steps",
@@ -784,6 +813,7 @@ bad_metadata = [
     "azureml-sdk",
     "azureml-telemetry",
     "azureml-train-automl-client",
+    "azureml-train-automl-runtime",
     "azureml-train-automl",
     "azureml-train-core",
     "azureml-train",
@@ -812,6 +842,7 @@ bad_metadata = [
     "chubby",
     "client",
     "cloudshell-automation-api",
+    "cmsis-pack-manager",
     "cognite-logger",
     "comet-git-pure",
     "comet-ml",
@@ -857,6 +888,7 @@ bad_metadata = [
     "dopen",
     "DoubleMetaphone",
     "dox",
+    "dox-mortar",
     "dtopt",  # https://svn.colorstudy.com/dtopt offline
     "Durus",
     "electrical-calendar",
@@ -930,6 +962,7 @@ bad_metadata = [
     "mysql-connector-python",
     "mysql-connector-python-rf",
     "neptune-client",  # Finds https://github.com/neptune-ml/neptune-contrib
+    "netapp-lib",
     "newrelic",
     "nose-fixes",
     "nose-fixes",  # < 10 downloads per day
@@ -1005,6 +1038,7 @@ bad_metadata = [
     "python-mpd",
     "python-uinput",
     "pythonwhois",
+    "pytictoc",
     "pytidylib",
     "pytorch",
     "pyudorandom",
@@ -1015,6 +1049,7 @@ bad_metadata = [
     "quickproxy",
     "random2",
     "reddit",
+    "replit",  # todo
     "reportlab",
     "requestsexceptions",
     "ReviewBoard",
@@ -1044,7 +1079,10 @@ bad_metadata = [
     "solartime",
     "spark",  # www.hugedomains.com (http://trac.pytan.com)
     "sphinxcontrib-infrae",
+    "sq-native",
+    "sqlalchemy-teradata",
     "stacks",
+    "staff-graded-xblock",
     "stemming",  # todo
     "strict-rfc3339",
     "stscipython",
@@ -1054,8 +1092,10 @@ bad_metadata = [
     "tambo",
     "Tempita",
     "tensorboard-plugin-wit",
+    "tensorflow-addons",
     "termcolor",
     "testflo",
+    "testinfiniteloop",
     "tgfastdata",
     "timedop",
     "toastcord",
@@ -1135,6 +1175,7 @@ missing_repos = [
     "github-console",  # https://github.com/luoyeah/github-console
     "github-languages",  # https://github.com/upcwangying/github-languages-python
     "github-repo",  # https://github.com/looking-for-a-job/github-repo.py (user disappeared)
+    "glob3",
     "hachoir-core",  # haypo
     "hachoir-metadata",  # haypo
     "hachoir-parser",  # haypo
@@ -1148,6 +1189,7 @@ missing_repos = [
     "metafone",  # https://github.com/al45tair/metaphone, but this is a dead fork
     "nose-testconfig",  # https://bitbucket.org/jnoller/nose-testconfig history at https://github.com/singingwolfboy/nose-testconfig
     "octohot",  # https://github.com/Hotmart-Org/octohot
+    "pdfpages",
     "pip-extras",  # https://github.com/russel/pip_extras
     "pip-upgrade",  # https://github.com/alistair-broomhead/pip_upgrade
     "pybarcode",  # https://bitbucket.org/whitie/python-barcode/ history preserved at https://github.com/emfcamp/python-barcode
@@ -1189,6 +1231,7 @@ setuppy_mismatches = [
     "antlr3-",
     "antlr4-",
     "apache-beam",
+    "airtable-python-wrapper",
     "asgi-redis",
     "aspy.yaml",
     "aws-cdk-",
@@ -1229,6 +1272,7 @@ setuppy_mismatches = [
     "django-pyodbc-azure",  # wrong branch
     "django-ranged-response",  # -> django-ranged-fileresponse
     "djangorestframework-jwt",
+    "django-rest-polymorphic",
     "django-storages-redux",
     "doc-warden",  # azure
     "dotnetcore2",  # doesnt contain the Python wrapper
@@ -1311,13 +1355,12 @@ setuppy_mismatches = [
     "nox-automation",
     "numpy-stl",
     "open3d-python",  # Intel
-    "opencensus-ext-azure",
-    "opencensus-ext-stackdriver",
-    "opencensus-ext-threading",
+    "opencensus-ext-",
     "opentelemetry-api",
     "pantsbuild-pants",
     "patch",
     "path-py",  # -> path
+    "pattern3",
     "phonenumberslite",  # -> phonenumbers
     "pinax-notifications",
     "pip-requ",
@@ -1330,6 +1373,7 @@ setuppy_mismatches = [
     "pybuilder-pip-tools",
     "pycli",  # name lives in <src>/__init__.py
     "pycocotools",
+    "pydeck",
     "pydevd-pycharm",
     "pydocumentdb",  # repo & project renamed to azure-cosmos
     "pydot2",  # folded back into pydot project
@@ -1358,10 +1402,11 @@ setuppy_mismatches = [
     "pytest-verbose-parametrize",
     "pytest-virtualenv",
     "python-awk",
-    "pythonz-bd",  # setup.py contains pythonz
     "python-geoip-geolite2",
     "python-graph-core",
+    "python-graph-dot",
     "python-owasp-zap-v2-4",
+    "pythonz-bd",  # setup.py contains pythonz
     "pytorch-pretrained-bert",
     "pytorch-transformers",
     "pyuwsgi",
@@ -1383,11 +1428,13 @@ setuppy_mismatches = [
     "scons",
     "sfctl",
     "sfmergeutility",
+    "sfx-jaeger-client",
     "shadowsocks",  # https://github.com/shadowsocks/shadowsocks "removed according to regulations"
     "sk-video",
     "smmap2",  # 'mirror' of smmap
     "smsapi-client",
     "snowballstemmer",
+    "sparkdl",
     "sseclient-py",
     "stompest",
     "stompest",
@@ -1398,6 +1445,7 @@ setuppy_mismatches = [
     "tf-estimator-nightly",
     "tf-nightly",
     "tg-ext-silverplate",  # empty repo
+    "torchgeometry",
     "tox-monorepo",
     "treeherder-client",
     "trollius",  # branch trollius
