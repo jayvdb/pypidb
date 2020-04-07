@@ -393,7 +393,6 @@ def get_file_cache_session(cache_name):
         "www.roundup-tracker.org",
         "code.mibian.net",
         "peak.telecommunity.com",
-        "tilestache.org",
         "www.ruffus.org.uk",
         "kaino.kotus.fi",
         "wordlist.aspell.net",

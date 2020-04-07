@@ -111,6 +111,7 @@ class TestFedora(_TestBase):
         "tambo",
         "tempita",
         "termcolor",
+        "tilestache",  # https://github.com/jayvdb/pypidb/issues/93
         "TroveClient",
         "zbase32",
         "zuul-sphinx",  # no license
