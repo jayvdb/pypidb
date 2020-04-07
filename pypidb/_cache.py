@@ -415,6 +415,7 @@ def get_file_cache_session(cache_name):
         "www.unnotebook.com",  # cloudfront.net, *.cloudfront.net
         "download.ros.org",  # *.osuosl.org
         "fimi.ua.ac.be",  # pyfim
+        "kassiopeia.juls.savba.sk",  # unicode; errkorp.juls.savba.sk
         "www.hackersdelight.org",  # *.ipower.com
         "download.qt-project.org",  # *.qt.io
         "occiput.scienceontheweb.net",  # petlink
