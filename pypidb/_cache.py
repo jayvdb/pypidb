@@ -433,6 +433,7 @@ def get_file_cache_session(cache_name):
         "www.grantjenks.com",  # https://github.com/grantjenks/python-diskcache/issues/141
         "www.nomadblue.com",  # *.herokuapp.com
         "www.likit.lt",  # ebcdic, *.serveriai.lt
+        "www.jsnp.net",  # magic
         "demo.drfdocs.com",  # cert github
         "spockframework.org",  # github
         "schemaform.io",  # github

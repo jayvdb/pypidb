@@ -489,6 +489,7 @@ rules.from_set(
             expect_none=True,
         ),
         Rule("logging", link_extract=_url_no_extract, expect_none=True),
+        Rule("magic", ignore_bad_metadata=True),
         Rule("magma-lang", link_extract=_url_no_extract),
         Rule(
             "mailgun",

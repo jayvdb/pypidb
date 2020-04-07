@@ -782,6 +782,7 @@ class SCMURLCleaner(object):
         "code.welldev.org": _all,
         "web.archive.org/web/20130829003029/http://code.larlet.fr/django-oauth/wiki/Home": _all,
         "svn.wiretooth.com/svn/open/pypicache": _all,
+        "http://www.jsnp.net/code/": _all,
         "web.archive.org/web/2009*/http://svn.wiretooth.com/svn/open/pypicache/": _all,
         "web.archive.org/web/20131016122638/http://vehq.ru/project/django-extended-attachments/": _all,
         "hg.vehq.ru": _all,  # TODO: test entries on http://hg.vehq.ru/index.html

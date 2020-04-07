@@ -113,6 +113,7 @@ exact_metadata = {
     "logentries-lecli": "https://github.com/logentries/lecli",
     "logging": "https://bitbucket.org/vinay.sajip/logging",
     "lzmaffi": "https://github.com/r3m0t/backports.lzma",
+    "magic": "http://www.jsnp.net/code/magic.py",
     "mailman-hyperkitty": "https://gitlab.com/mailman/mailman-hyperkitty/",
     "mesh-tensorflow": "https://github.com/tensorflow/mesh",
     "mockredispy": "https://github.com/locationlabs/mockredis",
@@ -1128,6 +1129,7 @@ missing_repos = [
     "iptcinfo",  # https://bitbucket.org/gthomas/iptcinfo , history retained at https://github.com/20minutes/iptcinfo
     "kubetop",  # https://github.com/leastauthority.com/kubetop
     "logging",
+    "magic",  # is a DreamHost 404 page
     "metafone",  # https://github.com/al45tair/metaphone, but this is a dead fork
     "nose-testconfig",  # https://bitbucket.org/jnoller/nose-testconfig history at https://github.com/singingwolfboy/nose-testconfig
     "octohot",  # https://github.com/Hotmart-Org/octohot
