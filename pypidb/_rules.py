@@ -218,6 +218,8 @@ class DefaultRule(Rule):
             preload = ["orange3"]
         elif key.startswith("moz"):
             preload = ["sphinx", "sphinx-rtd-theme", "requests"]
+        elif key.startswith("kivy-deps-"):
+            kwargs["ignore_urls"] = ["kivy.org"]
         elif key in ("turbogears2",):
             preload = ["bzr"]
         elif key in ("turbogears", "turbomail"):
