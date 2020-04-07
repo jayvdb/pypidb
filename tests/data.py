@@ -337,6 +337,7 @@ name_mismatch_fetched = {
     "swapper": "https://github.com/wq/django-swappable-models",
     "tagpy": "http://git.tiker.net/?p=tagpy.git",
     "telepathy": "https://github.com/hackliff/intuition-plugins",
+    "teradatasql": "https://github.com/Teradata/python-driver",
     "terminalone": "https://github.com/MediaMath/t1-python",
     "tf-estimator-nightly": "https://github.com/tensorflow/estimator",
     "tf-nightly-2-0-preview": "https://github.com/tensorflow/tensorflow",
@@ -1384,6 +1385,7 @@ setuppy_mismatches = [
     "tb-nightly",
     "tdlib",
     "tensorflow-",
+    "teradatasql",
     "tf-estimator-nightly",
     "tf-nightly",
     "tg-ext-silverplate",  # empty repo
