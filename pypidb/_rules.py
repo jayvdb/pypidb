@@ -586,6 +586,7 @@ rules.from_set(
         Rule("pyke", ignore_bad_metadata=True),
         Rule("pylirc", ignore_urls=["www.lirc.org"]),
         Rule("pymetar", ["future"]),
+        Rule("pymf", ignore_bad_metadata=True),
         Rule("pymilia", ignore_urls=["www.boost.org"], ignore_bad_metadata=True),
         Rule("pymilter", patch="https://github.com/sdgathman/pymilter/pull/36"),
         Rule("pymock", link_extract=get_html_hrefs, ignore_bad_metadata=True),
