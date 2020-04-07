@@ -765,6 +765,7 @@ bad_metadata = [
     "augeas",
     "augur",
     "awsebcli",
+    "awshelpers",
     "azure-functions",
     "azureml-automl-core",
     "azureml-core",

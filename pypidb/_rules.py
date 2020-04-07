@@ -272,6 +272,7 @@ rules.from_set(
             link_extract=_url_no_extract,
             expect_none=True,
         ),
+        Rule("awshelpers", link_extract=_url_no_extract, expect_none=True),
         Rule("aws-sam-translator", ["aws-sam-cli"]),
         Rule("awsretry", ignore_bad_metadata=True),
         Rule("backports", ignore_bad_metadata=True),

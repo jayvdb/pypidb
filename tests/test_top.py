@@ -163,6 +163,7 @@ class TestTop30Days(_TestBase):
 
     names = _month
     expected_failures = _TestBase.expected_failures + [
+        "awshelpers",
         "edx-tincan-py35",
         "clearbit",
         "kivy-deps-sdl2",  # no suitable metadata
