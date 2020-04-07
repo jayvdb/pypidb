@@ -97,10 +97,6 @@ class TestExceptions(_TestBase):
         with self.assertRaises(IncompletePackageMetadata):
             self.converter.get_vcs("kmod")
 
-    def test_no_urls_mulpyplexer(self):
-        with self.assertRaises(PackageWithoutUrls):
-            self.converter.get_vcs("mulpyplexer")
-
     def test_no_urls_pygments_ansi_color(self):
         with self.assertRaises(IncompletePackageMetadata):
             self.converter.get_vcs("pygments-ansi-color")

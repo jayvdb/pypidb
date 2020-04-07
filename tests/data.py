@@ -907,7 +907,6 @@ bad_metadata = [
     "Morfessor",  # needs scraping depth 2 to find https://github.com/aalto-speech/morfessor mentioned on http://morpho.aalto.fi/projects/morpho/morfessor2.html
     "mozterm",
     "msal-extensions",
-    "mulpyplexer",
     "multicoder",
     "multimethods",
     "myghty",  # replaced with mako; homepage redirects back to pypi

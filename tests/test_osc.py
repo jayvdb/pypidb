@@ -82,7 +82,6 @@ class TestOpenSUSEMain(_TestBase):
         "Gloo",
         "inifile",
         "kid",
-        "mulpyplexer",
         "mysql-connector-python",
         "nagios-http-json",  # deleted
         "ovirt-engine-sdk",

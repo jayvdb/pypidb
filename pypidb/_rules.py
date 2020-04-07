@@ -784,6 +784,7 @@ _email_matches = {
     "tomaz+pypi@tomaz.me": "Yubico/python-{name}",
     "vinay_sajip@red-dove.com": "https://bitbucket.org/vinay.sajip/{name}",
     "vmalloc@gmail.com": "vmalloc",
+    "yans@yancomm.net": "zardus",
     "yubico@yubico.com": "Yubico/python-{name}",
 }
 
