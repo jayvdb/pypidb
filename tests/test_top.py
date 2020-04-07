@@ -44,6 +44,7 @@ def _fetch_names(kind="top4kyear", xstatic=False, ignore_failures=True):
 
 
 _all = list(_fetch_names())
+_month = list(name for name in _fetch_names("top4kmonth") if name not in _all)
 
 
 @expand
@@ -150,6 +151,30 @@ class TestTopTail(_TestBase):
         "scons",
         "tableauhyperapi",
         "tensorboard-plugin-wit",
+    ]
+
+    @foreach(names)
+    def test_package(self, name):
+        self._test_names([name])
+
+
+@expand
+class TestTop30Days(_TestBase):
+
+    names = _month
+    expected_failures = _TestBase.expected_failures + [
+        "edx-tincan-py35",
+        "clearbit",
+        "kivy-deps-sdl2",  # no suitable metadata
+        "mandrill-37",
+        "mxnet-cu90mkl",
+        "netapp-lib",
+        "pretty-bad-protocol",  # todo
+        "replit",
+        "strsim",  # old version of strsimpy
+        "testinfiniteloop",
+        "tensorflow-addons",
+        "watson-machine-learning-client-v4",
     ]
 
     @foreach(names)
