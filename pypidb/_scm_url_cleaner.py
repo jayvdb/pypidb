@@ -681,6 +681,7 @@ class SCMURLCleaner(object):
         "git.openstack.org": _get_redirect_location,
         "gitlab.gnome.org": _gitlab,
         "foss.heptapod.net": _gitlab,
+        "git.nzoss.org.nz": _gitlab,  # detect-delimiter
         "code.qt.io/cgit/": _strip_after_dot_git,
         "gitlab.freedesktop.org": _gitlab,
         "*.freedesktop.org/releases/": partial(
