@@ -31,6 +31,7 @@ except ImportError:  # pragma: no cover
 
 _block_request_adapter = Status500Adapter()
 logger = setup_logging()
+_CI = os.getenv("CI", "")
 
 MAX_REDIRECTS = 10
 retries = 3
@@ -58,6 +59,8 @@ def get_timeout(url):
         return Timeout(connect=30, read=30, total=60)
     if "w3.org" in url or "pygal.org" in url:
         return Timeout(connect=30, read=30, total=45)
+    if not _CI and "galaxyproject.org" in url:
+        return Timeout(connect=100, read=100, total=200)
 
     return Timeout(connect=15, read=11, total=40)
 
@@ -379,6 +382,7 @@ def get_file_cache_session(cache_name):
         "luispedro.org",  # pymorph
         "dir.gmane.org",  # dm.xmlsec-binding
         "bibframe.org",  # pybibframe
+        "galaxyproject.org",  # galaxy
         # nothing on https:
         "www.mypy-lang.org",
         "www.decida.org",
