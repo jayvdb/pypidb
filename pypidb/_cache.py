@@ -463,6 +463,7 @@ def get_file_cache_session(cache_name):
         "babel.pocoo.org",  # *.readthedocs.io, readthedocs.io
         "www.zodb.org",  # *.readthedocs.io, readthedocs.io
         "www.pygal.org",
+        "cloudbridge.cloudve.org",  # readthedocs
         "www.getlfs.com",  # cert wrong host
         "demo.getlfs.com",  # www.holz-hoehne.de
         "docs.getlfs.com",  # rtd
