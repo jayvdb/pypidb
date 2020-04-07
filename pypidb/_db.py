@@ -63,6 +63,7 @@ multipackage_repos = {
     "https://github.com/Azure/azure-storage-python",
     "https://github.com/fabioz/PyDev.Debugger",
     "https://github.com/galaxyproject/galaxy",
+    "https://github.com/kyamagu/faiss-wheels",
 }
 multipackage_repos = set(i.lower() for i in multipackage_repos)
 

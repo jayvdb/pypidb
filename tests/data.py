@@ -461,6 +461,7 @@ name_mismatch_metadata = {
     "entropy-store": "https://github.com/fusionapp/entropy",
     "esrally": "https://github.com/elastic/rally",
     "etcd3gw": "https://github.com/dims/etcd3-gateway",
+    "faiss-cpu": "https://github.com/kyamagu/faiss-wheels",
     "fake-factory": "https://github.com/joke2k/faker",
     "fbprophet": "https://github.com/facebook/prophet",
     "fb-re2": "https://github.com/facebook/pyre2",
