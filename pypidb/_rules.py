@@ -561,6 +561,7 @@ rules.from_set(
         ),
         Rule("py9p", repo_filename="setup.py.in"),
         Rule("pyaml", match="pretty-yaml"),
+        Rule("pyastronomy", link_extract=get_html_hrefs, fetch_count=20),
         Rule("pybrain", ignore_bad_metadata=True),
         Rule("pycddb", ignore_bad_metadata=True),
         Rule("pycotap", link_extract=get_html_hrefs),
