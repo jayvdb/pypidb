@@ -19,14 +19,27 @@ class Status500Adapter(BlockAdapter):
     send = BlockAdapter.send_block
 
 
-class IPBlockAdapter(BlockAdapter):
+class IPBlockAdapter(BlockAdapter, RedirectAdapter):
     def send(self, request, *args, **kwargs):
         url = request.url
         if url.startswith("http"):
             if url[4] == "s":
-                is_IP = url[8].isdigit()
+                start = 8
             else:
-                is_IP = url[9].isdigit()
+                start = 7
+            is_num = url[start].isdigit()
+            is_IP = False
+            logger.info("is_num = {}; is_IP = {}: {}".format(is_num, is_IP, url))
+            if is_num:
+                ip_parts = url[start:].split(".", 3)
+                logger.info("ip_parts = {}: {}".format(ip_parts, url))
+                if len(ip_parts) == 4:
+                    ip_parts[3] = ip_parts[3].split("/", 1)[0]
+                    logger.info("ip_parts = {}: {}".format(ip_parts, url))
+                    is_IP = all(part.isdigit() for part in ip_parts)
+                elif ip_parts[0].startswith("localhost"):
+                    is_IP = True
+            logger.info("is_IP = {}: {}".format(is_IP, url))
             if is_IP:
                 return self.send_block(request, *args, **kwargs)
 
