@@ -29,23 +29,61 @@ class IPBlockAdapter(BlockAdapter, RedirectAdapter):
                 start = 7
             is_num = url[start].isdigit()
             is_IP = False
-            logger.info("is_num = {}; is_IP = {}: {}".format(is_num, is_IP, url))
+            logger.debug("is_num = {}; is_IP = {}: {}".format(is_num, is_IP, url))
             if is_num:
                 ip_parts = url[start:].split(".", 3)
-                logger.info("ip_parts = {}: {}".format(ip_parts, url))
+                logger.debug("ip_parts = {}: {}".format(ip_parts, url))
                 if len(ip_parts) == 4:
                     ip_parts[3] = ip_parts[3].split("/", 1)[0]
-                    logger.info("ip_parts = {}: {}".format(ip_parts, url))
+                    logger.debug("ip_parts = {}: {}".format(ip_parts, url))
                     is_IP = all(part.isdigit() for part in ip_parts)
                 elif ip_parts[0].startswith("localhost"):
                     is_IP = True
-            logger.info("is_IP = {}: {}".format(is_IP, url))
+            logger.debug("is_IP = {}: {}".format(is_IP, url))
             if is_IP:
                 return self.send_block(request, *args, **kwargs)
 
         logger.debug("IPblock of {} skipped".format(request.url))
         try:
             resp = super(IPBlockAdapter, self).send(request, *args, **kwargs)
+        except Exception as e:
+            resp = self.handle_error(e)
+        return resp
+
+
+class CDNBlockAdapter(BlockAdapter):
+    cdn_prefixes = {
+        "ajax",
+        "assets",
+        "cdn",
+        "cdnjs",
+        "fonts",
+        "i",
+        "img",
+        "images",
+        "imgix",
+        "maxcdn",
+        "media",
+        "netdna",
+        "static",
+        "unpkg",  # unpkg.com
+    }
+    cdn_domains = {
+        "a.trellocdn.com",
+        "code.jquery.com",
+    }
+
+    def send(self, request, *args, **kwargs):
+        url = request.url
+        p = urlsplit(url)
+        netloc = p.netloc.lower()
+        parts = netloc.split(".")
+        if parts[0] in self.cdn_prefixes or netloc in self.cdn_domains:
+            return self.send_block(request, *args, **kwargs)
+
+        logger.debug("cdn block of {} skipped".format(request.url))
+        try:
+            resp = super(CDNBlockAdapter, self).send(request, *args, **kwargs)
         except Exception as e:
             resp = self.handle_error(e)
         return resp
