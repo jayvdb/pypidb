@@ -11,12 +11,16 @@ from pypidb import __name__ as app_name
 
 from ._cache import cache_subdir
 from ._db import multipackage_repos, reverse_mappings
-from ._html import get_html_hrefs
 from ._patch import (
     _get_patch_redirects,
     _get_raw_patch_url,
-    _url_extractor,
+)
+from ._url_extract import (
+    get_html_hrefs,
+    _url_extract_both,
     _url_extractor_wrapper,
+    _url_extractor_wrapper_no_dns,
+    _url_no_extract,
 )
 from ._scm_url_cleaner import _match_hostname
 from ._similarity import normalize
@@ -48,21 +52,6 @@ class NoExpirationDiskCache(DiskCache, dns_cache.expiration.NoExpirationCache):
 dns_cache_dirpath = cache_subdir("dns")
 dns_cache = NoExpirationDiskCache(directory=dns_cache_dirpath, min_ttl=NO_EXPIRY)
 resolver = override_system_resolver(cache=dns_cache)
-
-
-def _url_extractor_wrapper_no_dns(content, url):
-    return _url_extractor.find_urls(content, only_unique=True, check_dns=False)
-
-
-def _url_no_extract(content, url):
-    return []
-
-
-def _url_extract_both(content, url):
-    for url in get_html_hrefs(content, url):
-        yield url
-    for url in _url_extractor_wrapper(content, url):
-        yield url
 
 
 def preload_reject_match(name, url):

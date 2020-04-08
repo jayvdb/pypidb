@@ -1,22 +1,11 @@
 import io
 
 import unidiff
-import urlextract
 from logging_helper import setup_logging
 
+from ._url_extract import _url_extractor_wrapper
+
 logger = setup_logging()
-
-try:
-    _url_extractor = urlextract.URLExtract(cache_dns=False)
-except Exception:
-    _url_extractor = urlextract.URLExtract()
-
-
-def _url_extractor_wrapper(content, url=None):
-    try:
-        return _url_extractor.find_urls(content, only_unique=True, check_dns=True)
-    except Exception:
-        return _url_extractor.find_urls(content, only_unique=True)
 
 
 def _get_raw_patch_url(url):
