@@ -13,6 +13,7 @@ from requests.packages.urllib3.util.timeout import Timeout
 
 from pypidb import __name__ as app_name
 from ._adapters import (
+    CDNBlockAdapter,
     ContentTypeBlockAdapter,
     DomainListBlockAdapter,
     HTTPSAdapter,
@@ -106,6 +107,7 @@ class MoreCodesCacheController(CacheController):
 
 
 class ForceTimeoutHTTPAdapter(
+    CDNBlockAdapter,
     DomainListBlockAdapter,
     IPBlockAdapter,
     LoginBlockAdapter,
@@ -267,42 +269,6 @@ def CacheControl(
     sess.mount("https://www.gnu.org/licenses/", _block_request_adapter)
     sess.mount("https://www.gnu.org/philosophy/", _block_request_adapter)
     sess.mount("https://tldrlegal.com", _block_request_adapter)
-    # images/js/css
-    sess.mount("http://i.imgur.com", _block_request_adapter)
-    sess.mount("https://i.imgur.com", _block_request_adapter)
-    sess.mount("https://img.shields.io/badge/", _block_request_adapter)
-    sess.mount("https://img.shields.io/pypi/", _block_request_adapter)
-    sess.mount("https://fonts.gstatic.com", _block_request_adapter)
-    sess.mount("https://media.readthedocs.org", _block_request_adapter)  # h2
-    sess.mount("https://assets.readthedocs.org", _block_request_adapter)
-    sess.mount("http://images.ctfassets.net", _block_request_adapter)  # singer-python
-    sess.mount("https://media.moyaproject.com", _block_request_adapter)  # lomond
-    sess.mount("https://static.apress.com", _block_request_adapter)  # lomond
-    sess.mount("https://a.trellocdn.com", _block_request_adapter)  # py-trello
-    sess.mount("https://cdn.shortpixel.ai", _block_request_adapter)
-    sess.mount("https://cdnjs.cloudflare.com", _block_request_adapter)
-    sess.mount("https://maxcdn.bootstrapcdn.com", _block_request_adapter)
-    sess.mount("https://static.docs.com", _block_request_adapter)
-    sess.mount("https://cdn.arduino.cc", _block_request_adapter)  # rpi-gpio
-    sess.mount("https://ajax.googleapis.com", _block_request_adapter)
-    sess.mount("https://cdn.vsassets.io", _block_request_adapter)  # azure
-    sess.mount(
-        "https://imgix.datadoghq.com", _block_request_adapter
-    )  # dogstatsd-python
-    sess.mount("https://cdn.optimizely.com", _block_request_adapter)
-    sess.mount("http://unpkg.com", _block_request_adapter)
-    sess.mount("https://unpkg.com", _block_request_adapter)
-    sess.mount("http://code.jquery.com", _block_request_adapter)
-    sess.mount("https://netdna.bootstrapcdn.com/", _block_request_adapter)
-    sess.mount("https://code.jquery.com", _block_request_adapter)
-    sess.mount(
-        "http://static.parastorage.com/services/third-party/fonts/",
-        _block_request_adapter,
-    )  # pathlib-mate
-    sess.mount(
-        "https://static.parastorage.com/services/third-party/fonts/",
-        _block_request_adapter,
-    )
     # pdf/papers
     sess.mount("https://arxiv.org/", _block_request_adapter)
     sess.mount("http://patft.uspto.gov/netacgi/", _block_request_adapter)  # very slow
