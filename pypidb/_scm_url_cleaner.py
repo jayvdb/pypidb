@@ -820,10 +820,6 @@ class SCMURLCleaner(object):
                 if at != -1:
                     repo = repo[:at]
 
-                # package and cffi end up with repo``
-                # https://github.com/lipoja/URLExtract/issues/13
-                repo = repo.strip("`")
-
                 if (
                     repo.endswith(".git")
                     or repo.endswith(".svg")
