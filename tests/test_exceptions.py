@@ -192,10 +192,6 @@ class TestExceptions(_TestBase):
         with self.assertRaises(PackageWithoutUrls):
             self.converter.get_vcs("awsebcli")
 
-    def test_hs_dbus_signature(self):
-        with self.assertRaises(PackageWithoutUrls):
-            self.converter.get_vcs("hs-dbus-signature")
-
     def test_github_issues_tools(self):
         with self.assertRaises(IncompletePackageMetadata):
             self.converter.get_vcs("github-issues-tools")
