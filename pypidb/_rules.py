@@ -324,9 +324,7 @@ rules.from_set(
         ),
         Rule(
             "dbus-signature-pyparsing",
-            ["hypothesis"],
-            ignore_urls=["hypothesis.works"],
-            expect_none=True,
+            patch="https://github.com/stratis-storage/dbus-signature-pyparsing/pull/13",
         ),
         Rule("debian", ignore_bad_metadata=True),
         Rule(
@@ -446,7 +444,7 @@ rules.from_set(
         Rule("gsutil", ignore_urls=["cloud.google.com/storage/docs/gsutil_install"]),
         Rule("hacking", ["pep8"]),
         Rule("haproxyctl", ignore_bad_metadata=True),
-        Rule("hs-dbus-signature", ["hypothesis"], expect_none=True),
+        Rule("hs-dbus-signature", patch="https://github.com/stratis-storage/hs-dbus-signature/pull/31"),
         Rule("hypothesis-pytest", ["hypothesis"], expect_none=True),
         Rule("imagecodecs", link_extract=get_html_hrefs),
         Rule("imreg", link_extract=get_html_hrefs),

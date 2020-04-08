@@ -49,6 +49,7 @@ exact_metadata = {
     "Contextual": "https://github.com/peak-legacy/contextual",
     "couchbase": "https://github.com/couchbase/couchbase-python-client",
     "cssutils": "https://bitbucket.org/cthedot/cssutils",
+    "dbus-signature-pyparsing": "https://github.com/stratis-storage/dbus-signature-pyparsing",
     "ddtrace": "https://github.com/DataDog/dd-trace-py",
     "DecoratorTools": "https://github.com/peak-legacy/decoratortools",
     "delegator-py": "https://github.com/kennethreitz/delegator",
@@ -97,6 +98,7 @@ exact_metadata = {
     "hacs-frontend": "https://github.com/hacs/frontend",
     "hdfs": "https://github.com/mtth/hdfs",
     "honeycomb-beeline": "https://github.com/honeycombio/beeline-python",
+    "hs-dbus-signature": "https://github.com/stratis-storage/hs-dbus-signature",
     "ibm-cos-sdk-core": "https://github.com/ibm/ibm-cos-sdk-python-core",
     "ibm-cos-sdk-s3transfer": "https://github.com/ibm/ibm-cos-sdk-python-s3transfer",
     "ibm-db": "https://github.com/ibmdb/python-ibmdb",
@@ -861,7 +863,6 @@ bad_metadata = [
     "dateutils",  # todo
     "dbf",
     "dbus-python",
-    "dbus-signature-pyparsing",
     "dci-utils",
     "demjson",
     "dependency_management",  # recheck
@@ -912,7 +913,6 @@ bad_metadata = [
     "google",
     "google-cloud-dataflow",
     "graph-tool",  # https://github.com/count0/graph-tool
-    "hs-dbus-signature",
     "hurry-filesize",
     "hypothesis-pytest",  # now part of https://github.com/DRMacIver/hypothesis
     "IGitt",

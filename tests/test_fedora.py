@@ -60,7 +60,6 @@ class TestFedora(_TestBase):
         "coverage_pth",
         "cvxopt",
         "dbf",
-        "dbus-signature-pyparsing",
         "demjson",
         "dialog",
         "digitalocean",  # version 0
@@ -69,7 +68,6 @@ class TestFedora(_TestBase):
         "fiat",
         "geoip",
         "graph-tool",
-        "hs-dbus-signature",
         "interfile",
         "justbases",
         "keystoneclient",  # version 0
