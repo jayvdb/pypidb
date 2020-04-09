@@ -61,7 +61,6 @@ class PortingdbLoader(Loader):
         "docs",
         "evic",  # pypi_name is wrong
         "firkin",
-        "grabserial",
         "gradunwarp",
         "gstreamer1",
         "gtkextra",
@@ -94,6 +93,7 @@ class PortingdbLoader(Loader):
         "pythia8",
         "pyxtrlock",
         "pyzy",
+        "rpmautospec",
         "rpm-generators",
         "schedutils",
         "simpleline",
