@@ -118,7 +118,7 @@ class Converter(object):
     def _accept_url(self, rule, name, url):
         url = self._cleaner.get_root(url)
         if not url:
-            return
+            return url
 
         if rule.reject_match(name, url):
             return False

@@ -46,6 +46,7 @@ def _match_hostname(url, condition, require_path=None, require_no_path=False):
 
         subdomain, other = other.split(".", 1)
         if subdomain in ["www"]:
+            logger.debug("url {} subdomain www".format(url))
             return False
     if not other.startswith(hostname):
         return None
@@ -61,10 +62,12 @@ def _match_hostname(url, condition, require_path=None, require_no_path=False):
             return True
 
         if require_path:
+            logger.debug("url {} no path".format(url))
             return False
 
     if path:
         if not other.startswith(path):
+            logger.debug("url {} not path {}".format(url, path))
             return False
 
     return True
@@ -76,6 +79,9 @@ def _first_two_path(url):
     owner = p.path[1:]
     owner, _, other = owner.partition("/")
     repo, _, other = other.partition("/")
+
+    if not owner or not repo:
+        return
 
     return (owner, repo)
 
@@ -219,6 +225,7 @@ def _subdomain_to_github(owner, url, exclude=[]):
 def _github_io(url):
     p = urlsplit(url)
     owner = p.netloc.split(".")[0]
+    logger.debug("_github_io {} {}".format(url, owner))
     if owner in [
         "api",
         "avatars",
@@ -230,8 +237,9 @@ def _github_io(url):
         "nodeload",
         "training",
         "user-images",
+        "www",
     ]:
-        return
+        return False
     path = p.path[1:]
     if not path:
         return
@@ -433,15 +441,22 @@ def _gitlab(url, hostname=None):
 _gitea = _hostname_two_paths  # gitea doesnt support groups
 
 
+@autolog
 def _github(url):
     try:
-        owner, repo = _first_two_path(url)
+        rv = _first_two_path(url)
     except Exception as e:  # pragma: no cover
         logger.info("github split: {}".format(e))
-        return
+        return False
 
-    if owner in ["site", "users", "notifications"]:
-        return
+    if not rv:
+        return False
+    owner, repo = rv
+
+    if not owner or not repo:
+        return False
+    if owner in ["site", "users", "notifications", "customer-stories-feed"]:
+        return False
 
     trimmed_repo, _, ext = repo.partition(".")
     if ext in ["git", "wiki"]:
@@ -793,7 +808,7 @@ class SCMURLCleaner(object):
 
     def _get_fixer(self, url):
         for host, func in self.fixers.items():
-            if _match_hostname(url, host):
+            if _match_hostname(url, host, require_path=False):
                 return func
 
     @autolog
