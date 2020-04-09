@@ -844,6 +844,8 @@ class SCMURLCleaner(object):
 
                 # https://github.com/lipoja/URLExtract/issues/13
                 repo = repo.strip(".")  # ebcdic / CodecMapper description
+                # github-team-organizer -> https://github.com/theskumar/python-dotenv)
+                repo = repo.strip(")")
 
                 if "bitbucket.org/" in url:
                     return "https://bitbucket.org/{}/{}".format(owner, repo)
