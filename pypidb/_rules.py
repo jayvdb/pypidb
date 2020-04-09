@@ -334,6 +334,7 @@ rules.from_set(
             "dephell-shells", patch="https://github.com/dephell/dephell_shells/pull/3"
         ),
         Rule("dai-sgqlc-3-5", ["sgqlc"], link_extract=_url_no_extract, expect_none=True),
+        Rule("dateutils", patch="https://github.com/jmcantrell/python-dateutils/pull/8"),
         Rule("divide-and-cover", ignore_urls=["unmaintained.tech"], expect_none=True),
         Rule(
             "django-articles",
