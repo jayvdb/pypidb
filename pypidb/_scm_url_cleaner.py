@@ -310,6 +310,9 @@ def _google_code(url):
 
     logger.debug("google code {}".format(url))
 
+    if p.netloc == "issuetracker.google.com" and p.path.startswith("/code/"):
+        p = urlsplit("https://code.google.com/" + p.path[6:])
+
     if p.netloc == "code.google.com":
         path = p.path[1:]
         if not path:  # pragma: no cover
@@ -692,6 +695,7 @@ class SCMURLCleaner(object):
         "code.google.com/archive/a/": _google_code,
         "code.google.com/p/": _google_code,
         "code.google.com/archive/p/": _google_code,
+        "issuetracker.google.com/p/": _google_code,
         "*.googlecode.com": _google_code,
         "git.openstack.org": _get_redirect_location,
         "gitlab.gnome.org": _gitlab,
