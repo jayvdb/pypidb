@@ -120,7 +120,10 @@ class Converter(object):
         if not url:
             return url
 
-        if rule.reject_match(name, url):
+        rv = rule.reject_match(name, url)
+        if isinstance(rv, str):
+            return rv
+        elif rv:
             return False
 
         return url

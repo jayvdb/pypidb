@@ -115,7 +115,11 @@ class Rule(object):
             if preload_reject_match(name, url):
                 return True
         if self.reject_match_func:
-            return self.reject_match_func(name, url)
+            rv = self.reject_match_func(name, url)
+            logger.info(
+                "{} rejecting match {} {}".format(self.reject_match_func, name, url)
+            )
+            return rv
 
     def reject_url(self, name, url):
         if self.ignore_urls:
@@ -152,6 +156,11 @@ def ms_azure_reject_match(name, url):
     if url.endswith("azure/azure-sdk"):
         return True
     return reject_names(name, url, _azure_exclude)
+
+
+def libvirt_hack(name, url):
+    if url.startswith("https://gitlab.com/libvirt/libvirt"):
+        return url.replace("/-/blob/master/docs/index.html.in", "-python")
 
 
 def combine(name, url, funcs):
@@ -473,7 +482,7 @@ rules.from_set(
         Rule("kitchen", ["hashlib"], expect_none=True),
         Rule("libarchive", match="PyEasyArchive"),  # libarchive
         Rule("librato-metrics", ignore_urls=["dev.librato.com"]),
-        Rule("libvirt-python", expect_none=True),
+        Rule("libvirt-python", reject_match_func=libvirt_hack),
         Rule("lightblue", ignore_bad_metadata=True),
         Rule("log4tailer", ignore_bad_metadata=True),
         Rule(

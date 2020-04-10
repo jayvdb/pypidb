@@ -249,10 +249,6 @@ class TestExceptions(_TestBase):
         with self.assertRaises(IncompletePackageMetadata):
             self.converter.get_vcs("amazon-dax-client")
 
-    def test_libvirt(self):
-        with self.assertRaises(PackageWithoutUrls):
-            self.converter.get_vcs("libvirt-python")
-
     def test_logilab_aspects(self):
         with self.assertRaises(PackageWithoutFiles):
             self.converter.get_vcs("aspects")

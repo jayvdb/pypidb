@@ -171,7 +171,6 @@ class TestOpenSUSEJupyter(_TestBase):
 class TestOpenSUSEAvocado(_TestBase):
 
     names = _fetch_names(project="devel:languages:python:avocado")
-    expected_failures = ["libvirt-python"]
 
     @foreach(names)
     def test_package(self, name):
