@@ -25,6 +25,7 @@ PyPI package rules added/updated:
 * `geoip`: Add email rule to find old MaxMind repository
 * `hs-dbus-signature`: Add patch
 * `libevdev`: find gitlab.freedesktop.org repository
+* `libvirt-python`: Add hack to reject libvirt C library repository
 * `logging`: Add email rule to find Bitbucket repository
 * `logreduce`: Update due to hoster softwarefactory-project.io changes
 * `magic`: Ignore missing files
@@ -40,6 +41,7 @@ PyPI package rules added/updated:
 * `pyxdg`: Replace GitHub mirror with gitlab.freedesktop.org repository
 * `requests-opentracing`: Fix match
 * `robinhood-aiokafka`: Prevent matching aiokafka
+* `ruffus`: Add patch
 * `subgrab`: Add patch
 * `tableauhyperapi`: Prevent matching `tableauserverclient`
 * `tvb-gdist`: Remove patch merged upstream
@@ -54,6 +56,7 @@ Enhancements:
 * rules: Implement url extraction maximum
 * adapters: Create CDNBlockAdapter
 * park_providers: Add allaboutcookies.org
+* SCM finder: Handle issuetracker.google.com
 * SCM finder: Remove trailing ) in repository names
 * SCM picker: Improve freedesktop SCM
 * SCM finder: Block github.com/notifications
