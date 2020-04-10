@@ -640,6 +640,7 @@ rules.from_set(
         Rule("robinhood-aiokafka", ["aiokafka"], link_extract=_url_no_extract, expect_none=True),
         Rule("rook", ignore_urls=["rookout.com"], expect_none=True),
         Rule("rpy2", patch="https://github.com/rpy2/rpy2/commit/ededbbf.patch"),
+        Rule("ruffus", patch="https://github.com/cgat-developers/ruffus/pull/118"),
         Rule("s3cmd", patch="https://github.com/s3tools/s3cmd/commit/8d314b01.patch"),
         Rule("s3pip", ["django-tastypie"], ignore_urls=["jlafon.io"], expect_none=True),
         Rule("salt", ignore_urls=["saltstack.org", "repo.saltstack.com"]),

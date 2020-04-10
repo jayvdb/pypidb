@@ -175,6 +175,7 @@ exact_metadata = {
     "ruamel-yaml": "https://sourceforge.net/projects/ruamel-yaml",
     "rwt": "https://github.com/jaraco/rwt",
     "rx": "https://github.com/ReactiveX/RxPY",
+    "ruffus": "https://github.com/cgat-developers/ruffus",
     "s3cmd": "https://github.com/s3tools/s3cmd",
     "sailthru-client": "https://github.com/sailthru/sailthru-python-client",
     "scaleapi": "https://github.com/scaleapi/scaleapi-python-client",
