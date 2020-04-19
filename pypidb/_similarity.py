@@ -5,7 +5,7 @@ import re
 import abydos.distance
 from logging_helper import setup_logging
 
-from pypidb._compat import PY2, logger_helper, urlsplit
+from pypidb._compat import PY2, StringTypes, logger_helper, urlsplit
 
 logger = setup_logging()
 if logger_helper and not PY2:
@@ -214,28 +214,28 @@ def get_best_match(name, urls):
     best = _get_weighted_best(name, accepted, _slash_endswith)
 
     if best:
-        if isinstance(best, str):
+        if isinstance(best, StringTypes):
             return best
         accepted = best
 
     best = _get_weighted_best(name, accepted, _endswith)
 
     if best:
-        if isinstance(best, str):
+        if isinstance(best, StringTypes):
             return best
         accepted = best
 
     best = _get_weighted_best(name, accepted, _python_and_name_match)
 
     if best:
-        if isinstance(best, str):
+        if isinstance(best, StringTypes):
             return best
         accepted = best
 
     best = _get_weighted_best(name, accepted, _only_name_match)
 
     if best:
-        if isinstance(best, str):
+        if isinstance(best, StringTypes):
             return best
         accepted = best
 
@@ -245,7 +245,7 @@ def get_best_match(name, urls):
     most_similar = _get_most_similar(name, set(accepted))
 
     # Reject multiple
-    if not isinstance(most_common, str):
+    if not isinstance(most_common, StringTypes):
         accepted = most_common
         most_common = None
 

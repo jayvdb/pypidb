@@ -10,6 +10,7 @@ from socialregexes.socialregexes import definitions as social_definitions
 from stdlib_list import stdlib_list
 
 from ._cache import _check_url_domain, get_file_cache_session, get_timeout
+from ._compat import StringTypes
 from ._db import _fetch_mapping, add_mapping, db_clear, mappings
 from ._exceptions import (
     IncompletePackageMetadata,
@@ -121,7 +122,7 @@ class Converter(object):
             return url
 
         rv = rule.reject_match(name, url)
-        if isinstance(rv, str):
+        if isinstance(rv, StringTypes):
             return rv
         elif rv:
             return False
@@ -535,7 +536,7 @@ class Converter(object):
         logger.info("looking up {}".format(name))
         cached_result = mappings.get(normalised_name)
         if cached_result:
-            if isinstance(cached_result, str):
+            if isinstance(cached_result, StringTypes):
                 return cached_result
             raise cached_result
 

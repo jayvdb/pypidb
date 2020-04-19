@@ -10,6 +10,7 @@ from dns_cache.diskcache import DiskCache
 from pypidb import __name__ as app_name
 
 from ._cache import cache_subdir
+from ._compat import PY2, StringTypes
 from ._db import multipackage_repos, reverse_mappings
 from ._patch import (
     _get_patch_redirects,
@@ -872,13 +873,13 @@ def _find_named_repo(name, emails=None):
     rules = []
     rule = _namespace_matches.get(name, None)
     if rule:
-        if isinstance(rule, str):
+        if isinstance(rule, StringTypes):
             rules.append(rule)
         else:
             rules = list(rule)
 
     ns_rules = _namespace_matches.get(namespace, [])
-    if isinstance(ns_rules, str):
+    if isinstance(ns_rules, StringTypes):
         rules.append(ns_rules)
     else:
         rules += list(ns_rules)
@@ -894,7 +895,7 @@ def _find_named_repo(name, emails=None):
             return "https://gitlab.freedesktop.org/{}/{}".format(address, name)
 
         email_rules = _email_matches.get(email, [])
-        if isinstance(email_rules, str):
+        if isinstance(email_rules, StringTypes):
             email_rules = [email_rules]
         for rule in email_rules:
             if rule not in rules:
