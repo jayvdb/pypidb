@@ -350,6 +350,7 @@ def get_file_cache_session(cache_name):
         "dir.gmane.org",  # dm.xmlsec-binding
         "bibframe.org",  # pybibframe
         "galaxyproject.org",  # galaxy
+        "www.pysmt.org",  # pysmt
         # nothing on https:
         "www.mypy-lang.org",
         "www.decida.org",
