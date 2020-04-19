@@ -36,10 +36,6 @@ class TestFiles(_TestBase):
 
 
 class TestExceptions(_TestBase):
-    def test_missing_package(self):
-        with self.assertRaises(InvalidPackage):
-            self.converter.get_vcs("reddit")
-
     def test_stdlib_version_0_0_0_unittest(self):
         with self.assertRaises(InvalidPackageVersion):
             self.converter.get_vcs("unittest")

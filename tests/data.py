@@ -1050,7 +1050,6 @@ bad_metadata = [
     "qet_tb_generator",
     "quickproxy",
     "random2",
-    "reddit",
     "replit",  # todo
     "reportlab",
     "requestsexceptions",
