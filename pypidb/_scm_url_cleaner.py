@@ -76,6 +76,8 @@ def _match_hostname(url, condition, require_path=None, require_no_path=False):
 def _first_two_path(url):
     p = urlsplit(url)
 
+    if not p.path:
+        return
     owner = p.path[1:]
     owner, _, other = owner.partition("/")
     repo, _, other = other.partition("/")
@@ -89,6 +91,8 @@ def _first_two_path(url):
 def _skip_x_path(url, skip=0, include_hostname=False, prefix=None):
     p = urlsplit(url)
 
+    if not p.path:
+        return
     path = p.path[1:]
     while skip:
         _, _, path = path.partition("/")
@@ -109,6 +113,8 @@ def _skip_x_path(url, skip=0, include_hostname=False, prefix=None):
 def _skip_one_path(url, owner=None, hostname=None, scheme="https"):
     p = urlsplit(url)
 
+    if not p.path:
+        return
     path = p.path[1:]
     if not path:
         return
@@ -128,6 +134,8 @@ def _skip_one_path(url, owner=None, hostname=None, scheme="https"):
 def _add_first_path(url, owner=None, hostname=None):
     p = urlsplit(url)
 
+    if not p.path:
+        return
     path = p.path[1:]
     repo, _, other = path.partition("/")
     if hostname:
@@ -144,6 +152,8 @@ def _hostname(url):
 def _hostname_first_path(url):
     p = urlsplit(url)
 
+    if not p.path:
+        return
     path = p.path[1:]
     repo, _, other = path.partition("/")
     return "https://{}/{}".format(p.netloc, repo)
@@ -152,6 +162,8 @@ def _hostname_first_path(url):
 def _hostname_two_paths(url, scheme="https", hostname=None, trailing=""):
     p = urlsplit(url)
 
+    if not p.path:
+        return
     path = p.path[1:]
     path1, _, other = path.partition("/")
     path2, _, other = other.partition("/")
@@ -165,6 +177,8 @@ def _hostname_two_paths(url, scheme="https", hostname=None, trailing=""):
 def _hostname_three_paths(url):
     p = urlsplit(url)
 
+    if not p.path:
+        return
     path = p.path[1:]
     path1, _, other = path.partition("/")
     path2, _, other = other.partition("/")
@@ -183,7 +197,7 @@ def _subdomain_to_path(url, hostname=None, prefix=None, exclude=[], append_part=
         return
     suffix = ""
     if append_part:
-       if p.path[0] != "/":
+       if not p.path or p.path[0] != "/":
            return
        parts = p.path[1:].split("/")
        suffix = "/" + parts[append_part - 1]
@@ -240,6 +254,8 @@ def _github_io(url):
         "www",
     ]:
         return False
+    if not p.path:
+        return
     path = p.path[1:]
     if not path:
         return
@@ -314,6 +330,8 @@ def _google_code(url):
         p = urlsplit("https://code.google.com/" + p.path[6:])
 
     if p.netloc == "code.google.com":
+        if not p.path:
+            return
         path = p.path[1:]
         if not path:  # pragma: no cover
             return
@@ -323,6 +341,8 @@ def _google_code(url):
         url = _subdomain_to_path(url, prefix="p/", hostname="code.google.com")
         logger.debug("google code subdomain -> {}".format(url))
         p = urlsplit(url)
+        if not p.path:
+            return
 
         path = p.path[1:]
         if not path:  # pragma: no cover
@@ -420,6 +440,8 @@ def _zope_svn(url):
 def _gitlab(url, hostname=None):
     p = urlsplit(url)
 
+    if not p.path:
+        return
     path = p.path[1:]
     if not path:  # pragma: no cover
         return
@@ -496,9 +518,15 @@ def _sf(url):
 
     p = urlsplit(url)
 
-    path = p.path[1:]
+    if not p.path:
+        path = None
+    else:
+        path = p.path[1:]
 
     if p.netloc == "lists.sourceforge.net":
+        if not path:
+            return False
+
         if path.startswith("lists/listinfo/"):
             list_name = path[len("lists/listinfo/") :]
         elif path.startswith("mailman/listinfo/"):
@@ -512,9 +540,14 @@ def _sf(url):
             return "https://sourceforge.net/projects/{}".format(project_name)
         return
     elif p.netloc in ["sourceforge.net", "sf.net", "sourceforge.jp"]:
+        if not path:
+            return False
+
         if path in ["project/platformdownload.php", "project/showfiles.php"]:  # wordaxe
             url = _get_redirect_location(url.replace("http:", "https:"))
             p = urlsplit(url)
+            if not p.path:
+                return
             path = p.path[1:]
     elif ".code." in p.netloc:
         pass
