@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import sys
 
 try:
@@ -12,4 +13,17 @@ except ImportError:  # pragma: no cover
 
 PY2 = sys.version_info[0] == 2
 
-__all__ = ["PY2", "logger_helper", "urlparse", "urlsplit", "urljoin", "parse_qs"]
+if PY2:
+    StringTypes = (str, "".__class__)
+else:
+    StringTypes = (str, )
+
+__all__ = [
+    "PY2",
+    "StringTypes",
+    "logger_helper",
+    "parse_qs",
+    "urljoin",
+    "urlparse",
+    "urlsplit",
+]
