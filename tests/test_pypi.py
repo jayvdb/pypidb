@@ -322,8 +322,7 @@ class TestPyPiMisc(_TestBase):
 
     def test_rfc3986(self):
         url = self.converter.get_vcs("rfc3986")
-        self.assertInsensitiveEqual(url, "https://github.com/sigmavirus24/rfc3986")
-        # redirects to https://github.com/python-hyper/rfc3986
+        self.assertInsensitiveEqual(url, "https://github.com/python-hyper/rfc3986")
 
     def test_rfc3987(self):
         url = self.converter.get_vcs("rfc3987")
