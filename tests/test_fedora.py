@@ -66,6 +66,7 @@ class TestFedora(_TestBase):
         "dmidecode",
         "dtopt",
         "fiat",
+        "flowtools",
         "geoip",
         "graph-tool",
         "interfile",

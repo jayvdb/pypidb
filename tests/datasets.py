@@ -33,10 +33,6 @@ class PortingdbLoader(Loader):
         "novaclient-os-networks": "os_networksv2_python_novaclient_ext",
         "novaclient-os-virtual-interfaces": "os_virtual_interfacesv2_python_novaclient_ext",
         "podman-api": "podman",
-        "pycolumnize": "columnize",
-        "pyhunspell": "hunspell",
-        "pyobd": "obd",
-        "pyosmium": "osmium",
         "pywt": "PyWavelets",
         "rtslib": "rtslib-fb",
         "sphinx-theme-alabaster": "alabaster",
@@ -79,7 +75,6 @@ class PortingdbLoader(Loader):
         "pycanberra",
         "pycxx",  # http://cxx.sourceforge.net/
         "pyev",  # setup.py checked; it is pyev
-        "pyflowtools",
         "pygiftiio",
         "pygobject2",
         "pygobject3",
@@ -227,6 +222,15 @@ class PortingdbLoader(Loader):
             "winrm",
         ]:
             return "py" + name
+
+        if name in [
+            "pycolumnize",
+            "pyflowtools",
+            "pyhunspell",
+            "pyobd",
+            "pyosmium",
+        ]:
+            return name[2:]
 
         if name in ["nose-xcover", "paste-script", "paste-deploy"]:
             return name.replace("-", "")
