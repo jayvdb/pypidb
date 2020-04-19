@@ -444,7 +444,6 @@ rules.from_set(
         Rule("github-release", ignore_urls=["dev.hubspot.com"], expect_none=True),
         Rule("gloo", link_extract=_url_no_extract, expect_none=True),
         Rule("gnupginterface", match="py-gnupg", ignore_bad_metadata=True),
-        Rule("google-api-core", ["alabaster"]),
         Rule("google-auth", ignore_bad_metadata=True),
         Rule("google-gax", match="gax-python"),
         Rule("google-oauth", ignore_bad_metadata=True),

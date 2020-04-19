@@ -269,7 +269,7 @@ name_mismatch_fetched = {
     "gax-google-logging-v2": "https://github.com/googleapis/googleapis",
     "gax-google-pubsub-v1": "https://github.com/googleapis/googleapis",
     "gfapi": "https://github.com/gluster/libgfapi-python",
-    "google-api-core": "https://github.com/googleapis/google-cloud-python",
+    "google-api-core": "https://github.com/googleapis/python-api-core",
     "googleappenginecloudstorageclient": "https://github.com/GoogleCloudPlatform/appengine-gcs-client",
     "gviz-api": "https://github.com/google/google-visualization-python",
     "h2": "https://github.com/python-hyper/hyper-h2",

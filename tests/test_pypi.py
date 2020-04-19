@@ -792,7 +792,7 @@ class TestMulti(_TestBase):
     def test_google_api_core(self):
         url = self.converter.get_vcs("google-api-core")
         self.assertInsensitiveEqual(
-            url, "https://github.com/googleapis/google-cloud-python"
+            url, "https://github.com/googleapis/python-api-core"
         )
 
     def test_googleapis_common_protos(self):
