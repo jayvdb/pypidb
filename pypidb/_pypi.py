@@ -10,7 +10,7 @@ from socialregexes.socialregexes import definitions as social_definitions
 from stdlib_list import stdlib_list
 
 from ._cache import _check_url_domain, get_file_cache_session, get_timeout
-from ._compat import StringTypes
+from ._compat import StringTypes, urlsplit
 from ._db import _fetch_mapping, add_mapping, db_clear, mappings
 from ._exceptions import (
     IncompletePackageMetadata,
@@ -424,7 +424,11 @@ class Converter(object):
                     continue
 
                 rv = rule.reject_url(name, url.lower())
-                logger.debug("reject rule {}: {}".format(url, rv))
+                try:
+                    logger.debug("reject rule {}: {}".format(url, rv))
+                except UnicodeEncodeError:
+                    p = urlsplit(url)
+                    logger.debug("reject rule {}..: {}".format(p.host, bool(rv)))
                 if rv in ["", None]:
                     continue
                 if rv is True:
@@ -460,7 +464,11 @@ class Converter(object):
                     logger.debug("r {} headers: {}".format(r.url, r.headers))
                     r.raise_for_status()
                 except Exception as e:
-                    logger.warning("{}: {}".format(url, e))
+                    try:
+                        logger.warning("{}: {}".format(url, e))
+                    except UnicodeEncodeError:
+                        p = urlsplit(url)
+                        logger.warning("{}..: {}".format(p.host, e))
                     continue
 
                 urls = []
