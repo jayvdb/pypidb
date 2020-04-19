@@ -65,7 +65,7 @@ setup(
         "socialregexes",
         "stdlib-list",
         "urlextract",
-        "textdistance",
+        "abydos",
         "unidiff",
         "logging-helper",
     ],
