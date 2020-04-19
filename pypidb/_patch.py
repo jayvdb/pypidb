@@ -39,7 +39,7 @@ def _get_patch_redirects(patch, allow_add_only=False):
                     added_urls += _url_extractor_wrapper(str(p_line))
                     logger.debug("added_urls: {}".format(added_urls))
 
-            for url in added_urls.copy():
+            for url in added_urls[:]:
                 if url in removed_urls:
                     removed_urls.remove(url)
                     added_urls.remove(url)
