@@ -50,9 +50,10 @@ class NoExpirationDiskCache(DiskCache, dns_cache.expiration.NoExpirationCache):
     pass
 
 
-dns_cache_dirpath = cache_subdir("dns")
-dns_cache = NoExpirationDiskCache(directory=dns_cache_dirpath, min_ttl=NO_EXPIRY)
-resolver = override_system_resolver(cache=dns_cache)
+if not PY2:
+    dns_cache_dirpath = cache_subdir("dns")
+    dns_cache = NoExpirationDiskCache(directory=dns_cache_dirpath, min_ttl=NO_EXPIRY)
+    resolver = override_system_resolver(cache=dns_cache)
 
 
 def preload_reject_match(name, url):
