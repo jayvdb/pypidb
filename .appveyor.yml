@@ -5,6 +5,6 @@ install:
   - pip install tox codecov
 build: false
 test_script:
-  - tox -e py27 -- -vv tests/test_github.py tests/test_bitbucket.py tests/test_gitlab.py tests/test_pagure.py tests/test_db.py tests/test_caching.py tests/test_fedora.py tests/test_stdlib.py
+  - tox -e py27 -vvvv -- -vv tests/test_github.py tests/test_bitbucket.py tests/test_gitlab.py tests/test_pagure.py tests/test_db.py tests/test_caching.py tests/test_fedora.py tests/test_stdlib.py
   - codecov
 skip_branch_with_pr: true
