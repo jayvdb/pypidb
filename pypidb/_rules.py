@@ -278,6 +278,10 @@ rules.from_set(
         Rule("backports", ignore_bad_metadata=True),
         Rule("barnum", ignore_urls=["wordpress.org"]),
         Rule("basemap", ignore_bad_metadata=True),
+        Rule(
+            "bencode",
+            reject_match_func=partial(reject_names, names=["bootstrap"]),
+        ),
         Rule("bindep", ["project-config"], expect_none=True),
         Rule("bitvector", ignore_urls=["sun.com"], expect_none=True),
         Rule("bobo", repo_filename="buildout.cfg"),
