@@ -76,14 +76,15 @@ def _check_url_domain(url):
 
     try:
         p = urlsplit(url)
-    except Exception:
+    except Exception as e:
+        logger.info("{} parse: {}".format(url,  e))
         return False
-    if not p.netloc:
+    if not p.hostname:
         return False
     try:
-        socket.gethostbyname(p.netloc)
+        socket.gethostbyname(p.hostname)
     except Exception as e:
-        logger.info("domain {} lookup error: {}".format(url, e))
+        logger.info("{} domain {} lookup error: {}".format(url, p.hostname, e))
         return False
     return True
 
