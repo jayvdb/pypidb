@@ -18,6 +18,7 @@ def _collate_preload():
 _indirect_preload_names = _collate_preload()
 _direct_names = [i.name for i in rules.values()]
 _rule_names = _direct_names + _indirect_preload_names
+normalised_bad_metadata = [normalize(i) for i in bad_metadata]
 
 
 @expand
@@ -27,7 +28,7 @@ class TestRuleKey(_TestBase):
     ignore_missing = [
         i.name
         for i in rules.values()
-        if normalize(i.name) in [normalize(i) for i in bad_metadata]
+        if normalize(i.name) in normalised_bad_metadata
     ]
 
     @foreach(names)
