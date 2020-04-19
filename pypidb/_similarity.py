@@ -2,7 +2,7 @@ import collections
 import logging
 import re
 
-import textdistance
+import abydos.distance
 from logging_helper import setup_logging
 
 from pypidb._compat import PY2, logger_helper, urlsplit
@@ -13,7 +13,7 @@ if logger_helper and not PY2:
 else:  # pragma: no cover
     autolog = lambda x: x
 
-_similarity_func = textdistance.RatcliffObershelp().distance
+_similarity_func = abydos.distance.RatcliffObershelp().dist
 
 
 def normalize(name):
