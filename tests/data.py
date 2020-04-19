@@ -904,6 +904,7 @@ bad_metadata = [
     "fig",
     "firkin",
     "flojay",
+    "flowtools",
     "fpconst",
     # "galaxy" very slow https://github.com/jayvdb/pypidb/issues/85
     "gen3git",
