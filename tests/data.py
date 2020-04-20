@@ -1185,6 +1185,7 @@ missing_repos = [
     "ipmi",
     "iptcinfo",  # https://bitbucket.org/gthomas/iptcinfo , history retained at https://github.com/20minutes/iptcinfo
     "kubetop",  # https://github.com/leastauthority.com/kubetop
+    "launcher",  # https://github.com/ha6000/launcher-for-python
     "logging",
     "magic",  # is a DreamHost 404 page
     "metafone",  # https://github.com/al45tair/metaphone, but this is a dead fork
