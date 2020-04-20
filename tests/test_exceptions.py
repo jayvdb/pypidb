@@ -1,4 +1,7 @@
+from unittest_expander import expand, foreach
+
 from pypidb._exceptions import (
+    AuthorWithoutPublicRepository,
     InvalidPackage,
     InvalidPackageVersion,
     IncompletePackageMetadata,
@@ -248,3 +251,59 @@ class TestExceptions(_TestBase):
     def test_logilab_aspects(self):
         with self.assertRaises(PackageWithoutFiles):
             self.converter.get_vcs("aspects")
+
+
+@expand
+class TestDieterMaurer(_TestBase):
+    """http://www.dieter.handshake.de/"""
+
+    # https://pypi.org/user/dmaurer/
+    packages = [
+        "dm.incrementalsearch",
+        "dm.historical",
+        "dm.iter",
+        "dm.pdb",
+        "dm.plone.advancedquery",
+        "dm.plonepatches.reload",
+        "dm.profile",
+        "dm.reuse",
+        "dm.saml2",
+        "dm.sharedresource",
+        "dm.transaction.aborthook",
+        "dm.xmlsec.binding",
+        "dm.xmlsec.pyxb",
+        "dm.zdoc",
+        "dm.zodb.asynchronous",
+        "dm.zodb.repair",
+        "dm.zodbpatches.commit_savepoint",
+        "dm.zope.generate",
+        "dm.zope.mockup",
+        "dm.zope.notmuchmail",
+        "dm.zope.rpc",
+        "dm.zope.rpc.wsdl_suds",
+        "dm.zope.rpc_protocol.wsdl_suds",
+        "dm.zope.saml2",
+        "dm.zope.schema",
+        "dm.zope.session",
+        "dm.zope.reseller",
+        "dm.zopepatches.cookies",
+        "dm.zopepatches.fix_responsewrite_conflict",
+        "dm.zopepatches.formlib",
+        "dm.zopepatches.security",
+        "dm.zopepatches.xmlrpc",
+        "dm.zopepatches.zclasses",
+        "dm.zopepatches.ztest",
+        "dm.zopepatches.ztutils",
+        "Products.AdvancedQuery",
+        "Products.CCSQLMethods",
+        "Products.ManagableIndex",
+        "Products.OFolder",
+        "Products.References",
+        "Products.TrustedExecutables",
+        "Products.ZopeProfiler",
+    ]
+
+    @foreach(packages)
+    def test_no_repo(self, name):
+        with self.assertRaises(AuthorWithoutPublicRepository):
+            self.converter.get_vcs(name)

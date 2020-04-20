@@ -11,6 +11,7 @@ from pypidb import __name__ as app_name
 
 from ._cache import cache_subdir
 from ._db import multipackage_repos, reverse_mappings
+from ._exceptions import AuthorWithoutPublicRepository
 from ._patch import (
     _get_patch_redirects,
     _get_raw_patch_url,
@@ -384,7 +385,6 @@ rules.from_set(
         ),
         Rule("django-toolbelt", ignore_urls=["devcenter.heroku.com"], expect_none=True),
         Rule("djtracker", ignore_urls=["www.f4ntasmic.com", "mark-rogers.net"]),
-        Rule("dm-xmlsec-binding", ["lxml"], expect_none=True),
         Rule("dox", ["boot2docker"], expect_none=True),
         Rule(
             "drfdocs",
@@ -770,6 +770,7 @@ _email_matches = {
     "developers@pyviz.org": "holoviz/{namespace}_{suffix}",
     "dthomas@osrfoundation.org": ["ros", "ros-infrastructure"],
     "darcy@PyGreSQL.org": "pygresql",
+    "dieter@handshake.de": AuthorWithoutPublicRepository(),
     "efried@us.ibm.com": "powervm",
     "enthought-dev@enthought.com": "srossross",
     "f4nt@f4ntasmic.com": "f4nt",
@@ -894,7 +895,7 @@ def _find_named_repo(name, emails=None):
             return "https://gitlab.freedesktop.org/{}/{}".format(address, name)
 
         email_rules = _email_matches.get(email, [])
-        if isinstance(email_rules, str):
+        if isinstance(email_rules, (str, Exception)):
             email_rules = [email_rules]
         for rule in email_rules:
             if rule not in rules:
@@ -907,6 +908,9 @@ def _find_named_repo(name, emails=None):
 
     for slug in rules:
         from pypidb._github import check_repo
+
+        if isinstance(slug, Exception):
+            raise slug
 
         if "/" not in slug:
             slug = "{}/{}".format(slug, name)

@@ -20,3 +20,7 @@ class PackageWithoutFiles(IncompletePackageMetadata):
 
 class PackageWithoutUrls(IncompletePackageMetadata):
     pass
+
+
+class AuthorWithoutPublicRepository(IncompletePackageMetadata):
+    pass

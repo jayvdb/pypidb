@@ -887,7 +887,7 @@ bad_metadata = [
     "django-toolbelt",  # finds https://github.com/heroku/django-heroku
     "djtracker",
     "dmidecode",
-    "dm.xmlsec-binding",  # no repo exists by https://github.com/d-maurer, https://github.com/ansible/dm.xmlsec.binding is best attempt
+    "dm.xmlsec-binding",  # https://github.com/jayvdb/pypidb/issues/111
     "dns",
     "dogstatsd-python",
     "dopen",
