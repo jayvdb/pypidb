@@ -377,6 +377,7 @@ def get_file_cache_session(cache_name):
         "antirez.com",  # redlock-py
         "docs.h2o.ai",  # https://github.com/h2oai/sparkling-water/issues/1953
         "www.theblobshop.com",  # https://github.com/jmyounker/vers/issues/1
+        "mirror-ap.wiki.ros.org",  # catkin_pkg
         # wrong cert
         "item.id",  # abclient
         "pybrain.org",  # cert for *.kasserver.com, kasserver.com (unrelated)
