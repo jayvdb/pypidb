@@ -33,11 +33,17 @@ def _get_patch_redirects(patch, allow_add_only=False):
             added_urls = []
             for p_line in p_hunk:
                 if p_line.line_type == "-":
-                    removed_urls += _url_extractor_wrapper(str(p_line))
-                    logger.debug("removed_urls: {}".format(removed_urls))
+                    extracted = list(_url_extractor_wrapper(str(p_line)))
+                    if extracted:
+                        if set(extracted) - set(removed_urls):
+                            logger.debug("removed_urls: {}".format(extracted))
+                        removed_urls += extracted
                 elif p_line.line_type == "+":
-                    added_urls += _url_extractor_wrapper(str(p_line))
-                    logger.debug("added_urls: {}".format(added_urls))
+                    extracted = list(_url_extractor_wrapper(str(p_line)))
+                    if extracted:
+                        if set(extracted) - set(added_urls):
+                            logger.debug("added_urls: {}".format(extracted))
+                        added_urls += extracted
 
             for url in added_urls.copy():
                 if url in removed_urls:
