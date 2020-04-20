@@ -386,7 +386,12 @@ rules.from_set(
         ),
         Rule("django-toolbelt", ignore_urls=["devcenter.heroku.com"], expect_none=True),
         Rule("djtracker", ignore_urls=["www.f4ntasmic.com", "mark-rogers.net"]),
-        Rule("dm-xmlsec-binding", ["lxml"], expect_none=True),
+        Rule(
+            "dm-xmlsec-binding",
+            ["lxml"],
+            ignore_urls=["www.aleksey.com"],
+            expect_none=True,
+        ),
         Rule("dox", ["boot2docker"], expect_none=True),
         Rule(
             "drfdocs",
