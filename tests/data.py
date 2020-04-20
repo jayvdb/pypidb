@@ -759,6 +759,7 @@ name_mismatch_metadata = {
     "utillib": "https://github.com/jor-/util",
     "vim-vint": "https://github.com/Kuniwak/vint",
     "vsts": "https://github.com/Microsoft/vsts-python-api",
+    "W": "http://github.com/berkeley-cocosci/Wallace",
     "weka-easypy": "https://github.com/weka-io/easypy",
     "wn": "https://github.com/nltk/wordnet",
     "woocommerce": "https://github.com/woocommerce/wc-api-python",
