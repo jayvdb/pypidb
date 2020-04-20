@@ -112,6 +112,10 @@ class TestSpecific(_TestBase):
         url = self.converter.get_vcs("django-swaps")
         self.assertInsensitiveEqual(url, "https://code.google.com/p/django-swaps")
 
+    def test_beatbox(self):
+        url = self.converter.get_vcs("beatbox")
+        self.assertInsensitiveEqual(url, "https://code.google.com/p/salesforce-beatbox")
+
 
 class TestRedirectOther(_TestBase):
     def test_mox3(self):
@@ -127,10 +131,6 @@ class TestRedirectGitHub(_TestBase):
     def test_dpkt(self):
         url = self.converter.get_vcs("dpkt")
         self.assertInsensitiveEqual(url, "https://github.com/kbandla/dpkt")
-
-    def test_beatbox(self):
-        url = self.converter.get_vcs("beatbox")
-        self.assertInsensitiveEqual(url, "https://github.com/superfell/Beatbox")
 
     def test_pydot2(self):
         url = self.converter.get_vcs("pydot2")
