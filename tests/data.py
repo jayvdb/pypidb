@@ -162,6 +162,7 @@ exact_metadata = {
     "python-pseudorandom": "https://github.com/smathot/python-pseudorandom",
     "pyvows": "https://github.com/heynemann/pyvows",
     "pywatchman": "https://github.com/facebook/watchman",
+    "pyzipcode": "https://github.com/vangheem/pyzipcode",
     "recurly": "https://github.com/recurly/recurly-client-python",
     "reportportal-client": "https://github.com/reportportal/client-Python",
     "repoze.lru": "https://github.com/repoze/repoze.lru",
@@ -323,6 +324,7 @@ name_mismatch_fetched = {
     "powerline-status": "https://github.com/powerline/powerline",
     "psycopg2-binary": "https://github.com/psycopg/psycopg2",
     "publicsuffixlist": "https://github.com/ko-zu/psl",
+    "py1cmd": "https://github.com/unbrice/py1",
     "pycdio": "http://git.savannah.gnu.org/cgit/libcdio/pycdio.git",
     "pydevd-pycharm": "https://github.com/fabioz/PyDev.Debugger",
     "pyficache": "https://github.com/rocky/python-filecache",
@@ -1002,7 +1004,6 @@ bad_metadata = [
     "PsyLab",
     "ptrace",
     "pubnub",  # todo
-    "py1cmd",
     "pyalsa",  # http://cvs.bigasterisk.com/viewcvs/pyalsa/ offline
     "pybee",
     "pybibframe",
@@ -1046,7 +1047,6 @@ bad_metadata = [
     "pyudorandom",
     "pyVirtualize",
     "pyweblib",
-    "pyzipcode",
     "qet_tb_generator",
     "quickproxy",
     "random2",
@@ -1366,6 +1366,7 @@ setuppy_mismatches = [
     "pinax-notifications",
     "pip-requ",
     "plaidml",
+    "py1cmd",  # string concat in setup.py
     "ply",  # has no setup.py
     "proto-",
     "proto-google-",
