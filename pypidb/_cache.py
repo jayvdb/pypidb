@@ -399,6 +399,7 @@ def get_file_cache_session(cache_name):
         "sphinx.pocoo.org",  # pocoo.org, www.pocoo.org
         "lists.baruwa.org",  # *.baruwa.net, baruwa.net
         "yum.baseurl.org",  # beaverbarcamp.org
+        "xmlsoft.org",  # libvirt.org
         "python-tmx.nongnu.org",  # www.gnu.org and friends
         "cthedot.de",  # *.mivitec.net
         "www.acoular.org",  # *.webgo24.de
