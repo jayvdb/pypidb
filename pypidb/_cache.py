@@ -177,6 +177,8 @@ def CacheControl(
     sess.mount("https://browsehappy.com", _block_request_adapter)
     sess.mount("http://validator.w3.org/check", _block_request_adapter)
     sess.mount("https://validator.w3.org/check", _block_request_adapter)
+    sess.mount("http://regex101.com", _block_request_adapter)
+    sess.mount("https://regex101.com", _block_request_adapter)
     sess.mount(
         "http://www.amazon.com/exec/obidos/external-search", _block_request_adapter
     )  # simplegeneric https://github.com/lipoja/URLExtract/issues/62
