@@ -73,7 +73,7 @@ def _get_patch_redirects(patch, allow_add_only=False):
                 for url in removed_urls:
                     redirect_mappings.append((url, None))
             else:
-                if len(added_urls) != len(removed_urls):
+                if not allow_add_only and len(added_urls) != len(removed_urls):
                     logger.info(
                         "Hunk ignored as removed cant be mapped to added: {}\n{}".format(
                             removed_urls, added_urls
@@ -81,6 +81,9 @@ def _get_patch_redirects(patch, allow_add_only=False):
                     )
                     continue
                 for i, to_url in enumerate(added_urls):
-                    redirect_mappings.append((removed_urls[i], to_url))
+                    from_url = None
+                    if i < len(removed_urls):
+                        from_url = removed_urls[i]
+                    redirect_mappings.append((from_url, to_url))
 
     return redirect_mappings
