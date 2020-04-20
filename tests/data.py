@@ -1,5 +1,4 @@
 exact_fetched = {
-    "aerospike": "https://github.com/aerospike/aerospike-client-python",
     "appier": "https://github.com/hivesolutions/appier",
     "appium-python-client": "https://github.com/appium/python-client",
     "boxsdk": "https://github.com/box/box-python-sdk",
@@ -34,6 +33,7 @@ exact_metadata = {
     "ansible-tower-cli": "https://github.com/ansible/tower-cli",
     "apache-airflow": "https://github.com/apache/airflow",
     "apache-beam": "https://github.com/apache/beam",
+    "aerospike": "https://github.com/aerospike/aerospike-client-python",
     "aspy-refactor-imports": "https://github.com/asottile/aspy.refactor_imports",
     "auger-python": "https://github.com/laffra/auger",
     "backports-functools-lru-cache": "https://github.com/jaraco/backports.functools_lru_cache",
