@@ -19,7 +19,7 @@ failures = []
 repeat_expected = False
 
 
-def _fetch_names(kind="top4kyear", xstatic=False, ignore_failures=True):
+def _fetch_names(kind="top4kmonth", xstatic=False, ignore_failures=True):
     for name in get_top_packages(kind):
         if name in _stdlib:
             continue
@@ -94,9 +94,7 @@ class TestTop360(_TestBase):
 @expand
 class TestTopXStatic(_TestBase):
 
-    names = set(_fetch_names(xstatic=True, kind="top4kyear")) | set(
-        _fetch_names(xstatic=True, kind="top4kmonth")
-    )
+    names = list(_fetch_names(xstatic=True, kind="top4kmonth"))
 
     @foreach(names)
     def test_package(self, name):
