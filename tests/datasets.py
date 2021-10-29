@@ -578,7 +578,7 @@ def get_opensuse_packages(project):
     return names
 
 
-def _intersect_stdlib(kind="top4kyear"):
+def _intersect_stdlib(kind="top4kmonth"):
     for name in get_top_packages(kind):
         if name not in _stdlib_all:
             continue
